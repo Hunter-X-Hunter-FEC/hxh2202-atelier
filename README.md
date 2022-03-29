@@ -1,3 +1,9 @@
-# main-repo
+# hxh2202-atelier 
 
-This is the new README.md file
+README.md
+
+Team: Hunter X Hunter
+
+Project: Front End Capstone (FEC)
+
+Team Members: Daniel Esquivel-Reynoso, Dora Xia, David Liang, Bogdan Gordin
