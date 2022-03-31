@@ -33,8 +33,6 @@ class App extends React.Component {
     <p>Component Did Mount</p>
   }
 
-
-
   render() {
     return (
       <div>
