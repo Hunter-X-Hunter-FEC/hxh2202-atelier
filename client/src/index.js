@@ -5,12 +5,13 @@ Daniel Esquivel-Reynoso, Dora Xia, David Liang, Bogdan Gordin
 our Atelier App, will contain all of the componant modules
 */
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
+import RatingsAndReviews from './components/Ratings/RatingsAndReviews.jsx';
 // var axios = require('axios');
 // import qa from "./components/qa.js" // <QA />
 // import Overview from "./components/qa.js" // <QA />
-// import RelatedItems from "./components/qa.js" // <QA />
+// import RelatedItems from "./3components/qa.js" // <QA />
 // import Outfits from "./components/qa.js" // <QA />
 // import Reviews from "./components/qa.js" // <QA />
 
@@ -29,7 +30,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-
+    <p>Component Did Mount</p>
   }
 
 
@@ -37,7 +38,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Hello Hunter X Hunter! Hello David!
+        <div>
+        CLOTHING!!!
+        </div>
+        <div>
+        <RatingsAndReviews />
+        </div>
       </div>
     );
   }
