@@ -1,8 +1,12 @@
 import React from 'react';
 import Star from './Star.jsx';
+import {Container} from './styles/container.styled.js';
+
 var ProductCard = (props)=>{
   return (
-	<div >
+	<Container>
+
+
 		<div className="">
 				<div className="">
 					<div className="">
@@ -37,7 +41,7 @@ var ProductCard = (props)=>{
 					</div>
 				</div>
 			</div>
-	</div>
+	</Container>
   )
 };
 export default ProductCard;

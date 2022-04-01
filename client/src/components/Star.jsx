@@ -1,9 +1,12 @@
 import React from 'react';
-import {FaBeer} from 'react-icons/fa';
+import {IoIosStarOutline} from 'react-icons/io';
+import styled from 'styled-components';
 
 const Star = (props)=>{
   return (
-    <div>{FaBeer}</div>
+    <div>
+      {Array(5).fill(<IoIosStarOutline />)}
+    </div>
   )
 };
 
