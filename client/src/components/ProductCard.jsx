@@ -1,46 +1,29 @@
 import React from 'react';
 import Star from './Star.jsx';
-import {Container} from './styles/container.styled.js';
+// import styled from 'styled-components';
+import {Container, Image} from './styles/container.styled.js';
 
-var ProductCard = (props)=>{
+const ProductCard = (props)=>{
+	console.log('props.card', props.card)
+
+
   return (
 	<Container>
-
-
-		<div className="">
-				<div className="">
-					<div className="">
-						<img src="" alt="" className=""/>
-						<span className="">
-							Product Category
-						</span>
-					</div>
-				</div>
-				<div className = "">
-						<h5 className="name">
-							<a href="#">Product Name ></a>
-						</h5>
-						<p className="">
-							<span>Product Price</span>
-						</p>
-						<span className=""></span>
-				</div>
-				<div className="">
-					<div className="">
-						<div className="">
-							<div className="rating">Rating:
-								<Star />
-
-								{/* <label for="stars-rating-5"><i className="fa fa-star text-danger"></i></label>
-								<label for="stars-rating-4"><i className="fa fa-star text-danger"></i></label>
-								<label for="stars-rating-3"><i className="fa fa-star text-danger"></i></label>
-								<label for="stars-rating-2"><i className="fa fa-star text-warning"></i></label>
-								<label for="stars-rating-1"><i className="fa fa-star text-warning"></i></label> */}
-							</div>
-						</div>
-					</div>
-				</div>
+		<div>
+			<img src="" alt="" className=""/>
+			<span className="">
+				{props.card.category}
+			</span>
+			<h5 className="name">
+				<a href="#">{props.card.name}</a>
+			</h5>
+			<p className="">
+				{/* <span>{props.card.price}</span> */}
+			</p>
+			<div className="rating">Rating:
+					<Star />
 			</div>
+		</div>
 	</Container>
   )
 };
