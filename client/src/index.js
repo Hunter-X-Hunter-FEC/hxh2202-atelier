@@ -7,7 +7,7 @@ our Atelier App, will contain all of the componant modules
 
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import RatingsAndReviews from './components/Ratings/RatingsAndReviews.jsx';
+import Ratings from './components/Ratings/Ratings.jsx';
 // var axios = require('axios');
 // import qa from "./components/qa.js" // <QA />
 // import Overview from "./components/qa.js" // <QA />
@@ -40,7 +40,7 @@ class App extends React.Component {
         CLOTHING!!!
         </div>
         <div>
-        <RatingsAndReviews />
+        <Ratings />
         </div>
       </div>
     );
