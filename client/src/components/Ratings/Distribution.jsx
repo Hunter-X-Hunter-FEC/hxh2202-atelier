@@ -2,7 +2,7 @@ import React from 'react'
 
 const Distribution = () => {
   return (
-    <p className="Distribution"> Distribution Component Here </p>
+    <div className="Distribution"> Distribution Component Here </div>
   )
 }
 

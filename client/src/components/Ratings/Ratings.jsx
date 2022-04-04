@@ -3,8 +3,9 @@ import ProductBreakdown from './ProductBreakdown.jsx';
 import HeaderRating from './HeaderRating.jsx';
 import styled from 'styled-components';
 import Distribution from './Distribution.jsx';
+import a from '../common/oneReview.js';
 
-const StyledHeaderRating = styled.p`
+const StyledHeaderRating = styled.div`
   padding: 0.5em;
   margin: 0.5em;
   color: palevioletred;
@@ -13,7 +14,7 @@ const StyledHeaderRating = styled.p`
   border-radius: 5px;
 `;
 
-const StyledDistrubution = styled.p`
+const StyledDistrubution = styled.div`
   padding: 0.5em;
   margin: 0.5em;
   color: orange;
@@ -22,7 +23,7 @@ const StyledDistrubution = styled.p`
   border-radius: 5px;
 `;
 
-const StyledProductBreakdown = styled.p`
+const StyledProductBreakdown = styled.div`
   padding: 0.5em;
   margin: 0.5em;
   color: LightBlue;
@@ -36,7 +37,7 @@ const Ratings = (props) => {
   return (
     <>
       <StyledHeaderRating>
-        <HeaderRating />
+        <HeaderRating data={a}/>
       </StyledHeaderRating>
       <StyledDistrubution>
         <Distribution />
