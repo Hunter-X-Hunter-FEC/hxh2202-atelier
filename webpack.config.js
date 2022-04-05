@@ -32,6 +32,13 @@ module.exports = {
         use: ['source-map-loader'],
       },
     ]
+  },
+  stats: {
+    // Configure the console output
+    errorDetails: true, //this does show errors
+    colors: true,
+    modules: true,
+    reasons: true
   }
 
 };
