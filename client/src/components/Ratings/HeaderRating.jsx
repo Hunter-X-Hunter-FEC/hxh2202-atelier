@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import Stars from '../common/Stars.jsx';
-import { averageRating} from '../common/oneMeta.js';
+import { averageRating, ones } from '../common/oneMeta.js';
 
 const HeaderRating = (props) => {
   return (
