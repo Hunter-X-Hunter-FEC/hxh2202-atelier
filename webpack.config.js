@@ -9,6 +9,7 @@ module.exports = {
     filename: 'bundle.js',
   },
 
+  devtool: 'inline-cheap-module-source-map',
   module: {
     rules: [
       {

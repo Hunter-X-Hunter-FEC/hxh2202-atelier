@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Distribution = () => {
+const Distribution = (props) => {
   return (
     <div className="Distribution"> Distribution Component Here </div>
   )
