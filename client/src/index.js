@@ -7,6 +7,7 @@ our Atelier App, will contain all of the componant modules
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Navbar from './components/Navbar.jsx';
 // var axios = require('axios');
 // import qa from "./components/qa.js" // <QA />
 // import Overview from "./components/qa.js" // <QA />
@@ -37,7 +38,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Hello Hunter X Hunter! Hello David!
+        <Navbar />
       </div>
     );
   }
