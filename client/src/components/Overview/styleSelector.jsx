@@ -1,18 +1,33 @@
-import React from "react";
+/*
+Hunter-X-Hunter FEC
+Daniel Esquivel-Reynoso, Dora Xia, Bogdan Gordin
+3/4/22
+style selector
+a containiter with multiple styles to choose from, same as from style list, each changes the product style/color
+upon selected style it will have a checkmark to indicate it's the currently selected
+*/
 
-const styleSelector = (props) => {
-//should affect what populates in the product information? maybe pass selected product information up to overview. First item selected by default
+import React from "react";
+import { render } from "react-dom";
+
+
+
+function StyleSelector() {
+
   return (
-    <div>Style > Selected Style</div>
-    <img>1</img>
-    <img>2</img>
-    <img>3</img>
-    <img>4</img>
-    <img>5</img>
-    <img>6</img>
-    <img>7</img>
-    <img>8</img>
+    <div id='StyleSelector' style={{ 'backgroundColor': 'DarkOrange' }}>
+      <div>
+        <div>s1</div>
+        <div>s2</div>
+        <div>s3</div>
+        <div>s4</div>
+        <div>s5</div>
+        <div>s6</div>
+        <div>s7</div>
+        <div>s8</div>
+      </div>
+    </div>
   )
 };
 
-export default styleSelector;
+export default StyleSelector;

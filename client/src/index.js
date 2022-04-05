@@ -7,12 +7,13 @@ our Atelier App, will contain all of the componant modules
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Overview from "./components/Overview/overview.jsx" // <Overview />
+// import RelatedItems from "./components/RelatedItems/relatedItems.js" // <RelatedItems />
+// import Outfits from "./components/Outfits/outfits.js" // <Outfits />
+// import qa from "./components/QA/qa.js" // <QA />
+// import Reviews from "./components/Reviews/reviews.js" // <Reviews />
 // var axios = require('axios');
-// import qa from "./components/qa.js" // <QA />
-// import Overview from "./components/qa.js" // <QA />
-// import RelatedItems from "./components/qa.js" // <QA />
-// import Outfits from "./components/qa.js" // <QA />
-// import Reviews from "./components/qa.js" // <QA />
+
 
 
 
@@ -36,11 +37,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        Hello Hunter X Hunter! Hello David!
+      <div style={{ 'backgroundColor': 'AliceBlue' }}>
+        <h1>header and logo here</h1>
+        <Overview />
       </div>
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('atelier'));
+ReactDOM.render(<App />, document.getElementById('app'));

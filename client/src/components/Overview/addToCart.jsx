@@ -1,51 +1,46 @@
+/*
+Hunter-X-Hunter FEC
+Daniel Esquivel-Reynoso, Dora Xia, Bogdan Gordin
+3/4/22
+add to cart
+has a drop down table for size and quantity
+add to cart button saves whatever current product is, the selected size and quantity, and adds it to user cart
+should save the cart info between sessions
+the favorite button saves the product like to add to cart but instead add to favorites
+*/
+
 import React from "react";
-
-
-class addtoCart extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: ''
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <div>
-        <div>Size Selector</div>                  //how to do dropdown
-        <div>Quantity Selector</div>              //how to do dropdown
-        <form onSubmit={this.handleSubmit}>       //need to pass down handlesubmit from top level
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          <input type="submit" value="Add to Cart" />
-        </form>
-        <button onClick={}> Favorite </button>    //need to add handler here
-      </div>
-    );
-  }
-}
-
-
-export default addToCart;
+import { render } from "react-dom";
 
 
 
-// const addToCart = (props) => {
-//   return (
-//     <div>Select Selector</div>
-//     <div>Quantity Selector</div>
-//     <div>Add to Cart</div>
-//     <div>Favorite</div>
-//   )
-// };
+function AddToCart() {
+
+  return (
+    <div id='AddToCart' style={{ 'backgroundColor': 'DodgerBlue' }}>
+      <select>
+        <option value="" disabled selected>Select Size</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="M?/L">M/L</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select>
+      <select>
+        <option value="" disabled selected>-</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button>ADD TO BAG</button>
+      <button><span>&#9734;</span></button>
+
+    </div>
+  )
+};
+
+export default AddToCart;
+
+// <option value="" disabled selected>OUT OF STOCK</option>
