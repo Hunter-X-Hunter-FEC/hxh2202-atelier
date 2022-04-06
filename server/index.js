@@ -1,4 +1,4 @@
-const config = require('../config.js');
+// const config = require('../config.js');
 require('dotenv').config();
 // console.log(process.env);
 const express = require('express');
@@ -15,20 +15,23 @@ app.use(express.json())
 
 var apiURL = `https://app-hrsei-api.herokuapp.com/api/fec2/rfp`
 
-//  Product API
+/*
 
+CALLS TO API FOR PRODUCT
+
+*/
+
+// This is the '/product' call, for all products, likely to be used in the catalog page.
 app.get('/products', (req, res) => {
   // console.log(req.query)
   // console.log(req.body)
   // console.log(req.headers)
-  console.log(req.url)
+  // console.log(req.url)
 
   let options = {
     method: 'GET',
     url: apiURL + req.url,
     headers: {
-      Accept: 'text',
-      'User-Agent': 'request',
       'Authorization': `${process.env.REACT_APP_API_KEY}`
     },
     params: {
@@ -39,10 +42,26 @@ app.get('/products', (req, res) => {
   axios(options)
   .then((result) => {
     console.log(result.data)
-    // var data = JSON.parse(results);
     res.send(result.data);
   });
-  // res.status(200).send('hello');
+})
+
+// This is the '/product' call, for all products, likely to be used in the catalog page.
+app.get('/products/:product_id', (req, res) => {
+
+  let options = {
+    method: 'GET',
+    url: apiURL + req.url,
+    headers: {
+      'Authorization': `${process.env.REACT_APP_API_KEY}`
+    }
+  };
+
+  axios(options)
+  .then((result) => {
+    res.send(result.data);
+  });
+
 })
 
 app.listen(PORT, () => {
