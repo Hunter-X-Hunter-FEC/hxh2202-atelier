@@ -38,12 +38,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>
-        CLOTHING!!!
-        </div>
-        <div>
-        <RatingsAndReviews />
-        </div>
+        <Navbar />
       </div>
     );
   }
