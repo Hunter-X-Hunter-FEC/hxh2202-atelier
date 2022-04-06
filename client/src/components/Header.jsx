@@ -24,11 +24,11 @@ font-size: 50px;
 `
 
 
-function Header({themeToggler}) {
+function Header({themeToggler, showAll}) {
   return (
     <Container>
       <Image src={Logo} alt=""/>
-      <Product> Products </Product>
+      <Product onClick = {()=>showAll()}> Products </Product>
       <AiOutlineShoppingCart size={80}/>
       <CgDarkMode onClick={themeToggler} size={80}/>
     </Container>
