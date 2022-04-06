@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductList from './ProductList.jsx';
 import ProductCard from './ProductCard.jsx';
-import request from './exampleData.js';
+import request from '../Request.js';
 import OutfitList from './OutfitList.jsx';
 import 'regenerator-runtime/runtime';
 import {Container, ProductSection, FavoriteSection} from './styles/container.styled.js';
@@ -395,7 +395,7 @@ function RelatedItems({proID}) {
         }
       }
     }
-    // console.log('consolidated', details);
+    console.log('consolidated', details);
     // const Product = Object.assign(details, styles);
     setProduct(details);
     }

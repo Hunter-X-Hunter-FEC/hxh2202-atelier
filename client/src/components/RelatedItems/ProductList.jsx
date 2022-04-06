@@ -7,37 +7,23 @@ import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 
 function ProductList ({product}) {
   console.log('product', product);
-  const [productToRender, setProduct] = useState(product);
+  const length = product.length;
   const [curIndex, setIndex] = useState(0);
-  const [disableLeftButton, setLeftDisable] = useState(false);
-  const [disableRightButton, setRightDisable] = useState(true);
 
-  useEffect(()=>{
-    if (product.length > 0) {
-      setProduct(product);
-    }
-  }, [product])
+  // useEffect(()=>{
+  //   if (product.length > 0) {
+  //     setProduct(product);
+  //   }
+  // }, [product])
 
-  console.log('productToRender', productToRender);
   const clickPrev = ()=>{
     console.log('left click is working')
-    if (curIndex > 1) {
-      setIndex(curIndex=>curIndex-1)
-      setProduct(productToRender.slice(curIndex, curIndex+4));
-    } else if (curIndex === 0) {
-      setLeftDisable(true)
-    }
+    setIndex(curIndex === 0 ? length-1: curIndex-1)
   }
 
   const clickNext = ()=> {
     console.log('right click is working');
-    if (curIndex + 4 < product.length) {
-      setIndex(curIndex=>curIndex+1)
-      console.log('prevcurIndex', curIndex);
-      setProduct(productToRender.slice(curIndex, curIndex+4));
-    } else if (curIndex + 4 >= productToRender.length) {
-      setRightDisable(true)
-    }
+    setIndex(curIndex === length-1 ? 0: curIndex+1);
     console.log('nextIndex', curIndex);
   }
 
@@ -47,12 +33,14 @@ function ProductList ({product}) {
       <h3>Customers Also Viewed</h3>
       <ProdList>
         <Inner>
-          {productToRender.map((card, index)=>(<ProductCard key={index} card={card}/>))}
+          {product.map((card, index)=> {
+            if (index >= curIndex && index<= curIndex+3) {
+              return (<ProductCard key={index} card={card}/>)}})}
         </Inner>
-        {disableLeftButton && <PrevBtn onClick={clickPrev}>
+        {curIndex===length-4 && <PrevBtn onClick={clickPrev}>
           <IoIosArrowBack />
         </PrevBtn>}
-         {disableRightButton && <NextBtn onClick={clickNext}>
+         {curIndex===0 && <NextBtn onClick={clickNext}>
           <IoIosArrowForward/>
         </NextBtn>}
       </ProdList>
