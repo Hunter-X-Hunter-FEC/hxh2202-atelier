@@ -1,17 +1,24 @@
 import styled from 'styled-components';
 
 export const ProductContainer = styled.div`
-heights: 100vh;
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
 width: 25%;
+heights: 250px;
+background-color: green;
+`
+export const Card = styled.div`
 flex: 1;
-border: solid black;
-font-family:sans-serif;
+margin: 5px;
+background-color:red;
+border: solid black
 `
 
 export const ProductImage = styled.img`
 width:95%;
 boder-radius: 12px;
-height: 80%;
+// height: 70%;
 object-fit: fill;
 `
 export const ProductCategory = styled.div`
