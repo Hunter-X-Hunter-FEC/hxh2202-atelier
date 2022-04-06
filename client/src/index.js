@@ -4,44 +4,34 @@ Daniel Esquivel-Reynoso, Dora Xia, David Liang, Bogdan Gordin
 3/29/22
 our Atelier App, will contain all of the componant modules
 */
-
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import RatingsAndReviews from './components/Ratings/RatingsAndReviews.jsx';
-// var axios = require('axios');
-// import qa from "./components/qa.js" // <QA />
-// import Overview from "./components/qa.js" // <QA />
-// import RelatedItems from "./3components/qa.js" // <QA />
-// import Outfits from "./components/qa.js" // <QA />
-// import Reviews from "./components/qa.js" // <QA />
+import Header from './components/Header.jsx';
+import styled, {ThemeProvider} from 'styled-components';
+import {lightTheme, darkTheme, GlobalStyles} from './assets/themes.js';
+
+function App(){
+
+  const [theme, setTheme] = useState('light');
+  const [view, setView] = useState('catalog');
+  const [allProducts, setAllProduct] = useState([]);
+  const [selected, setSelected] = useState([]);
 
 
-
-
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      appearance: ''
-    };
-
+  const themeToggler = ()=>{
+    theme === 'light' ? setTheme('dark') : setTheme('light');
   }
 
-  componentDidMount() {
-    <p>Component Did Mount</p>
-  }
+  return (
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <>
+        <GlobalStyles />
+        <Header themeToggler={themeToggler} />
+      </>
+    </ThemeProvider>
+  );
 
-
-
-  render() {
-    return (
-      <div>
-        <Navbar />
-      </div>
-    );
-  }
 }
 
-ReactDOM.render(<App />, document.getElementById('atelier'));
+ReactDOM.render(<App />, document.getElementById('app'));
