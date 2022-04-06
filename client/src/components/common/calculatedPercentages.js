@@ -31,7 +31,9 @@ var meta = {
   }
 }
 
-export var numberOfReviews = parseInt(meta.ratings['1']) + parseInt(meta.ratings['2']) + parseInt(meta.ratings['3']) + parseInt(meta.ratings['4']) + parseInt(meta.ratings['5']);
+var numberOfReviews = parseInt(meta.ratings['1']) + parseInt(meta.ratings['2']) + parseInt(meta.ratings['3']) + parseInt(meta.ratings['4']) + parseInt(meta.ratings['5']);
+
+
 var ones = parseInt(meta.ratings['1']) * 1;
 var twos = parseInt(meta.ratings['2']) * 2;
 var threes = parseInt(meta.ratings['3']) * 3;
@@ -40,13 +42,9 @@ var fives = parseInt(meta.ratings['5']) * 5;
 
 var array = [];
 for (var rating in meta.ratings) {
-    array.push(meta.ratings[rating]);
+    array.push(rating);
 }
-export var oneCount = parseInt(array[0]);
-export var twoCount = parseInt(array[1]);
-export var threeCount = parseInt(array[2]);
-export var fourCount = parseInt(array[3]);
-export var fiveCount = parseInt(array[4]);
+console.log(array)
 
 var averageRating = (ones + twos + threes + fours + fives)/numberOfReviews;
 console.log('number of reviews: ', numberOfReviews)

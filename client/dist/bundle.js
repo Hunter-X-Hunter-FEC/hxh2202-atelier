@@ -771,8 +771,25 @@ __webpack_require__.r(__webpack_exports__);
 
 var Distribution = function Distribution() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DistributionItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    value: _common_oneMeta_js__WEBPACK_IMPORTED_MODULE_2__["default"] * 10,
-    max: 100
+    stars: 1,
+    value: _common_oneMeta_js__WEBPACK_IMPORTED_MODULE_2__.oneCount,
+    max: _common_oneMeta_js__WEBPACK_IMPORTED_MODULE_2__.numberOfReviews
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DistributionItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    stars: 2,
+    value: _common_oneMeta_js__WEBPACK_IMPORTED_MODULE_2__.twoCount,
+    max: _common_oneMeta_js__WEBPACK_IMPORTED_MODULE_2__.numberOfReviews
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DistributionItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    stars: 3,
+    value: _common_oneMeta_js__WEBPACK_IMPORTED_MODULE_2__.threeCount,
+    max: _common_oneMeta_js__WEBPACK_IMPORTED_MODULE_2__.numberOfReviews
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DistributionItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    stars: 4,
+    value: _common_oneMeta_js__WEBPACK_IMPORTED_MODULE_2__.fourCount,
+    max: _common_oneMeta_js__WEBPACK_IMPORTED_MODULE_2__.numberOfReviews
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DistributionItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    stars: 5,
+    value: _common_oneMeta_js__WEBPACK_IMPORTED_MODULE_2__.fiveCount,
+    max: _common_oneMeta_js__WEBPACK_IMPORTED_MODULE_2__.numberOfReviews
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "Distribution"
   }, " Distribution Component Here "));
@@ -794,23 +811,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _templateObject;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
+
+
+var StyledDistrubutionItem = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  padding: 0.5em;\n  margin: 0.5em;\n  color: orange;\n  background: papayawhip;\n  border: 1px solid black;\n  border-radius: 5px;\n"])));
 
 var DistributionItem = function DistributionItem(_ref) {
-  var value = _ref.value,
+  var stars = _ref.stars,
+      value = _ref.value,
       max = _ref.max;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("progress", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledDistrubutionItem, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, stars, " star-rating "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("progress", {
     value: value,
     max: max
-  });
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "(", value, ")"));
 };
 
 DistributionItem.propTypes = {
-  value: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().number.isRequired),
-  max: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().number)
+  value: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().number.isRequired),
+  max: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().number)
 };
 DistributionItem.defaultProps = {
   max: 100
@@ -1018,7 +1043,13 @@ var Stars = function Stars(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "fiveCount": () => (/* binding */ fiveCount),
+/* harmony export */   "fourCount": () => (/* binding */ fourCount),
+/* harmony export */   "numberOfReviews": () => (/* binding */ numberOfReviews),
+/* harmony export */   "oneCount": () => (/* binding */ oneCount),
+/* harmony export */   "threeCount": () => (/* binding */ threeCount),
+/* harmony export */   "twoCount": () => (/* binding */ twoCount)
 /* harmony export */ });
 var meta = {
   "product_id": "65631",
@@ -1058,6 +1089,17 @@ var twos = parseInt(meta.ratings['2']) * 2;
 var threes = parseInt(meta.ratings['3']) * 3;
 var fours = parseInt(meta.ratings['4']) * 4;
 var fives = parseInt(meta.ratings['5']) * 5;
+var array = [];
+
+for (var rating in meta.ratings) {
+  array.push(meta.ratings[rating]);
+}
+
+var oneCount = parseInt(array[0]);
+var twoCount = parseInt(array[1]);
+var threeCount = parseInt(array[2]);
+var fourCount = parseInt(array[3]);
+var fiveCount = parseInt(array[4]);
 var averageRating = (ones + twos + threes + fours + fives) / numberOfReviews;
 console.log('number of reviews: ', numberOfReviews);
 console.log('average rating: ', averageRating);
