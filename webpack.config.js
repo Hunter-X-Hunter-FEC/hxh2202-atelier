@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: "production",
-  entry: './client/src/index.js',
+  entry: ["regenerator-runtime/runtime.js",'./client/src/index.js']
 
   output: {
     path: path.resolve(__dirname, 'client/dist'),
@@ -20,8 +20,14 @@ module.exports = {
             presets: ['@babel/preset-env', "@babel/preset-react"]
           }
         }
+      }, {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '/public/icons/[name].[ext]'
+        }
       }
     ]
   }
 
-}
+};
