@@ -7,7 +7,7 @@ import FavoriteEntry from './FavoriteEntry.jsx';
 
 function OutfitList({selected}) {
   // var initialState = JSON.parse(window.localStorage.getItem('MyFavorites'));
-  // console.log('initialState', initialState);
+  console.log('initialState', selected);
   const [favorites, setFavorites] = useState([]);
   // [showFavorite, setShowFavorite] = useState(false);
   console.log('favorites', favorites);

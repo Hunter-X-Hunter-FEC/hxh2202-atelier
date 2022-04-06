@@ -1,16 +1,33 @@
 import React from 'react';
+import {useState, useEffect} from 'react';
 import Star from './Star.jsx';
 import {AiOutlineArrowRight} from 'react-icons/ai';
+import {BsSearch} from 'react-icons/bs';
 // import styled from 'styled-components';
 import {ProductContainer, Card, ProductImage, ProductCategory,ProductName, ProductPrice} from './styles/productCard.styled.js';
 import Logo from '../../../dist/public/icons/Logo.png';
-const ProductCard = ({width, card})=>{
-	// console.log('props.card', card)
+import Comparison from './Comparison.jsx';
 
+
+const ProductCard = ({curProduct, switchProduct, card})=>{
+	// console.log('props.card', card)
+	// console.log('curProduct', curProduct)
+	const [showModal, setShowModal] = useState(false);
+	const [compare, setCompare] = useState({});
+
+	useEffect(()=>{
+		setCompare(compare)
+	}, [compare])
+
+	const compareClicker = ()=>{
+		setShowModal(!showModal)
+		setCompare(card)
+	}
 
   return (
 		<ProductContainer>
-			<Card>
+			<Card onClick={()=>switchProduct(card.id)}>
+				<BsSearch onClick={compareClicker}/>
 				<ProductImage src={card.style[0].photos[0].url || Logo}/>
 				<ProductCategory>
 					{card.category}
@@ -24,6 +41,7 @@ const ProductCard = ({width, card})=>{
 				<div className="rating">
 						<Star />
 				</div>
+				<Comparison curProduct={curProduct}/>
 
 
 			</Card>

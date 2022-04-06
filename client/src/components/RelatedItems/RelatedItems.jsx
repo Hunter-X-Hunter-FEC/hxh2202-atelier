@@ -13,6 +13,10 @@ function RelatedItems({proID}) {
   const[curProductID, setProductID] = useState(proID)
   const[product, setProduct] = useState([])
 
+  useEffect(()=>{
+      setProduct(product)
+  }, [product])
+
   const selected={
     "product_id": "65633",
     "results": [
@@ -410,7 +414,7 @@ function RelatedItems({proID}) {
   return (
     <Container>
       <ProductSection>
-        <ProductList className="productList" product={product}/>
+        <ProductList switchProduct={handleProductClick} curProduct={selected} product={product}/>
       </ProductSection>
       <FavoriteSection>
         <OutfitList selected={selected} />

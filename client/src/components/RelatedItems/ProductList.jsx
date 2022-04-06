@@ -5,8 +5,9 @@ import {useState, useEffect} from 'react';
 import {ProdList, PrevBtn, NextBtn, Inner} from './styles/ProductList.styled.js';
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 
-function ProductList ({product}) {
+function ProductList ({curProduct, switchProduct, product}) {
   console.log('product', product);
+  console.log('productList selected', curProduct);
   const length = product.length;
   const [curIndex, setIndex] = useState(0);
 
@@ -35,7 +36,8 @@ function ProductList ({product}) {
         <Inner>
           {product.map((card, index)=> {
             if (index >= curIndex && index<= curIndex+3) {
-              return (<ProductCard key={index} card={card}/>)}})}
+              // console.log('curProductPassed', curProduct);
+              return (<ProductCard curProduct={curProduct} key={index} switchProduct={switchProduct} card={card}/>)}})}
         </Inner>
         {curIndex===length-4 && <PrevBtn onClick={clickPrev}>
           <IoIosArrowBack />
