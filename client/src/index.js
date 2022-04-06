@@ -38,7 +38,7 @@ class App extends React.Component {
   render() {
     return (
       <div style={{ 'backgroundColor': 'AliceBlue' }}>
-        <h1>header and logo here</h1>
+        {/* <h1>header and logo here</h1> */}
         <Overview />
       </div>
     );

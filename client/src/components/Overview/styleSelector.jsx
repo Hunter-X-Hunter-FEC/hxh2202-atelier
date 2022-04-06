@@ -16,16 +16,14 @@ function StyleSelector() {
 
   return (
     <div id='StyleSelector' style={{ 'backgroundColor': 'DarkOrange' }}>
-      <div>
-        <div>s1</div>
-        <div>s2</div>
-        <div>s3</div>
-        <div>s4</div>
-        <div>s5</div>
-        <div>s6</div>
-        <div>s7</div>
-        <div>s8</div>
-      </div>
+      <div>s1</div>
+      <div>s2</div>
+      <div>s3</div>
+      <div>s4</div>
+      <div>s5</div>
+      <div>s6</div>
+      <div>s7</div>
+      <div>s8</div>
     </div>
   )
 };

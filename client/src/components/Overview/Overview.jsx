@@ -22,13 +22,13 @@ import ProductDescription from './productDescription.jsx';
 function Overview() {
   return (
     <div id='Overview' style={{ 'backgroundColor': 'DeepSkyBlue' }}>
-      <div><ImageGallery /></div>
-      <div><AverageReview /></div>
-      <div><ProductInfo /></div>
-      <div><Share /></div>
-      <div><StyleSelector /></div>
-      <div><AddToCart /></div>
-      <div><ProductDescription /></div>
+      <ImageGallery />
+      <AverageReview />
+      <ProductInfo />
+      <Share />
+      <StyleSelector />
+      <AddToCart />
+      <ProductDescription />
     </div>
   );
 }
