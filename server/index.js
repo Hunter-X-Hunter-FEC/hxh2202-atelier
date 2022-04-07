@@ -21,6 +21,10 @@ CALLS TO API FOR PRODUCT
 
 */
 
+if (!process.env.REACT_APP_API_KEY) {
+  throw new Error('Please supply the appropriate API Key in .env file for REACT_APP_API_KEY');
+}
+
 // This is the '/product' call, for all products, likely to be used in the catalog page.
 app.get('/products', (req, res) => {
   // console.log(req.query)
