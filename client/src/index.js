@@ -12,6 +12,7 @@ import styled, {ThemeProvider} from 'styled-components';
 import {lightTheme, darkTheme, GlobalStyles} from './assets/themes.js';
 import {getProducts, getProductDetails, getProductStyles} from './components/Request.js';
 import Catalog from './components/Catalog/Catalog.jsx';
+import RelatedItems from './components/RelatedItems/RelatedItems.jsx'
 import 'regenerator-runtime/runtime'
 const request = require('./components/Request.js');
 
@@ -90,10 +91,11 @@ function App(){
         <GlobalStyles />
         <Header showAll={setAllProducts} themeToggler={themeToggler} />
         {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
+        {(view ==="details") && <RelatedItems selProduct={selected}/>}
       </>
     </ThemeProvider>
   );
 
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('atelier'));

@@ -2,7 +2,7 @@ const axios = require ('axios');
 // const API_KEY = require('../config.js');
 
 const getProducts = ()=>{
-  return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products', {headers: {
+  return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/?count=20', {headers: {
     Authorization: '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'
   }});
 };

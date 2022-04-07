@@ -5,15 +5,16 @@ import {AiOutlineArrowRight} from 'react-icons/ai';
 import {BsSearch} from 'react-icons/bs';
 // import styled from 'styled-components';
 import {ProductContainer, Card, ProductImage, ProductCategory,ProductName, ProductPrice} from './styles/productCard.styled.js';
-import Logo from '../../../dist/public/icons/Logo.png';
+import Logo from './../../assets/Logo.png';
 import Comparison from './Comparison.jsx';
 
 
 const ProductCard = ({curProduct, switchProduct, card})=>{
 	// console.log('props.card', card)
-	// console.log('curProduct', curProduct)
+	console.log('curProduct', curProduct)
 	const [showModal, setShowModal] = useState(false);
 	const [compare, setCompare] = useState({});
+
 
 	useEffect(()=>{
 		setCompare(compare)
@@ -26,8 +27,8 @@ const ProductCard = ({curProduct, switchProduct, card})=>{
 
   return (
 		<ProductContainer>
-			<Card onClick={()=>switchProduct(card.id)}>
-				<BsSearch onClick={compareClicker}/>
+			<BsSearch onClick={compareClicker}/>
+			<Card onClick={()=>switchProduct(card)}>
 				<ProductImage src={card.style[0].photos[0].url || Logo}/>
 				<ProductCategory>
 					{card.category}
@@ -41,7 +42,7 @@ const ProductCard = ({curProduct, switchProduct, card})=>{
 				<div className="rating">
 						<Star />
 				</div>
-				<Comparison curProduct={curProduct}/>
+				{showModal && <Comparison compare={compare} current={curProduct}/>}
 
 
 			</Card>

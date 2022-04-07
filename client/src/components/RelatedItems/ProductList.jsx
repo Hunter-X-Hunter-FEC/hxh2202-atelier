@@ -36,7 +36,7 @@ function ProductList ({curProduct, switchProduct, product}) {
         <Inner>
           {product.map((card, index)=> {
             if (index >= curIndex && index<= curIndex+3) {
-              // console.log('curProductPassed', curProduct);
+              console.log('curProductPassed', curProduct);
               return (<ProductCard curProduct={curProduct} key={index} switchProduct={switchProduct} card={card}/>)}})}
         </Inner>
         {curIndex===length-4 && <PrevBtn onClick={clickPrev}>
