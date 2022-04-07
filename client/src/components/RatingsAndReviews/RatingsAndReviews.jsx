@@ -1,4 +1,7 @@
 import React, {useState, useEffect} from 'react';
+import styled from 'styled-components';
+
+// const Styled
 
 function RatingsAndReviews() {
   const [rating, setRating] = useState(0);
