@@ -3,3 +3,5 @@ node_modules
 bundle.js
 *.map
 config.js
+.env
+.DS_Store
