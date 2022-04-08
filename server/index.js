@@ -9,11 +9,17 @@ const axios = require('axios');
 
 let app = express();
 
+process.on('uncaughtException', function (err) {
+  console.log(err);
+});
+
 // serves all static files and generated assets in ../../client/dist
 app.use(express.static(path.join(__dirname, "/../client/dist")));
-app.use(express.json())
+app.use(express.json());
 
-var apiURL = `https://app-hrsei-api.herokuapp.com/api/fec2/rfp`
+var apiURL = `https://app-hrsei-api.herokuapp.com/api/fec2/rfp`;
+// console.log(process.env.REACT_APP_API_KEY);
+
 
 if (!process.env.REACT_APP_API_KEY) {
   throw new Error('Please supply the appropriate API Key in .env file for REACT_APP_API_KEY');
@@ -27,11 +33,12 @@ if (!process.env.REACT_APP_API_KEY) {
 
 // This is the '/product' call, for all products, likely to be used in the catalog page.
 app.get('/products', (req, res) => {
+  console.log('server is working', process.env.REACT_APP_API_KEY);
   let options = {
     method: 'GET',
     url: apiURL + req.url,
     headers: {
-      'Authorization': `${process.env.REACT_APP_API_KEY}`
+      'Authorization': `${process.env.REACT_APP_API_KEY}`,
     },
     params: {
       count: 20
@@ -39,11 +46,12 @@ app.get('/products', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    console.log(result.data)
-    res.send(result.data);
-  });
-})
+    .then((result) => {
+      console.log(result);
+      res.send(result.data);
+    })
+    .catch((err)=>console.log(err));
+});
 
 // This is the call for a single product, likely to be used when a single product needs to be rendered.
 app.get('/products/:product_id', (req, res) => {
@@ -57,11 +65,10 @@ app.get('/products/:product_id', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    res.send(result.data);
-  });
-
-})
+    .then((result) => {
+      res.send(result.data);
+    });
+});
 
 // This is the call for a single product's styles, which will be for the overview section
 app.get('/products/:product_id/styles', (req, res) => {
@@ -75,11 +82,11 @@ app.get('/products/:product_id/styles', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    res.send(result.data);
-  });
+    .then((result) => {
+      res.send(result.data);
+    });
 
-})
+});
 
 // This is the call for the related items, to be used in the related products section
 app.get('/products/:product_id/related', (req, res) => {
@@ -93,11 +100,11 @@ app.get('/products/:product_id/related', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    res.send(result.data);
-  });
+    .then((result) => {
+      res.send(result.data);
+    });
 
-})
+});
 
 /*
 ================================================================================================
@@ -122,11 +129,11 @@ app.get('/reviews', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    res.send(result.data);
-  });
+    .then((result) => {
+      res.send(result.data);
+    });
 
-})
+});
 
 app.get('/reviews/meta', (req, res) => {
 
@@ -142,11 +149,11 @@ app.get('/reviews/meta', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    res.send(result.data);
-  });
+    .then((result) => {
+      res.send(result.data);
+    });
 
-})
+});
 
 app.post('/reviews', (req, res) => {
 
@@ -162,11 +169,11 @@ app.post('/reviews', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    res.send(result.data);
-  });
+    .then((result) => {
+      res.send(result.data);
+    });
 
-})
+});
 
 app.put('/reviews/:reviewId/helpful', (req, res) => {
 
@@ -182,11 +189,11 @@ app.put('/reviews/:reviewId/helpful', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    res.send(result.data);
-  });
+    .then((result) => {
+      res.send(result.data);
+    });
 
-})
+});
 
 app.put('/reviews/:reviewId/report', (req, res) => {
 
@@ -202,11 +209,11 @@ app.put('/reviews/:reviewId/report', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    res.send(result.data);
-  });
+    .then((result) => {
+      res.send(result.data);
+    });
 
-})
+});
 
 /*
 ================================================================================================
@@ -229,11 +236,11 @@ app.get('/qa/questions', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    res.send(result.data);
-  });
+    .then((result) => {
+      res.send(result.data);
+    });
 
-})
+});
 
 // ==== IN PROGRESS ==== question_id to use: 573866
 app.get('/qa/questions/:question_id/answers', (req, res) => {
@@ -250,11 +257,11 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    res.send(result.data);
-  });
+    .then((result) => {
+      res.send(result.data);
+    });
 
-})
+});
 
 // Body Parameters: Body, name, email, product_id
 
@@ -273,11 +280,11 @@ app.post('/qa/questions', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    res.send(result.data);
-  });
+    .then((result) => {
+      res.send(result.data);
+    });
 
-})
+});
 
 // ==== IN PROGRESS ==== question_id to use: 573866
 app.post('/qa/questions/:question_id/answers', (req, res) => {
@@ -294,11 +301,11 @@ app.post('/qa/questions/:question_id/answers', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    res.send(result.data);
-  });
+    .then((result) => {
+      res.send(result.data);
+    });
 
-})
+});
 
 app.put('/qa/questions/:question_id/helpful', (req, res) => {
 
@@ -314,11 +321,11 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
   };
 
   axios(options)
-  .then((result) => {
-    res.send(result.data);
-  });
+    .then((result) => {
+      res.send(result.data);
+    });
 
-})
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
