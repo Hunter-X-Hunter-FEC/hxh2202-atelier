@@ -7,15 +7,16 @@ a containiter with multiple styles to choose from, same as from style list, each
 upon selected style it will have a checkmark to indicate it's the currently selected
 */
 
-import React from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import { render } from "react-dom";
+import styled from "styled-components";
 
 
 
 function StyleSelector() {
 
   return (
-    <div id='StyleSelector' style={{ 'backgroundColor': 'DarkOrange' }}>
+    <section id='StyleSelector' style={{ 'backgroundColor': 'DarkOrange' }}>
       <div>s1</div>
       <div>s2</div>
       <div>s3</div>
@@ -24,7 +25,7 @@ function StyleSelector() {
       <div>s6</div>
       <div>s7</div>
       <div>s8</div>
-    </div>
+    </section>
   )
 };
 

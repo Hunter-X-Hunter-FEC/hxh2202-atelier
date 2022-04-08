@@ -6,24 +6,33 @@ average review
 just an image of those 5 stars but the image changes depending on the average review number
 */
 
-import React from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import { render } from "react-dom";
-import { Button } from "./averageReviewStyle.js";
+import styled from "styled-components";
+
 
 
 
 function AverageReview() {
 
-  var clickedScroll = function (e) {
+  var [starsIdx, setStarsIdx] = useState(0);
+
+
+  var clickedViewAll = function (e) {
     e.preventDefault();
     console.log('scroll to reviews')
   }
 
+  var changeOverviewStars = function (avgRev) {
+    // e.preventDefault();
+    var idx = Math.floor((avgRev*2));
+    setStarsIdx(idx);
+  }
 
   return (
     <section style={AverageReviewStyle} id='AverageReview'>
 
-      <img style={{ width: '100px',  height: '19px'}} alt="stars/stars" src={starsArr[2]} />
+      <img style={{ width: '100px',  height: '19px'}} alt="stars/stars" src={starsArr[starsIdx]} />
       <Button onClick={(e) => {clickedScroll(e);} } >Read all reviews</Button>
 
     </section>
@@ -32,14 +41,25 @@ function AverageReview() {
 
 export default AverageReview;
 
-var AverageReviewStyle = { // initial #styleList css and gets reused with each re-render, but doesn't work????
-  width: 200,
+var Button = styled.button`
+display: flex;
+text-align: center;
+background-color: transparent;
+border: transparent;
+&:hover {
+  color: blue;
+  font-weight: bold;
+}
+`;
+
+var AverageReviewStyle = {
+  width: 400,
   // display: 'inline-block',
   display: 'flex',
   // textAlign: 'center',
   borderRadius: '10px',
   backgroundColor: 'white',
-  border: 'transparent',
+  border: 'solid black',
   padding: '10px',
   margin: '10px',
 };

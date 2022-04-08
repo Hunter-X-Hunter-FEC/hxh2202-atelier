@@ -7,7 +7,7 @@ get request to /products, /products/:products_id, /products/:product_id/styles, 
 overview gets product details and ID from App's product catalog
 */
 
-import React from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import { render } from "react-dom";
 import ImageGallery from './imageGallery.jsx';
 import AverageReview from './averageReview.jsx';
@@ -16,16 +16,19 @@ import Share from './share.jsx';
 import StyleSelector from './styleSelector.jsx';
 import AddToCart from './addToCart.jsx';
 import ProductDescription from './productDescription.jsx';
+import { changeOverviewStars } from '../Overview/averageReview.jsx';
 
 
 
-function Overview() {
+function Overview(props) {
+
+
   return (
     <section id='Overview' style={{ backgroundColor: 'AliceBlue'}}>
-      <ImageGallery />
+      <ImageGallery product={props.product}/>
       <AverageReview />
-      {/* <ProductInfo />
-      <Share />
+      <ProductInfo product={props.product}/>
+      {/* <Share />
       <StyleSelector />
       <AddToCart />
       <ProductDescription /> */}

@@ -13,37 +13,38 @@ fullscreen button needs to be an animated CSS change???
 
 import React, { useState, useReducer, useEffect } from "react";
 import { render } from "react-dom";
-import { Gallery } from "./imageGalleryStyle.js";
+import styled from "styled-components";
 
 
 
 
-function ImageGallery() {
+
+function ImageGallery(props) {
   var [styleIdx, setStyleIdx] = useState(0);
   var [imageIdx, setImageIdx] = useState(0);
   var [fullscreen, setFullscreen] = useState(false);
   // const forceUpdate = useReducer(() => ({}))[1]; // just a cheap way for force a rerender that isn't a state change but something else like CSS changes // also becuase sometime set doesn't re-render
 
 
-  useEffect(() => {
-    for (var n = 0; n <= images.length; n++) {
-      if (document.getElementById(`S${n}`)) {
-        document.getElementById(`S${n}`).style.border = "transparent";
-      }
-    }
-  }, [styleIdx])
+  // useEffect(() => {
+  //   for (var n = 0; n <= images.length; n++) {
+  //     if (document.getElementById(`S${n}`)) {
+  //       document.getElementById(`S${n}`).style.border = "transparent";
+  //     }
+  //   }
+  // }, [styleIdx])
 
 
   var chosenStyle = function (e) {
     if (styleIdx === parseInt(e.target.dataset.value)) return 0;
     e.preventDefault();
     setImageIdx(0);
-    var sync = new promise(() => {
+    // var sync = new promise(() => {
 
-    });
+    // });
     setStyleIdx(parseInt(e.target.dataset.value)); // doesn't re-render whyyyyyyyy or invoke useEffect whyyyyy
     // document.getElementById(e.target.id).style.border = "none";
-    document.getElementById(e.target.id).style.borderBottom = "5px solid black";
+    // document.getElementById(e.target.id).style.borderBottom = "5px solid black";
   }
 
   var cycleImage = function (e, str) { // str is a type of cycleImage thats either back arrow or next arrow
@@ -64,15 +65,15 @@ function ImageGallery() {
       imageFullscreen = {
         width: '100%',
         height: 560,
-        objectFit: 'none',
-        objectPosition: '0'
+        objectFit: 'center',
+        textAlign: 'center'
       };
     } else {
       imageFullscreen = {
         width: 715,
         height: 560,
         objectFit: 'none',
-        objectPosition: '0'
+        textAlign: 'center'
       };
     }
   }
@@ -103,13 +104,23 @@ function ImageGallery() {
 
 export default ImageGallery;
 
+// var Gallery = styled.img`
+// display: flex;
+// text-align: center;
+// background-color: transparent;
+// border: transparent;
+// &:hover {
+//   color: blue;
+//   font-weight: bold;
+// }
+// `;
 
 
 var imageFullscreen = { // initial #image css but then changes depending if clickedFullScreen ever got invoked
   width: 715,
   height: 560,
   objectFit: 'none',
-  objectPosition: '0'
+  textAlign: 'center'
 };
 
 
@@ -119,31 +130,31 @@ var notSelectedStyleList = { // initial #styleList css and gets reused with each
   textAlign: 'center',
   borderRadius: '10px',
   backgroundColor: 'white',
-  border: 'transparent',
+  border: 'solid black',
   padding: '5px',
   margin: '5px',
   width: 35,
   height: 35
 };
 
-var selectedStyleList = {
-  display: 'inline-block',
-  textAlign: 'center',
-  borderRadius: '10px',
-  backgroundColor: 'white',
-  borderBottom: '5px solid black',
-  padding: '5px',
-  margin: '5px',
-  width: 35,
-  height: 35
-};
+// var selectedStyleList = {
+//   display: 'inline-block',
+//   textAlign: 'center',
+//   borderRadius: '10px',
+//   backgroundColor: 'white',
+//   borderBottom: 'solid black',
+//   padding: '5px',
+//   margin: '5px',
+//   width: 35,
+//   height: 35
+// };
 
 var fullscreenButton = {
   display: 'inline-block',
   textAlign: 'center',
   borderRadius: '10px',
   backgroundColor: 'white',
-  border: 'transparent',
+  border: 'solid black',
   padding: '5px',
   margin: '5px',
   width: 35,
@@ -156,11 +167,12 @@ var arrowButton = {
   // borderRadius: '10px',
   backgroundColor: 'transparent',
   // backgroundPosition: 'left top',
-  border: 'transparent',
+  border: 'none',
   padding: '5px',
   margin: '5px',
-  width: 25,
-  height: 25
+  width: 45,
+  height: 45,
+  fontSize: '25px'
 };
 
 
