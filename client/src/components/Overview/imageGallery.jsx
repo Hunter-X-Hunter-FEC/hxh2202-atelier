@@ -11,27 +11,39 @@ the currently selected style list needs to have an underline indicator that it's
 fullscreen button needs to be an animated CSS change???
 */
 
-import React from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import { render } from "react-dom";
+import { Gallery } from "./imageGalleryStyle.js";
+
 
 
 
 function ImageGallery() {
-  var [state, updateState] = React.useState({});
-  var [styleIdx, setStyleIdx] = React.useState(0);
-  var [imageIdx, setImageIdx] = React.useState(0);
-  var [fullscreen, setFullscreen] = React.useState(false);
-  const forceUpdate = React.useReducer(() => ({}))[1]; // just a cheap way for force a rerender that isn't a state change but something else like CSS changes // also becuase sometime set doesn't re-render
+  var [styleIdx, setStyleIdx] = useState(0);
+  var [imageIdx, setImageIdx] = useState(0);
+  var [fullscreen, setFullscreen] = useState(false);
+  // const forceUpdate = useReducer(() => ({}))[1]; // just a cheap way for force a rerender that isn't a state change but something else like CSS changes // also becuase sometime set doesn't re-render
 
+
+  useEffect(() => {
+    for (var n = 0; n <= images.length; n++) {
+      if (document.getElementById(`S${n}`)) {
+        document.getElementById(`S${n}`).style.border = "transparent";
+      }
+    }
+  }, [styleIdx])
 
 
   var chosenStyle = function (e) {
     if (styleIdx === parseInt(e.target.dataset.value)) return 0;
     e.preventDefault();
     setImageIdx(0);
-    setStyleIdx(parseInt(e.target.dataset.value)); // doesn't re-render whyyyyyyyy
-    forceUpdate(); // to reset the CSS for the style list
-    document.getElementById(e.target.id).style.borderBottom = "5px solid red";
+    var sync = new promise(() => {
+
+    });
+    setStyleIdx(parseInt(e.target.dataset.value)); // doesn't re-render whyyyyyyyy or invoke useEffect whyyyyy
+    // document.getElementById(e.target.id).style.border = "none";
+    document.getElementById(e.target.id).style.borderBottom = "5px solid black";
   }
 
   var cycleImage = function (e, str) { // str is a type of cycleImage thats either back arrow or next arrow
@@ -50,7 +62,7 @@ function ImageGallery() {
 
     if (fullscreen) {
       imageFullscreen = {
-        width: 1440,
+        width: '100%',
         height: 560,
         objectFit: 'none',
         objectPosition: '0'
@@ -63,25 +75,27 @@ function ImageGallery() {
         objectPosition: '0'
       };
     }
-
-    forceUpdate();
   }
 
 
   return (
-    <div id='ImageGallery' style={{ backgroundColor: 'Gainsboro' }}>
-      <div id='image'>
-        <img alt="current image" src={images[styleIdx][imageIdx]} style={imageFullscreen} />
-      </div>
-      <button onClick={(e) => { cycleImage(e, 'back'); }}><span>&#8592;</span></button>
-      <button onClick={(e) => { cycleImage(e, 'next'); }}><span>&#8594;</span></button>
-      <button onClick={(e) => { clickedFullScreen(e); }}><span>&#9744;</span></button>
-      <div id='styleList'>
-        <button><span>&#8593;</span></button>{[...Array(images.length).keys()].map((num) =>
-          <div id={`S${num + 1}`} data-value={num} style={notSelectedStyleList} onClick={(e) => { chosenStyle(e); }}>S{num + 1}</div>)}
-        <button><span>&#8595;</span></button>
-      </div>
-    </div>
+    <section id='ImageGallery'>
+
+      <img id='image' style={imageFullscreen} alt="current image" src={images[styleIdx][imageIdx]} />
+
+      <section id='ImageGalleryButtions'>
+        <button style={arrowButton} onClick={(e) => { cycleImage(e, 'back'); }}><span>&#8592;</span></button>
+        <button style={arrowButton} onClick={(e) => { cycleImage(e, 'next'); }}><span>&#8594;</span></button>
+        <button style={fullscreenButton} onClick={(e) => { clickedFullScreen(e); }}><span>&#9744;</span></button>
+      </section>
+
+      <section id='StyleListButtons'>
+        <button style={arrowButton}><span>&#8593;</span></button>{[...Array(images.length).keys()].map((num) =>
+          <div style={notSelectedStyleList} id={`S${num + 1}`} data-value={num} onClick={(e) => { chosenStyle(e); }}>S{num + 1}</div>)}
+        <button style={arrowButton}><span>&#8595;</span></button>
+      </section>
+
+    </section>
   )
 };
 
@@ -101,7 +115,52 @@ var imageFullscreen = { // initial #image css but then changes depending if clic
 
 
 var notSelectedStyleList = { // initial #styleList css and gets reused with each re-render, but doesn't work????
-  borderBottom: 'none'
+  display: 'inline-block',
+  textAlign: 'center',
+  borderRadius: '10px',
+  backgroundColor: 'white',
+  border: 'transparent',
+  padding: '5px',
+  margin: '5px',
+  width: 35,
+  height: 35
+};
+
+var selectedStyleList = {
+  display: 'inline-block',
+  textAlign: 'center',
+  borderRadius: '10px',
+  backgroundColor: 'white',
+  borderBottom: '5px solid black',
+  padding: '5px',
+  margin: '5px',
+  width: 35,
+  height: 35
+};
+
+var fullscreenButton = {
+  display: 'inline-block',
+  textAlign: 'center',
+  borderRadius: '10px',
+  backgroundColor: 'white',
+  border: 'transparent',
+  padding: '5px',
+  margin: '5px',
+  width: 35,
+  height: 35
+};
+
+var arrowButton = {
+  display: 'inline-block',
+  textAlign: 'center',
+  // borderRadius: '10px',
+  backgroundColor: 'transparent',
+  // backgroundPosition: 'left top',
+  border: 'transparent',
+  padding: '5px',
+  margin: '5px',
+  width: 25,
+  height: 25
 };
 
 
