@@ -3,8 +3,8 @@ import ProductBreakdown from './ProductBreakdown.jsx';
 import HeaderRating from './HeaderRating.jsx';
 import styled from 'styled-components';
 import Distribution from './Distribution.jsx';
-import a from '../common/oneReview.js';
-import averageRating from '../common/oneMeta.js'  // = module.exports = averageRating
+// import a from '../common/oneReview.js';
+// import averageRating from '../common/oneMeta.js'  // = module.exports = averageRating
 
 const StyledHeaderRating = styled.div`
   padding: 0.5em;
@@ -38,7 +38,7 @@ const Ratings = (props) => {
   return (
     <>
       <StyledHeaderRating>
-        <HeaderRating averageRating={averageRating}/>
+        <HeaderRating averageRating={4}/>
       </StyledHeaderRating>
       <StyledDistrubution>
         <Distribution />

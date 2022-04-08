@@ -14,6 +14,8 @@ import {getProducts, getProductDetails, getProductStyles} from './components/Req
 import Catalog from './components/Catalog/Catalog.jsx';
 import 'regenerator-runtime/runtime'
 const request = require('./components/Request.js');
+import Ratings from './components/Ratings/Ratings.jsx';
+import ReviewsList from './components/Reviews/ReviewsList.jsx';
 
 function App(){
 
@@ -90,6 +92,8 @@ function App(){
         <GlobalStyles />
         <Header showAll={setAllProducts} themeToggler={themeToggler} />
         {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
+        <Ratings />
+        <ReviewsList />
       </>
     </ThemeProvider>
   );
