@@ -33,7 +33,7 @@ function App(){
     // console.log('Catalog useEffect is working')
     const fectchData = async() =>{
       const allProducts = await request.getProducts();
-      // console.log('allProducts', allProducts);
+      console.log('allProducts', allProducts);
       const detailsRes = await Promise.all(allProducts.data.map(each=>request.getProductDetails(each.id)));
       const stylesRes = await Promise.all(allProducts.data.map(each=>request.getProductStyles(each.id)));
       const details = detailsRes.map(each=>each.data);

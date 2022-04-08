@@ -26,6 +26,7 @@ if (!process.env.REACT_APP_API_KEY) {
 */
 
 // This is the '/product' call, for all products, likely to be used in the catalog page.
+
 app.get('/products', (req, res) => {
   let options = {
     method: 'GET',
@@ -115,7 +116,7 @@ app.get('/reviews', (req, res) => {
       'Authorization': `${process.env.REACT_APP_API_KEY}`
     },
     params: {
-      page: 1,
+      // page: 1,
       // count: 10,
       product_id: 65631
     }
@@ -123,6 +124,7 @@ app.get('/reviews', (req, res) => {
 
   axios(options)
   .then((result) => {
+    console.log(result.data);
     res.send(result.data);
   });
 

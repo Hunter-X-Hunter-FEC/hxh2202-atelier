@@ -27,9 +27,7 @@ const getRelatedProducts = (id)=>{
 };
 
 const getReviews = (id)=>{
-  return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/${id}`, {headers: {
-    Authorization: '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'
-  }});
+  return axios.get('/reviews')
 };
 
 module.exports = {
