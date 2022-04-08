@@ -2,7 +2,7 @@
 import React from 'react';
 import ProductCard from './ProductCard.jsx';
 import {useState, useEffect} from 'react';
-import {ProdList, btnWrapper, PrevBtn, NextBtn, Inner} from './styles/ProductList.styled.js';
+import {ProdList, Title, btnWrapper, PrevBtn, NextBtn, Inner} from './styles/ProductList.styled.js';
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 
 function ProductList ({curProduct, switchProduct, product}) {
@@ -31,7 +31,7 @@ function ProductList ({curProduct, switchProduct, product}) {
 
   return (
     <div>
-        <h3>Customers Also Viewed</h3>
+      <Title>Customers Also Viewed</Title>
       <ProdList>
         <btnWrapper>
           <PrevBtn display={curIndex===0 ? 'None' : 'inline'} onClick={clickPrev}>
@@ -41,13 +41,13 @@ function ProductList ({curProduct, switchProduct, product}) {
         <Inner>
           {product.map((card, index)=> {
             if (index >= curIndex && index<= curIndex+3) {
-              console.log('curProductPassed', curProduct);
+              // console.log('curProductPassed', curProduct);
               return (<ProductCard curProduct={curProduct} key={index} switchProduct={switchProduct} card={card}/>)}})}
         </Inner>
         <btnWrapper>
           <NextBtn display={curIndex ===length-3 ? 'None' : 'inline'} onClick={clickNext}>
             <IoIosArrowForward size={50}/>
-          </NextBtn>}
+          </NextBtn>
         </btnWrapper>
       </ProdList>
     </div>

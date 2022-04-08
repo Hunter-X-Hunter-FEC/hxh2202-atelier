@@ -13,7 +13,7 @@ height:100%;
 // position:absolute;
 // top: 10px;
 // right: 10px
-border: solid black;
+// border: solid black;
 text-align: center;
 text-decoration: none;
 display: inline-block;
@@ -26,7 +26,7 @@ export const FavoriteList = styled.div`
 background-color: #FFFFFF;
 width: 75%;
 height:640ox;
-border: solid red;
+// border: solid red;
 text-align: center;
 text-decoration: none;
 display: flex;

@@ -1,49 +1,49 @@
 import React from 'react';
 import {ImCheckmark} from 'react-icons/im';
-import {Container} from './styles/Comparison.styled.js';
+import {Container, Table, Header, HeaderData, DataWrapper, Data2, Data1, Data3} from './styles/Comparison.styled.js';
 
 function Comparison({current, compare}) {
-  console.log('current', current);
-  console.log('compare', compare);
+  // console.log('current', current);
+  // console.log('compare', compare);
   const featureArray = current.features.map(obj=>{return {...obj, 'isLeft' :true}}).concat(compare.features.map(obj=>{return {...obj, 'isRight' :true}}));
 
 
-  console.log('deatureArray', featureArray)
+  // console.log('deatureArray', featureArray)
   return (
   <Container>
-    <table>
-      <tr>
-        <th>{current.name}</th>
-        <th>Features</th>
-        <th>{compare.name}</th>
-      </tr>
-      <tr>
-        {featureArray.map((obj)=>{
-          if (obj.isLeft) {
-            return (
-              <tr>
-                <td><ImCheckmark/></td>
-                <td>{obj.feature} : {obj.value}</td>
-                <td></td>
-              </tr>)
-            } else if (obj.isRight) {
+      <Table>
+        <Header>
+          <HeaderData>{current.name}</HeaderData>
+          <HeaderData>Features</HeaderData>
+          <HeaderData>{compare.name}</HeaderData>
+        </Header>
+        <DataWrapper>
+          {featureArray.map((obj)=>{
+            if (obj.isLeft && !obj.isRight) {
               return (
                 <tr>
-                  <td></td>
-                  <td>{obj.feature} : {obj.value} </td>
-                  <td><ImCheckmark/></td>
+                  <Data1><ImCheckmark size={20}/></Data1>
+                  <Data2>{obj.feature} : {obj.value}</Data2>
+                  <Data3></Data3>
                 </tr>)
-            } else {
-              return (
-                <tr>
-                  <td><ImCheckmark/></td>
-                  <td>{obj.feature} : {obj.value}</td>
-                  <td><ImCheckmark/></td>
-                </tr>)
-            }
-        })}
-      </tr>
-    </table>
+              } else if (obj.isRight && !obj.isLeft) {
+                return (
+                  <tr>
+                    <Data1></Data1>
+                    <Data2>{obj.feature} : {obj.value} </Data2>
+                    <Data3><ImCheckmark size={20}/></Data3>
+                  </tr>)
+              } else {
+                return (
+                  <DataWrapper>
+                    <Data1><ImCheckmark size={20}/></Data1>
+                    <Data2>{obj.feature} : {obj.value}</Data2>
+                    <Data3><ImCheckmark size={20}/></Data3>
+                  </DataWrapper>)
+              }
+          })}
+        </DataWrapper>
+      </Table>
   </Container>)
 
 

@@ -9,10 +9,6 @@ const axios = require('axios');
 
 let app = express();
 
-process.on('uncaughtException', function (err) {
-  console.log(err);
-});
-
 // serves all static files and generated assets in ../../client/dist
 app.use(express.static(path.join(__dirname, "/../client/dist")));
 app.use(express.json());
@@ -33,7 +29,7 @@ if (!process.env.REACT_APP_API_KEY) {
 
 // This is the '/product' call, for all products, likely to be used in the catalog page.
 app.get('/products', (req, res) => {
-  console.log('server is working', process.env.REACT_APP_API_KEY);
+  // console.log('server is working', process.env.REACT_APP_API_KEY);
   let options = {
     method: 'GET',
     url: apiURL + req.url,
@@ -41,13 +37,13 @@ app.get('/products', (req, res) => {
       'Authorization': `${process.env.REACT_APP_API_KEY}`,
     },
     params: {
-      count: 20
+      count: 5
     }
   };
 
   axios(options)
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       res.send(result.data);
     })
     .catch((err)=>console.log(err));
@@ -156,7 +152,7 @@ app.get('/reviews/meta', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-
+  let postObj = req.query;
   let options = {
     method: 'POST',
     url: apiURL + req.url,
@@ -164,7 +160,15 @@ app.post('/reviews', (req, res) => {
       'Authorization': `${process.env.REACT_APP_API_KEY}`
     },
     params: {
-      product_id: 65632
+      product_id: postObj.id,
+      rating: postObj.rating,
+      summary: postObj.summary,
+      body: postObj.body,
+      recommend: postObj.recommend,
+      name: postObj.name,
+      email: postObj.email,
+      phtos: postObj.photos,
+      characteristics: postObj.characteristics
     }
   };
 

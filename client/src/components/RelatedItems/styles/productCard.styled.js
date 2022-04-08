@@ -6,30 +6,41 @@ flex-direction: row;
 flex-shrink: 0;
 width: 25%;
 heights: 250px;
-background-color: green;
+// background-color: green;
 judtify contents:space-around;
-// position:relative;
-`
-export const compareWrapper = styled.div`
-top:0px;
-right:0px;
-z-index: 1000;
-position:relative;
+// postition:relative;
 `
 
 export const Card = styled.div`
 flex: 1;
 margin: 5px;
-background-color:red;
-border: solid black
+// background-color:red;
+// border: solid black
 padding: 10px;
-display:flex;
-flex-direction:column;
+// display:flex;
+// flex-direction:column;
+postition:relative;
 `
 
+export const CompareWrapper = styled.div`
+height:30px;
+width:30px;
+top:30px;
+background-color; black;
+right:15px;
+// z-index: 1001;
+position:relative;
+align-items: flex-end;
+// border:black;
+float: right;
+display: flex;
+`
+
+
 export const ProductImage = styled.img`
-width: 95%;
+width: 100%;
 height: 80%;
+top: 5px;
 // aspect-ratio: 1/1;
 boder-radius: 12px;
 // height: 60%;

@@ -56,7 +56,6 @@ function RelatedItems({selProduct}) {
       <ProductSection>
         <ProductList switchProduct={handleProductClick} curProduct={curProduct} product={relatedProducts}/>
       </ProductSection>
-
       <FavoriteSection>
         <OutfitList selected={curProduct} />
       </FavoriteSection>

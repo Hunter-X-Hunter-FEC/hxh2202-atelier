@@ -4,7 +4,7 @@ import Star from './Star.jsx';
 import {AiOutlineArrowRight} from 'react-icons/ai';
 import {BsSearch} from 'react-icons/bs';
 // import styled from 'styled-components';
-import {ProductContainer, Card, ProductImage, compareWrapper, ProductCategory,ProductName, ProductPrice} from './styles/productCard.styled.js';
+import {ProductContainer, Card, ProductImage, CompareWrapper, ProductCategory,ProductName, ProductPrice} from './styles/productCard.styled.js';
 import Logo from './../../assets/Logo.png';
 import Comparison from './Comparison.jsx';
 
@@ -20,14 +20,18 @@ const ProductCard = ({curProduct, switchProduct, card})=>{
 		setCompare(compare)
 	}, [compare])
 
-	const compareClicker = ()=>{
-		setShowModal(!showModal)
-		setCompare(card)
+	const compareClicker = (event)=>{
+		event.stopPropagation();
+		setShowModal(!showModal);
+		setCompare(card);
 	}
 
   return (
 		<ProductContainer>
 			<Card onClick={()=>switchProduct(card)}>
+				<CompareWrapper onClick={compareClicker}>
+						<BsSearch style={{top:'0px', color: "grey", right:'0px'}} size={30} />
+				</CompareWrapper>
 				<ProductImage src={card.style[0].photos[0].url || Logo}/>
 				<ProductCategory>
 					{card.category}
@@ -43,9 +47,6 @@ const ProductCard = ({curProduct, switchProduct, card})=>{
 				</div>
 				{showModal && <Comparison compare={compare} current={curProduct}/>}
 			</Card>
-			<compareWrapper onClick={compareClicker}>
-					<BsSearch />
-				</compareWrapper>
 		</ProductContainer>
 
   )

@@ -6,13 +6,20 @@ import Logo from '../../assets/Logo.png';
 
 
 const ProductContainer = styled.div`
-heights: 100vh;
-weights: auto;
-flex: 1;
+heights: 650px;
+width: 420px;
+display: flex;
 border: solid black;
 font-family:sans-serif;
 `
+const productWrapper = styled.div`
+float: left;
+width: 25%;
+padding: 15px;
+align-items:center;
+flex-basis: 25%;
 
+`
 const ProductImage = styled.img`
 width:95%;
 boder-radius: 12px;
@@ -43,19 +50,21 @@ function CataProduct ({selector, card}) {
 
 	return (
 		<ProductContainer onClick = {()=>selector(card)}>
-			<ProductImage src={card.style[0] ? card.style[0].photos[0].url : Logo}/>
-			<ProductCategory>
-				{card.category}
-			</ProductCategory>
-			<ProductName>
-				{card.name}
-			</ProductName>
-			<ProductPrice>
-				<span>${card.style[0] ? card.style[0].original_price : '9999'}</span>
-			</ProductPrice>
-			<div className="rating">
-				<Star />
-			</div>
+			<productWrapper>
+				<ProductImage src={card.style[0] ? card.style[0].photos[0].url : Logo}/>
+				<ProductCategory>
+					{card.category}
+				</ProductCategory>
+				<ProductName>
+					{card.name}
+				</ProductName>
+				<ProductPrice>
+					<span>${card.style[0] ? card.style[0].original_price : '9999'}</span>
+				</ProductPrice>
+				<div className="rating">
+					<Star />
+				</div>
+			</productWrapper>
 		</ProductContainer>
   )
 
