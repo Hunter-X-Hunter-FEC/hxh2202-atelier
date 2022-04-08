@@ -4,7 +4,7 @@ import ProductCard from './ProductCard.jsx';
 import request from '../Request.js';
 import OutfitList from './OutfitList.jsx';
 import 'regenerator-runtime/runtime';
-import {Container, ProductSection, FavoriteSection} from './styles/container.styled.js';
+import {Container, Seperator, ProductSection, FavoriteSection} from './styles/container.styled.js';
 
 
 import {useState, useEffect} from 'react';
@@ -56,6 +56,7 @@ function RelatedItems({selProduct}) {
       <ProductSection>
         <ProductList switchProduct={handleProductClick} curProduct={curProduct} product={relatedProducts}/>
       </ProductSection>
+
       <FavoriteSection>
         <OutfitList selected={curProduct} />
       </FavoriteSection>

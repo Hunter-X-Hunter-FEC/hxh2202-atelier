@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {VscAdd} from 'react-icons/vsc';
 import {IoRemoveCircle} from 'react-icons/io5';
-import {Container, AddButton, FavoriteList} from './styles/OutfitList.styled.js'
+import {Container, AddButton, FavoriteList} from './styles/OutfitList.styled.js';
 import FavoriteEntry from './FavoriteEntry.jsx';
 
 function OutfitList({selected}) {
@@ -30,12 +30,14 @@ function OutfitList({selected}) {
 
   var AddFavoritesHandler = (selected) => {
     // console.log('selected',selected);
-    if (favorites.includes(selected) === false) {
-      // console.log("addFavHandler", favorites.includes(selected) === false)
+    // console.log('testing favorite', favorites);
+    // console.log("addFavHandler", favorites.includes(selected));
+    const favoriteList = favorites.map(each=>each.id);
+    if (favoriteList.includes(selected.id) === false) {
+      console.log("addFavHandler", favorites.includes(selected))
       setFavorites([...favorites, selected]);
     }
 
-    console.log()
   }
 
   var removeFavHandler = (selected)=>{

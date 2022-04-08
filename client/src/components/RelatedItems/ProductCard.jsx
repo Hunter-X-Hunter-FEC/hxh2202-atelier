@@ -4,7 +4,7 @@ import Star from './Star.jsx';
 import {AiOutlineArrowRight} from 'react-icons/ai';
 import {BsSearch} from 'react-icons/bs';
 // import styled from 'styled-components';
-import {ProductContainer, Card, ProductImage, ProductCategory,ProductName, ProductPrice} from './styles/productCard.styled.js';
+import {ProductContainer, Card, ProductImage, compareWrapper, ProductCategory,ProductName, ProductPrice} from './styles/productCard.styled.js';
 import Logo from './../../assets/Logo.png';
 import Comparison from './Comparison.jsx';
 
@@ -27,7 +27,6 @@ const ProductCard = ({curProduct, switchProduct, card})=>{
 
   return (
 		<ProductContainer>
-			<BsSearch onClick={compareClicker}/>
 			<Card onClick={()=>switchProduct(card)}>
 				<ProductImage src={card.style[0].photos[0].url || Logo}/>
 				<ProductCategory>
@@ -43,9 +42,10 @@ const ProductCard = ({curProduct, switchProduct, card})=>{
 						<Star />
 				</div>
 				{showModal && <Comparison compare={compare} current={curProduct}/>}
-
-
 			</Card>
+			<compareWrapper onClick={compareClicker}>
+					<BsSearch />
+				</compareWrapper>
 		</ProductContainer>
 
   )

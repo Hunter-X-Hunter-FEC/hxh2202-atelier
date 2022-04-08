@@ -1,16 +1,20 @@
 import React from 'react';
-import {FavImage, FavContainer, FavName} from './styles/FavoriteList.styled.js';
-import {IoRemoveCircle} from 'react-icons/io5';
+import {FavImage, FavContainer, FavName, RemoveBtn, FavWrapper} from './styles/FavoriteList.styled.js';
+import {IoRemoveCircleOutline} from 'react-icons/io5';
 
 function FavoriteEntry ({remove, favorite}) {
   console.log('favorite entry', favorite);
   return (
     <FavContainer>
-			<FavImage src={favorite.style[0].photos[0].url}/>
-			<FavName>
-			  {favorite.style.name}
-			</FavName>
-      <IoRemoveCircle size={120} onClick={()=>remove(favorite)}/>
+      <FavWrapper>
+        <FavImage src={favorite.style[0].photos[0].url}/>
+        <FavName>
+          {favorite.name}
+        </FavName>
+        < RemoveBtn >
+          <IoRemoveCircleOutline color={"white"} background-color={'transparent'} size={50} onClick={()=>remove(favorite)}/>
+        </RemoveBtn>
+      </FavWrapper>
     </FavContainer>
   )
 }
