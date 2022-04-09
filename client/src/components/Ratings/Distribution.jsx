@@ -26,7 +26,7 @@ const Distribution = ({ distribution }) => {
   return (
     <>
       {Object.entries(distributionData.data)?.map(([key, value]) => {
-        return <DistributionItem stars={key} value={value} max={distributionData.total} />
+        return <DistributionItem key={key} stars={key} value={value} max={distributionData.total} />
       })
       }
     </>

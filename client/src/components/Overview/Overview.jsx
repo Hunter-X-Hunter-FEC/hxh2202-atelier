@@ -1,7 +1,7 @@
 import React from "react";
-import addToCart from './addToCart.jsx';
-import imageGallery from './imageGallery.jsx';
-import productInformation from './productInformation.jsx';
+// import addToCart from './addToCart.jsx';
+// import imageGallery from './imageGallery.jsx';
+// import productInformation from './productInformation.jsx';
 
 
 class Overview extends React.Component {
@@ -22,10 +22,10 @@ class Overview extends React.Component {
   render() {
     return (
       <div>
-        <div><imageGallery/></div>
+        {/* <div><imageGallery/></div>
         <div><productInformation/></div>
         <div><styleSelector/></div>
-        <div><addToCart/></div>
+        <div><addToCart/></div> */}
       </div>
     );
   }

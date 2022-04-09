@@ -21,14 +21,14 @@ const DistributionItem = ({stars, value, max}) => {
   )
 }
 
-DistributionItem.propTypes = {
-  value: PropTypes.number.isRequired,
-  max: PropTypes.number
-}
+// DistributionItem.propTypes = {
+//   value: PropTypes.number.isRequired,
+//   max: PropTypes.number
+// }
 
-DistributionItem.defaultProps = {
-  max: 100,
+// DistributionItem.defaultProps = {
+//   max: 100,
 
-}
+// }
 
 export default DistributionItem;

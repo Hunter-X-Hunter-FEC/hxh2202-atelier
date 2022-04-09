@@ -45,7 +45,7 @@ const ReviewsList = (prop) => {
       <div>
         {
           allReviewsOfProduct.map((review) => {
-            return <Review review={review} />;
+            return <Review key={review.review_id} review={review} />;
           })
         }
       </div>
