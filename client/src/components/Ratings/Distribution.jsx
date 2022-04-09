@@ -1,19 +1,36 @@
-import React from 'react'
-import DistributionItem from './DistributionItem.jsx';
+import React, { useState, useEffect } from "react";
+import DistributionItem from "./DistributionItem.jsx";
+import Ratings from "./Ratings.jsx";
+import styled from "styled-components";
 // import averageRating, {oneCount, twoCount, threeCount, fourCount, fiveCount, numberOfReviews} from '../common/oneMeta.js';
 
-const Distribution = () => {
+const Distribution = ({ distribution }) => {
+  // console.log('props.distribution inside of Distribution.jsx: ', props.);
+
+  const [distributionData, setDistributionData] = useState({ data: [], total: 0});
+
+  useEffect(() => {
+
+
+    const data = {}
+    let total = 0
+
+    for (let i = 0; i < 5; i++) {
+      const distributionValue = distribution?.[i + 1] || "0";
+      data[i + 1] = distributionValue;
+      total = total + parseInt(distributionValue);
+    }
+    setDistributionData({ data, total });
+  }, [distribution])
+
   return (
-    <div>
-      < DistributionItem stars={1} value={2} max={4}/>
-      {/* < DistributionItem stars={1} value={oneCount} max={numberOfReviews}/>
-      < DistributionItem stars={2} value={twoCount} max={numberOfReviews}/>
-      < DistributionItem stars={3} value={threeCount} max={numberOfReviews}/>
-      < DistributionItem stars={4} value={fourCount} max={numberOfReviews}/>
-      < DistributionItem stars={5} value={fiveCount} max={numberOfReviews}/> */}
-      <div className="Distribution"> Distribution Component Here </div>
-    </div>
-  )
-}
+    <>
+      {Object.entries(distributionData.data)?.map(([key, value]) => {
+        return <DistributionItem stars={key} value={value} max={distributionData.total} />
+      })
+      }
+    </>
+  );
+};
 
 export default Distribution;

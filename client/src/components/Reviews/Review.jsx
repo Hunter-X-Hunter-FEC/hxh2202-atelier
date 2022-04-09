@@ -1,18 +1,45 @@
 import React from 'react'
 import ReviewsList from './ReviewsList.jsx';
+import styled from 'styled-components';
 
 // render each individual review "card"
 const Review = (props) => {
-  return (
-    <div>
-      {/* <h1>Rating: {props.review.rating}</h1>
-      <h1>Title: {props.review.summary}</h1>
-      <h1>Review Text: {props.review.body}</h1> */}
 
-      <h1>Rating: </h1>
-      <h1>Title: </h1>
-      <h1>Review Text: </h1>
-    </div>
+  const ReviewContainer = styled.div`
+  heights: 100vh;
+  weights: auto;
+  flex: 1;
+  border: solid black;
+  font-family:sans-serif;
+  `
+
+  const ProductCategory = styled.div`
+  margin-top:5px;
+  height:24px;
+  margin-bottom:6px;
+  `
+  const ProductName = styled.h4`
+  margin-top:5px;
+  height:24px;
+  margin-bottom:6px;
+  `
+  const ProductPrice = styled.p`
+  margin-top:5px;
+  margin-bottom:10px;
+  `
+  const ProductRating = styled.div`
+  margin-bottom: 2px;
+  padding-top:5px;
+  `
+
+
+
+  return (
+    <ReviewContainer>
+      <p>Rating: {props.review.rating}</p>
+      <p>Title: {props.review.summary}</p>
+      <p>Review Text: {props.review.body}</p>
+    </ReviewContainer>
   )
 };
 

@@ -14,8 +14,8 @@ import {getProducts, getProductDetails, getProductStyles} from './components/Req
 import Catalog from './components/Catalog/Catalog.jsx';
 import 'regenerator-runtime/runtime'
 const request = require('./components/Request.js');
-import Ratings from './components/Ratings/Ratings.jsx';
-import ReviewsList from './components/Reviews/ReviewsList.jsx';
+import Overview from './components/Overview/Overview.jsx';
+import RatingsAndReviews from './components/RatingsAndReviews/RatingsAndReviews.jsx';
 
 function App(){
 
@@ -79,12 +79,12 @@ function App(){
   }
 
   const selectProduct = (product)=> {
-    // console.log('select is triggering', product);
+    console.log('select is triggering', product);
     setSelected(product);
     setView('details');
   }
 
-  // console.log('allProduct', allProducts);
+  console.log('allProduct', allProducts);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -92,8 +92,8 @@ function App(){
         <GlobalStyles />
         <Header showAll={setAllProducts} themeToggler={themeToggler} />
         {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
-        <Ratings />
-        <ReviewsList />
+        {(view === 'details') && <RatingsAndReviews product={selected}/> }
+
       </>
     </ThemeProvider>
   );
