@@ -12,11 +12,9 @@ import styled from "styled-components";
 
 
 
-
 function AverageReview() {
 
   var [starsIdx, setStarsIdx] = useState(0);
-
 
   var clickedViewAll = function (e) {
     e.preventDefault();
@@ -33,7 +31,7 @@ function AverageReview() {
     <section style={AverageReviewStyle} id='AverageReview'>
 
       <img style={{ width: '100px',  height: '19px'}} alt="stars/stars" src={starsArr[starsIdx]} />
-      <Button onClick={(e) => {clickedScroll(e);} } >Read all reviews</Button>
+      <Button onClick={(e) => {clickedViewAll(e);} } >Read all reviews</Button>
 
     </section>
   )
@@ -41,7 +39,10 @@ function AverageReview() {
 
 export default AverageReview;
 
+
+
 var Button = styled.button`
+width: 123;
 display: flex;
 text-align: center;
 background-color: transparent;
@@ -60,8 +61,7 @@ var AverageReviewStyle = {
   borderRadius: '10px',
   backgroundColor: 'white',
   border: 'solid black',
-  padding: '10px',
-  margin: '10px',
+  padding: '10px'
 };
 
 var starsArr = [

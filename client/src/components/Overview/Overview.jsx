@@ -17,23 +17,47 @@ import StyleSelector from './styleSelector.jsx';
 import AddToCart from './addToCart.jsx';
 import ProductDescription from './productDescription.jsx';
 import { changeOverviewStars } from '../Overview/averageReview.jsx';
+import Request from '../Request.js';
 
 
 
 function Overview(props) {
 
-
   return (
-    <section id='Overview' style={{ backgroundColor: 'AliceBlue'}}>
-      <ImageGallery product={props.product}/>
+    <section id='Overview' style={{ backgroundColor: 'AliceBlue' }}>
+      <ImageGallery product={props.product} />
       <AverageReview />
-      <ProductInfo product={props.product}/>
-      {/* <Share />
-      <StyleSelector />
-      <AddToCart />
-      <ProductDescription /> */}
+      <ProductInfo product={props.product} />
+      <Share />
+      <StyleSelector product={props.product} />
+      <AddToCart product={props.product} />
+      <ProductDescription product={props.product}/>
     </section>
   );
 }
 
 export default Overview;
+
+
+
+// SOOO UNNESSERY becuase Dora's index already HANDLED IT ALL AAAAAHHHHHHHHHHHHH SO MUCH TIME WASTED
+  // var [fullProduct, setFullProduct] = useState({});
+
+  // var funcFetch = function () {
+  //   Request.getProductDetails(props.product.id).then((d) => {
+  //     // console.log(d)
+  //     setFullProduct(d.data);
+  //   }).catch((err) => {
+  //     console.log(err);
+  //   })
+  // };
+
+
+
+  // useEffect(() => {
+  //   funcFetch();
+  // }, []);
+
+  // useEffect(() => {
+  //   setFullProduct(fullProduct);
+  // }, [fullProduct]);

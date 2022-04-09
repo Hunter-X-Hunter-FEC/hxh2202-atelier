@@ -9,15 +9,16 @@ should save the cart info between sessions
 the favorite button saves the product like to add to cart but instead add to favorites
 */
 
-import React from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import { render } from "react-dom";
+import styled from "styled-components";
 
 
 
-function AddToCart() {
+function AddToCart(props) {
 
   return (
-    <div id='AddToCart' style={{ 'backgroundColor': 'DodgerBlue' }}>
+    <section id='AddToCart' style={AddToCartStyle}>
       <select>
         <option value="" disabled selected>Select Size</option>
         <option value="S">S</option>
@@ -37,10 +38,20 @@ function AddToCart() {
       <button>ADD TO BAG</button>
       <button><span>&#9734;</span></button>
 
-    </div>
+    </section>
   )
 };
 
 export default AddToCart;
+
+
+
+var AddToCartStyle = {
+  width: 400,
+  borderRadius: '10px',
+  backgroundColor: 'white',
+  border: 'solid black',
+  padding: '10px',
+};
 
 // <option value="" disabled selected>OUT OF STOCK</option>

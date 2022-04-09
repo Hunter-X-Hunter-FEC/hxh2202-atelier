@@ -15,11 +15,7 @@ import styled from "styled-components";
 
 
 
-
 function ProductInfo(props) {
-
-  console.log(props.product)
-
 
   return (
     <section id='ProductInfo' style={ProductInfoStyle}>
@@ -31,6 +27,8 @@ function ProductInfo(props) {
 };
 
 export default ProductInfo;
+
+
 
 // var Button = styled.button`
 // display: flex;
@@ -46,12 +44,20 @@ export default ProductInfo;
 
 var ProductInfoStyle = {
   width: 400,
-  // display: 'inline-block',
-  // display: 'flex',
-  // textAlign: 'center',
   borderRadius: '10px',
   backgroundColor: 'white',
   border: 'solid black',
   padding: '10px',
-  margin: '10px',
 };
+
+// var [myProps, setMyProps] = useState({});
+  // var [category, setCategory] = useState('n/a');
+  // var [name, setName] = useState('n/a');
+  // var [price, setPrice] = useState(0.00);
+
+  // useEffect(() => {
+  //   setMyProps(props.product);
+  //   setCategory(myProps.product.category);
+  //   setName(myProps.product.name);
+  //   setPrice(myProps.product.default_price);
+  // }, []);
