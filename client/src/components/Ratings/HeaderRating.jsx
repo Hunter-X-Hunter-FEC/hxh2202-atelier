@@ -25,6 +25,8 @@ const HeaderRating = ({ distribution }) => {
     }
     let avgRating = weightedSum / total;
     console.log('avgRating: ', avgRating);
+    let avgRatingRounded = parseInt((Math.round(avgRating * 4)/4).toFixed(2));
+    console.log('avgRatingRounded: ', avgRatingRounded);
 
     setAvgRatingData({ data, avgRating });
   }, [distribution])
