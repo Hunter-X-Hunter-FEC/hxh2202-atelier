@@ -5,10 +5,10 @@ import CataProduct from './CataProduct.jsx';
 import styled from 'styled-components';
 
 const Container = styled.div`
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-
+display: grid;
+grid-template-columns: repeat(4, 420px);
+gtif-template-rows: repeat(4, 560px);
+gap:10px;
 `
 
 const Catalog = ({selector, allProducts})=>{
