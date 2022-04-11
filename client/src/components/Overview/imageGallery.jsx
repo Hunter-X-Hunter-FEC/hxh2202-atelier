@@ -64,7 +64,7 @@ function ImageGallery(props) {
       imageFullscreen = {
         width: 715,
         height: 560,
-        objectFit: 'center',
+        objectFit: 'none',
         textAlign: 'center',
         padding: '10px',
       };
@@ -95,7 +95,6 @@ function ImageGallery(props) {
 };
 
 export default ImageGallery;
-
 
 
 // var Gallery = styled.img`

@@ -10,24 +10,29 @@ upon selected style it will have a checkmark to indicate it's the currently sele
 import React, { useState, useReducer, useEffect } from "react";
 import { render } from "react-dom";
 import styled from "styled-components";
+// import { chosenStyle } from './imageGallery.jsx';
 
 
 
 function StyleSelector(props) {
 
-  var chosenStyle = function (e) {
+  // console.log(props)
+
+  var chosenStyleCont = function (e) {
     e.preventDefault();
     console.log('clicked a style container');
+    // chosenStyle(e);
   }
 
   return (
     <section id='StyleSelector' style={StyleSelectorStyle}>{props.product.style.map((st, idx) =>
-    <StyleCont id={`S${idx + 1}`} onClick={(e) => { chosenStyle(e); }}>S{idx + 1}</StyleCont>)}
+    <StyleCont id={`S${idx + 1}`} data-value={idx} onClick={(e) => { chosenStyleCont(e); }}>S{idx + 1}</StyleCont>)}
     </section>
   )
 };
 
 export default StyleSelector;
+
 
 
 

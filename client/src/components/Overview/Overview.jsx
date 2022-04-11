@@ -30,6 +30,7 @@ function Overview(props) {
       <ProductInfo product={props.product} />
       <Share />
       <StyleSelector product={props.product} />
+      {/* <StyleSelector product={props.product} func={ImageGallery} /> */}
       <AddToCart product={props.product} />
       <ProductDescription product={props.product}/>
     </section>
