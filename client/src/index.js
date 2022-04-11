@@ -15,6 +15,7 @@ import Catalog from './components/Catalog/Catalog.jsx';
 import RelatedItems from './components/RelatedItems/RelatedItems.jsx'
 import 'regenerator-runtime/runtime'
 const request = require('./components/Request.js');
+import Overview from './components/Overview/Overview.jsx';
 
 function App(){
 
@@ -91,7 +92,8 @@ function App(){
         <GlobalStyles />
         <Header showAll={setAllProducts} themeToggler={themeToggler} />
         {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
-        {(view ==="details") && <RelatedItems selProduct={selected}/>}
+        {(view ==="details") && <Overview product={selected}/>}
+        {/* {(view ==="details") && <RelatedItems selProduct={selected}/>} */}
       </>
     </ThemeProvider>
   );

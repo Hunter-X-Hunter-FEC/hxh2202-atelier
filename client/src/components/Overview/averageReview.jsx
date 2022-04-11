@@ -65,17 +65,17 @@ var AverageReviewStyle = {
 };
 
 var starsArr = [
-  '../src/assets/star0.png',
-  '../src/assets/star1.png',
-  '../src/assets/star2.png',
-  '../src/assets/star3.png',
-  '../src/assets/star4.png',
-  '../src/assets/star5.png',
-  '../src/assets/star6.png',
-  '../src/assets/star7.png',
-  '../src/assets/star8.png',
-  '../src/assets/star9.png',
-  '../src/assets/star10.png',
+  './public/star0.png',
+  './public/star1.png',
+  './public/star2.png',
+  './public/star3.png',
+  './public/star4.png',
+  './public/star5.png',
+  './public/star6.png',
+  './public/star7.png',
+  './public/star8.png',
+  './public/star9.png',
+  './public/star10.png',
 ]
 
 {/* <img style={imageFullscreen} alt="current image" src={images[styleIdx][imageIdx]}/> */}
