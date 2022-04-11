@@ -21,10 +21,11 @@ flex-basis: 25%;
 
 `
 const ProductImage = styled.img`
-width:95%;
+width:400px;
 boder-radius: 12px;
-height: 80%;
-object-fit: fill;
+min-height: 520px;
+max-height: 520px;
+object-fit: cover;
 `
 const ProductCategory = styled.div`
 margin-top:5px;
@@ -47,7 +48,7 @@ padding-top:5px;
 
 
 function CataProduct ({selector, card}) {
-
+	console.log('Catalog' , card.style[0].photos[0].url);
 	return (
 		<ProductContainer onClick = {()=>selector(card)}>
 			<productWrapper>

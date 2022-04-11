@@ -3,7 +3,7 @@ import {FavImage, FavContainer, FavName, RemoveBtn, FavWrapper} from './styles/F
 import {IoRemoveCircleOutline} from 'react-icons/io5';
 import Star from './Star.jsx';
 import {ProductCategory,ProductName, ProductPrice} from './styles/productCard.styled.js';
-import Logo from './../../assets/Logo.png';
+import Logo from '../../assets/Logo.png';
 
 function FavoriteEntry ({remove, favorite}) {
   console.log('favorite entry', favorite);

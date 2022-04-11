@@ -37,7 +37,7 @@ app.get('/products', (req, res) => {
       'Authorization': `${process.env.REACT_APP_API_KEY}`,
     },
     params: {
-      count: 5
+      count: 10
     }
   };
 
@@ -152,15 +152,16 @@ app.get('/reviews/meta', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-  let postObj = req.query;
+  let postObj = req.body;
+  console.log('postObj', postObj);
   let options = {
     method: 'POST',
-    url: apiURL + req.url,
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews',
     headers: {
       'Authorization': `${process.env.REACT_APP_API_KEY}`
     },
-    params: {
-      product_id: postObj.id,
+    data: {
+      product_id: postObj.product_id,
       rating: postObj.rating,
       summary: postObj.summary,
       body: postObj.body,
@@ -179,17 +180,15 @@ app.post('/reviews', (req, res) => {
 
 });
 
-app.put('/reviews/:reviewId/helpful', (req, res) => {
-
+app.put('/reviews/helpful', (req, res) => {
+  const productId = req.query.id;
+  console.log('productId', productId);
   let options = {
     method: 'PUT',
-    url: apiURL + req.url,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/${productId}/helpful`,
     headers: {
       'Authorization': `${process.env.REACT_APP_API_KEY}`
     },
-    params: {
-      review_id: 65632
-    }
   };
 
   axios(options)
@@ -199,16 +198,14 @@ app.put('/reviews/:reviewId/helpful', (req, res) => {
 
 });
 
-app.put('/reviews/:reviewId/report', (req, res) => {
-
+app.put('/reviews/report', (req, res) => {
+  const productId = req.query.id;
+  console.log('productId', productId);
   let options = {
     method: 'PUT',
-    url: apiURL + req.url,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/${productId}/report`,
     headers: {
       'Authorization': `${process.env.REACT_APP_API_KEY}`
-    },
-    params: {
-      review_id: 65632
     }
   };
 
