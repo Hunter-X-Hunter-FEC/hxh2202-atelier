@@ -19,24 +19,25 @@ function AddToCart(props) {
 
   return (
     <section id='AddToCart' style={AddToCartStyle}>
-      <select>
+
+      <SelectSize>
         <option value="" disabled selected>Select Size</option>
         <option value="S">S</option>
         <option value="M">M</option>
         <option value="M?/L">M/L</option>
         <option value="L">L</option>
         <option value="XL">XL</option>
-      </select>
-      <select>
+      </SelectSize>
+      <SelectQuantity>
         <option value="" disabled selected>-</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
-      </select>
-      <button>ADD TO BAG</button>
-      <button><span>&#9734;</span></button>
+      </SelectQuantity>
+      <AddToBag>ADD TO BAG</AddToBag>
+      <AddToFavorite><span>&#9734;</span></AddToFavorite>
 
     </section>
   )
@@ -54,4 +55,35 @@ var AddToCartStyle = {
   padding: '10px',
 };
 
+var AddToBag = styled.button`
+  border-radius: 10px;
+  background-color: white;
+  border: solid black;
+  padding: 5px;
+  width: fit-content;
+`;
+
+var AddToFavorite = styled.button`
+  border-radius: 10px;
+  background-color: white;
+  border: solid black;
+  padding: 5px;
+  width: fit-content;
+`;
+
+var SelectSize = styled.select`
+  border-radius: 10px;
+  background-color: white;
+  border: solid black;
+  padding: 5px;
+  width: fit-content;
+`;
+
+var SelectQuantity = styled.select`
+  border-radius: 10px;
+  background-color: white;
+  border: solid black;
+  padding: 5px;
+  width: fit-content;
+`;
 // <option value="" disabled selected>OUT OF STOCK</option>
