@@ -10,6 +10,9 @@ function FavoriteEntry ({remove, favorite}) {
   return (
     <FavContainer>
       <FavWrapper>
+      < RemoveBtn >
+          <IoRemoveCircleOutline color={"grey"} background-color={'transparent'} size={30} onClick={()=>remove(favorite)}/>
+        </RemoveBtn>
         <FavImage src={favorite.style[0].photos[0].url || Logo}/>
         <ProductCategory>
             {favorite.category}
@@ -23,9 +26,6 @@ function FavoriteEntry ({remove, favorite}) {
           <div className="rating">
               <Star />
           </div>
-        < RemoveBtn >
-          <IoRemoveCircleOutline color={"grey"} background-color={'transparent'} size={30} onClick={()=>remove(favorite)}/>
-        </RemoveBtn>
       </FavWrapper>
     </FavContainer>
   )
