@@ -24,6 +24,14 @@ function App(){
   const [allProducts, setAllProduct] = useState([]);
   const [selected, setSelected] = useState({});
 
+  /*
+  the communication between RatingsAndReviews and Overview so that the stars
+  in Overview will be the same as in RatingsAndReviews, Overview reads the
+  starsIndex through props and RatingsAndReviews invokes setStarsIndex also
+  through props
+  */
+  var [avgRating, setAvgRating] = useState(0); // 4.11 3.1
+
   // useEffect(()=>{
   //   // console.log('localStorage Effect is working')
   //   setAllProduct(localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : allProducts)
@@ -92,7 +100,7 @@ function App(){
         <GlobalStyles />
         <Header showAll={setAllProducts} themeToggler={themeToggler} />
         {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
-        {(view ==="details") && <Overview product={selected}/>}
+        {(view ==="details") && <Overview product={selected} starsIndex={starsIndex}/>}
         {/* {(view ==="details") && <RelatedItems selProduct={selected}/>} */}
       </>
     </ThemeProvider>

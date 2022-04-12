@@ -7,26 +7,27 @@ a containiter with multiple styles to choose from, same as from style list, each
 upon selected style it will have a checkmark to indicate it's the currently selected
 */
 
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState, useReducer, useEffect, useCallback } from "react";
 import { render } from "react-dom";
 import styled from "styled-components";
-// import { chosenStyle } from './imageGallery.jsx';
+
 
 
 
 function StyleSelector(props) {
 
-  // console.log(props)
 
   var chosenStyleCont = function (e) {
     e.preventDefault();
-    console.log('clicked a style container');
-    // chosenStyle(e);
+    console.log('from the style container: ');
+    props.chosenStyle(e);
   }
+
+
 
   return (
     <section id='StyleSelector' style={StyleSelectorStyle}>{props.product.style.map((st, idx) =>
-    <StyleCont id={`S${idx + 1}`} data-value={idx} onClick={(e) => { chosenStyleCont(e); }}>S{idx + 1}</StyleCont>)}
+      <StyleCont id={`S${idx + 1}`} data-value={idx} onClick={(e) => { chosenStyleCont(e); }}>S{idx + 1}</StyleCont>)}
     </section>
   )
 };
@@ -54,6 +55,15 @@ var StyleCont = styled.div`
   width: 35;
   height: 35
 `;
+
+
+var images = [
+  ['./public/desg1.jpg', './public/desg2.jpg', './public/desg3.jpg'],
+  ['./public/flower1.jpg', './public/flower2.jpg', './public/flower3.jpg'],
+  ['./public/food1.jpg', './public/food2.jpg', './public/food3.jpg'],
+  ['./public/sport1.jpg', './public/sport2.jpg', './public/sport3.jpg']
+];
+
 
 // <ul>{props.product.features.map((ft) =>
 //           <FtList ><span>{ft.feature}</span>{(ft.value !== null) && <span> {ft.value}</span>}</FtList>)}
