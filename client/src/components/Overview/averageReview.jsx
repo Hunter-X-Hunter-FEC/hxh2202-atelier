@@ -61,18 +61,18 @@ var AverageReviewStyle = {
   marginLeft: '110px',
 };
 
-var starsArr = [
-  './public/star0.png',
-  './public/star1.png',
-  './public/star2.png',
-  './public/star3.png',
-  './public/star4.png',
-  './public/star5.png',
-  './public/star6.png',
-  './public/star7.png',
-  './public/star8.png',
-  './public/star9.png',
-  './public/star10.png',
+var starsArr = [ // used to be ./public/star1.png before router, ./ meant inside of /dist
+  './../public/star0.png',
+  './../public/star1.png',
+  './../public/star2.png',
+  './../public/star3.png',
+  './../public/star4.png',
+  './../public/star5.png',
+  './../public/star6.png',
+  './../public/star7.png',
+  './../public/star8.png',
+  './../public/star9.png',
+  './../public/star10.png',
 ]
 
 {/* <img style={imageFullscreen} alt="current image" src={images[styleIdx][imageIdx]}/> */}
