@@ -3,21 +3,31 @@ import Star from './Star.jsx';
 import {AiOutlineArrowRight} from 'react-icons/ai';
 import styled from 'styled-components';
 import Logo from '../../assets/Logo.png';
+import {useParams, useNavigate} from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 
 const ProductContainer = styled.div`
-heights: 100vh;
-weights: auto;
-flex: 1;
+heights: 650px;
+width: 420px;
+display: flex;
 border: solid black;
 font-family:sans-serif;
 `
+const productWrapper = styled.div`
+float: left;
+width: 25%;
+padding: 15px;
+align-items:center;
+flex-basis: 25%;
 
+`
 const ProductImage = styled.img`
-width:95%;
+width:400px;
 boder-radius: 12px;
-height: 80%;
-object-fit: fill;
+min-height: 520px;
+max-height: 520px;
+object-fit: cover;
 `
 const ProductCategory = styled.div`
 margin-top:5px;
@@ -40,22 +50,25 @@ padding-top:5px;
 
 
 function CataProduct ({selector, card}) {
-
+	let navigate = useNavigate();
+	console.log('Catalog' , card.style[0].photos[0].url);
 	return (
-		<ProductContainer onClick = {()=>selector(card)}>
-			<ProductImage src={card.style[0] ? card.style[0].photos[0].url : Logo}/>
-			<ProductCategory>
-				{card.category}
-			</ProductCategory>
-			<ProductName>
-				{card.name}
-			</ProductName>
-			<ProductPrice>
-				<span>${card.style[0] ? card.style[0].original_price : '9999'}</span>
-			</ProductPrice>
-			<div className="rating">
-				<Star />
-			</div>
+		<ProductContainer onClick = {()=>{selector(card), navigate(`/product/${card.id}`)}}>
+			<productWrapper>
+				<ProductImage src={card.style[0] ? card.style[0].photos[0].url : Logo}/>
+				<ProductCategory>
+					{card.category}
+				</ProductCategory>
+				<ProductName>
+					{card.name}
+				</ProductName>
+				<ProductPrice>
+					<span>${card.style[0] ? card.style[0].original_price : '9999'}</span>
+				</ProductPrice>
+				<div className="rating">
+					<Star />
+				</div>
+			</productWrapper>
 		</ProductContainer>
   )
 

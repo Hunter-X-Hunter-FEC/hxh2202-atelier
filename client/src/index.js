@@ -12,11 +12,15 @@ import styled, {ThemeProvider} from 'styled-components';
 import {lightTheme, darkTheme, GlobalStyles} from './assets/themes.js';
 import {getProducts, getProductDetails, getProductStyles} from './components/Request.js';
 import Catalog from './components/Catalog/Catalog.jsx';
+import RelatedItems from './components/RelatedItems/RelatedItems.jsx';
+import {AiOutlineShoppingCart} from 'react-icons/ai';
+// import Overview from './components/Overview/Overview.jsx';
 import 'regenerator-runtime/runtime'
 const request = require('./components/Request.js');
 import Overview from './components/Overview/Overview.jsx';
 import RatingsAndReviews from './components/RatingsAndReviews/RatingsAndReviews.jsx';
 import Modal from './components/RatingsAndReviews/Modal.jsx';
+import {BrowserRouter, Routes, Link, Route} from "react-router-dom";
 
 function App(){
 
@@ -25,6 +29,14 @@ function App(){
   const [allProducts, setAllProduct] = useState([]);
   const [selected, setSelected] = useState({});
   const [showModal, setShowModal] = useState(false);
+
+  /*
+  the communication between RatingsAndReviews and Overview so that the stars
+  in Overview will be the same as in RatingsAndReviews, Overview reads the
+  avgRating through props and RatingsAndReviews invokes setAvgRating also
+  through props
+  */
+  var [avgRating, setAvgRating] = useState(0);
 
   // useEffect(()=>{
   //   // console.log('localStorage Effect is working')
@@ -77,13 +89,14 @@ function App(){
   const setAllProducts = ()=>{
     // console.log('all is triggering');
     setAllProduct(localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : allProducts)
-    setView('catalog')
+    // setView('catalog')
   }
 
   const selectProduct = (product)=> {
     console.log('select is triggering', product);
     setSelected(product);
-    setView('details');
+    // setView('details')
+    // navigate(`/product/${product.id}`);
   }
 
   console.log('allProduct', allProducts);
@@ -92,14 +105,29 @@ function App(){
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
-        <Header showAll={setAllProducts} themeToggler={themeToggler} />
-        {showModal && <Modal setShowModal={setShowModal} product={selected}/>}
-        {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
+
+
         {(view === 'details') && <RatingsAndReviews product={selected} setShowModal={setShowModal} showModal={showModal}/> }
+          <BrowserRouter>
+            <nav>
+              <Header showAll={setAllProducts} themeToggler={themeToggler} />
+            </nav>
+            <Routes>
+              <Route path='/' element={<Catalog Catalog selector={selectProduct} allProducts={allProducts}/>}/>
+              <Route path='/product/:productId' element ={<> <Overview product={selected}/> <RelatedItems selected={selected}/> <RatingsAndReviews selected={selected} setShowModal={setShowModal} showModal={showModal}/> {showModal && <Modal setShowModal={setShowModal} product={selected}/>}</>}/>
+              {/* <Route path='/checkout' element={<Checkout/>} /> */}
+
+              {/* {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
+              {(view ==="details") && <RelatedItems selProduct={selected}/>} */}
+            </Routes>
+        </BrowserRouter>
       </>
     </ThemeProvider>
   );
 
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+
+
+ReactDOM.render(<App />, document.getElementById('atelier'));
+
