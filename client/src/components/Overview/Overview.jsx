@@ -53,7 +53,6 @@ function Overview(props) {
   // console.log(stock);
 
 
-
   return (
     <section id='Overview' style={{ backgroundColor: 'AliceBlue', width: '1440px', margin: '0 auto' }}>
       <ImageGallery product={props.product} styleIdx={styleIdx} setStyleIdx={setStyleIdx} imageIdx={imageIdx} setImageIdx={setImageIdx} chosenStyle={chosenStyle}/>

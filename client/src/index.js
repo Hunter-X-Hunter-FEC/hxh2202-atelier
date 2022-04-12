@@ -15,7 +15,8 @@ import Catalog from './components/Catalog/Catalog.jsx';
 import RelatedItems from './components/RelatedItems/RelatedItems.jsx';
 import {AiOutlineShoppingCart} from 'react-icons/ai';
 // import Overview from './components/Overview/Overview.jsx';
-import 'regenerator-runtime/runtime'
+import 'regenerator-runtime/runtime';
+import Details from './components/Details.jsx';
 const request = require('./components/Request.js');
 import Overview from './components/Overview/Overview.jsx';
 import RatingsAndReviews from './components/RatingsAndReviews/RatingsAndReviews.jsx';
@@ -105,16 +106,14 @@ function App(){
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
-
-
-        {(view === 'details') && <RatingsAndReviews product={selected} setShowModal={setShowModal} showModal={showModal}/> }
+        {/* {(view === 'details') && <RatingsAndReviews product={selected} setShowModal={setShowModal} showModal={showModal}/> } */}
           <BrowserRouter>
             <nav>
               <Header showAll={setAllProducts} themeToggler={themeToggler} />
             </nav>
             <Routes>
               <Route path='/' element={<Catalog Catalog selector={selectProduct} allProducts={allProducts}/>}/>
-              <Route path='/product/:productId' element ={<> <Overview product={selected}/> <RelatedItems selected={selected}/> <RatingsAndReviews selected={selected} setShowModal={setShowModal} showModal={showModal}/> {showModal && <Modal setShowModal={setShowModal} product={selected}/>}</>}/>
+              <Route path='/product/:productId' element ={<Details selected={selected}/>}/>
               {/* <Route path='/checkout' element={<Checkout/>} /> */}
 
               {/* {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
