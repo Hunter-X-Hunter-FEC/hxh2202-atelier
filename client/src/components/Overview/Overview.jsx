@@ -53,18 +53,7 @@ function Overview(props) {
   // console.log(stock);
 
 
-<<<<<<< HEAD
-  render() {
-    return (
-      <div>
-        {/* <div><imageGallery/></div>
-        <div><productInformation/></div>
-        <div><styleSelector/></div>
-        <div><addToCart/></div> */}
-      </div>
-    );
-  }
-=======
+
   return (
     <section id='Overview' style={{ backgroundColor: 'AliceBlue', width: '1440px', margin: '0 auto' }}>
       <ImageGallery product={props.product} styleIdx={styleIdx} setStyleIdx={setStyleIdx} imageIdx={imageIdx} setImageIdx={setImageIdx} chosenStyle={chosenStyle}/>
@@ -76,7 +65,6 @@ function Overview(props) {
       <ProductDescription product={props.product}/>
     </section>
   );
->>>>>>> main
 }
 
 export default Overview;
