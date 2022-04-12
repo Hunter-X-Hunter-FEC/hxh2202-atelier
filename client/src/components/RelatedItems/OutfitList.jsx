@@ -29,7 +29,7 @@ function OutfitList({selected}) {
 
 
   var AddFavoritesHandler = (selected) => {
-    // console.log('selected',selected);
+    console.log('selected',selected);
     // console.log('testing favorite', favorites);
     // console.log("addFavHandler", favorites.includes(selected));
     const favoriteList = favorites.map(each=>each.id);

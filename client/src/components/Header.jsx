@@ -3,6 +3,7 @@ import Logo from '../assets/Logo.png';
 import {AiOutlineShoppingCart} from 'react-icons/ai';
 import styled from 'styled-components';
 import {CgDarkMode} from 'react-icons/cg';
+import {Link} from "react-router-dom";
 
 const Container = styled.div`
 width: 100%;
@@ -17,10 +18,13 @@ const Image = styled.img`
 opacity: 0.5;
 max-width:100%;
 height:auto;
+flex-basis: 30%;
 `
 
 const Product = styled.span`
+margin-bottom: 30px;
 font-size: 50px;
+flex-basis: 50%
 `
 
 
@@ -28,9 +32,11 @@ function Header({themeToggler, showAll}) {
   return (
     <Container>
       <Image src={Logo} alt=""/>
-      <Product onClick = {()=>showAll()}> Products </Product>
-      <AiOutlineShoppingCart size={80}/>
-      <CgDarkMode onClick={themeToggler} size={80}/>
+      <Product>
+        <Link to='/'>Products</Link>
+      </Product>
+      <Link to='products/checkout'><AiOutlineShoppingCart  size={50}/></Link>
+      <CgDarkMode onClick={themeToggler} size={50}/>
     </Container>
   )
 }

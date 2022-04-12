@@ -5,7 +5,7 @@ import {AiOutlineArrowRight} from 'react-icons/ai';
 import {BsSearch} from 'react-icons/bs';
 // import styled from 'styled-components';
 import {ProductContainer, Card, ProductImage, CompareWrapper, ProductCategory,ProductName, ProductPrice} from './styles/productCard.styled.js';
-import Logo from './../../assets/Logo.png';
+import Logo from '../../assets/Logo.png';
 import Comparison from './Comparison.jsx';
 
 

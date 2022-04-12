@@ -12,6 +12,7 @@ flex-direction: row;
 export const Title = styled.h3`
 // background-color: yellow;
 font-size: 30px;
+margin: 0px;
 `
 export const Inner = styled.div`
 display: flex;
@@ -26,6 +27,7 @@ export const btnWrapper = styled.div`
 display: flex;
 width:2%;
 flex:1
+margin: 0px;
 // background-color: transparent;
 postion:relative;
 justify-content: center;
@@ -40,10 +42,10 @@ width: 50px;
 height: 50px;
 flex-basis:100%;
 background-color: transparent;
-position: absolute;
+position: relative;
 border:none;
-top: 15%;
-left: -1%;
+top: 35%;
+left: 0;
 display: ${props=>props.display}
 `
 
@@ -52,10 +54,10 @@ width: 50px;
 height: 50px;
 flex-basis:100%;
 background-color: transparent;
-position: absolute;
+position: relative;
 border:none;
-top: 15%;
-right:-1$;
+top: 35%;
+right:0;
 display: ${props=>props.display}
 `
 
