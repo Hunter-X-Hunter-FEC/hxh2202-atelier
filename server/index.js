@@ -4,7 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-let PORT = process.env.PORT || 3005;
+let PORT = process.env.PORT;
 const axios = require('axios');
 
 let app = express();
@@ -28,6 +28,7 @@ if (!process.env.REACT_APP_API_KEY) {
 */
 
 // This is the '/product' call, for all products, likely to be used in the catalog page.
+
 app.get('/products', (req, res) => {
   // console.log('server is working', process.env.REACT_APP_API_KEY);
   let options = {
@@ -110,24 +111,24 @@ app.get('/products/:product_id/related', (req, res) => {
 
 // This is the call for the reviews of a specific item, to be used in the reviews section
 app.get('/reviews', (req, res) => {
+  // console.log('req.params', req.params);
 
   let options = {
     method: 'GET',
+    // url: `https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/${req.params}`,
     url: apiURL + req.url,
     headers: {
       'Authorization': `${process.env.REACT_APP_API_KEY}`
-    },
-    params: {
-      page: 1,
-      // count: 10,
-      product_id: 65631
     }
+    // params: req.params
   };
-
+  console.log('options.url: ', options.url);
+  // console.log('req.params: ', req.params);
   axios(options)
-    .then((result) => {
-      res.send(result.data);
-    });
+  .then((result) => {
+    // console.log(result.data);
+    res.send(result.data);
+  }).catch(err => console.error(err));
 
 });
 
@@ -139,15 +140,15 @@ app.get('/reviews/meta', (req, res) => {
     headers: {
       'Authorization': `${process.env.REACT_APP_API_KEY}`
     },
-    params: {
-      product_id: 65632
-    }
+    // params: req.params
   };
 
+  console.log('options.url: ', options.url);
   axios(options)
-    .then((result) => {
-      res.send(result.data);
-    });
+  .then((result) => {
+    console.log(result.data);
+    res.send(result.data);
+  }).catch(err => console.error(err));
 
 });
 

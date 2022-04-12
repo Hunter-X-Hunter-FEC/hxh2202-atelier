@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+import React from "react";
+// import addToCart from './addToCart.jsx';
+// import imageGallery from './imageGallery.jsx';
+// import productInformation from './productInformation.jsx';
+=======
 /*
 Hunter-X-Hunter FEC
 Daniel Esquivel-Reynoso, Dora Xia, Bogdan Gordin
@@ -18,6 +24,7 @@ import AddToCart from './addToCart.jsx';
 import ProductDescription from './productDescription.jsx';
 // import { changeOverviewStars } from '../Overview/averageReview.jsx';
 import Request from '../Request.js';
+>>>>>>> main
 
 
 
@@ -53,6 +60,18 @@ function Overview(props) {
   // console.log(stock);
 
 
+<<<<<<< HEAD
+  render() {
+    return (
+      <div>
+        {/* <div><imageGallery/></div>
+        <div><productInformation/></div>
+        <div><styleSelector/></div>
+        <div><addToCart/></div> */}
+      </div>
+    );
+  }
+=======
   return (
     <section id='Overview' style={{ backgroundColor: 'AliceBlue', width: '1440px', margin: '0 auto' }}>
       <ImageGallery product={props.product} styleIdx={styleIdx} setStyleIdx={setStyleIdx} imageIdx={imageIdx} setImageIdx={setImageIdx} chosenStyle={chosenStyle}/>
@@ -64,6 +83,7 @@ function Overview(props) {
       <ProductDescription product={props.product}/>
     </section>
   );
+>>>>>>> main
 }
 
 export default Overview;

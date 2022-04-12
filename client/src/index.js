@@ -13,12 +13,13 @@ import {lightTheme, darkTheme, GlobalStyles} from './assets/themes.js';
 import {getProducts, getProductDetails, getProductStyles} from './components/Request.js';
 import Catalog from './components/Catalog/Catalog.jsx';
 import RelatedItems from './components/RelatedItems/RelatedItems.jsx';
-import RatingsAndReviews from './components/Ratings/RatingsAndReviews.jsx';
 import {AiOutlineShoppingCart} from 'react-icons/ai';
 // import Overview from './components/Overview/Overview.jsx';
 import 'regenerator-runtime/runtime'
 const request = require('./components/Request.js');
 import Overview from './components/Overview/Overview.jsx';
+import RatingsAndReviews from './components/RatingsAndReviews/RatingsAndReviews.jsx';
+import Modal from './components/RatingsAndReviews/Modal.jsx';
 import {BrowserRouter, Routes, Link, Route} from "react-router-dom";
 
 function App(){
@@ -27,6 +28,7 @@ function App(){
   const [view, setView] = useState('catalog');
   const [allProducts, setAllProduct] = useState([]);
   const [selected, setSelected] = useState({});
+  const [showModal, setShowModal] = useState(false);
 
   /*
   the communication between RatingsAndReviews and Overview so that the stars
@@ -45,7 +47,7 @@ function App(){
     // console.log('Catalog useEffect is working')
     const fectchData = async() =>{
       const allProducts = await request.getProducts();
-      // console.log('allProducts', allProducts);
+      console.log('allProducts', allProducts);
       const detailsRes = await Promise.all(allProducts.data.map(each=>request.getProductDetails(each.id)));
       const stylesRes = await Promise.all(allProducts.data.map(each=>request.getProductStyles(each.id)));
       const details = detailsRes.map(each=>each.data);
@@ -97,19 +99,22 @@ function App(){
     // navigate(`/product/${product.id}`);
   }
 
-  // console.log('allProduct', allProducts);
+  console.log('allProduct', allProducts);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
+
+
+        {(view === 'details') && <RatingsAndReviews product={selected} setShowModal={setShowModal} showModal={showModal}/> }
           <BrowserRouter>
             <nav>
               <Header showAll={setAllProducts} themeToggler={themeToggler} />
             </nav>
             <Routes>
               <Route path='/' element={<Catalog Catalog selector={selectProduct} allProducts={allProducts}/>}/>
-              <Route path='/product/:productId' element ={<> <Overview product={selected}/> <RelatedItems selected={selected}/> <RatingsAndReviews selected={selected} /></>}/>
+              <Route path='/product/:productId' element ={<> <Overview product={selected}/> <RelatedItems selected={selected}/> <RatingsAndReviews selected={selected} setShowModal={setShowModal} showModal={showModal}/> {showModal && <Modal setShowModal={setShowModal} product={selected}/>}</>}/>
               {/* <Route path='/checkout' element={<Checkout/>} /> */}
 
               {/* {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}

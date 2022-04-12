@@ -12,7 +12,7 @@ gap:10px;
 `
 
 const Catalog = ({selector, allProducts})=>{
-	// console.log('allProducts in catalog', allProducts);
+	console.log('allProducts in catalog', allProducts);
 
   return (
 		<Container>
