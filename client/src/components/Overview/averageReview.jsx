@@ -12,25 +12,21 @@ import styled from "styled-components";
 
 
 
-function AverageReview() {
+function AverageReview(props) {
 
-  var [starsIdx, setStarsIdx] = useState(0);
+  var index = props.starsIndex || 0;
 
   var clickedViewAll = function (e) {
     e.preventDefault();
     console.log('scroll to reviews')
   }
 
-  var changeOverviewStars = function (avgRev) {
-    // e.preventDefault();
-    var idx = Math.floor((avgRev*2));
-    setStarsIdx(idx);
-  }
+
 
   return (
     <section style={AverageReviewStyle} id='AverageReview'>
 
-      <img style={{ width: '100px',  height: '19px'}} alt="stars/stars" src={starsArr[starsIdx]} />
+      <img style={{ width: '100px',  height: '19px'}} alt="stars/stars" src={starsArr[index]} />
       <Button onClick={(e) => {clickedViewAll(e);} } >Read all reviews</Button>
 
     </section>

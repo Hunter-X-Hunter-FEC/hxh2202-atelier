@@ -11,40 +11,41 @@ the currently selected style list needs to have an underline indicator that it's
 fullscreen button needs to be an animated CSS change???
 */
 
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState, useReducer, useEffect, forwardRef, useImperativeHandle } from "react";
 import { render } from "react-dom";
 import styled from "styled-components";
+import StyleSelector from './styleSelector.jsx';
 
 
 
 function ImageGallery(props) {
 
-  var [styleIdx, setStyleIdx] = useState(0);
-  var [imageIdx, setImageIdx] = useState(0);
+  // var [props.styleIdx, setStyleIdx] = useState(0);
+  // var [imageIdx, setImageIdx] = useState(0);
   var [fullscreen, setFullscreen] = useState(false);
 
-  var chosenStyle = function (e) {
-    e.preventDefault();
-    console.log('clicked a style list');
+  // var chosenStyle = function (e) {
+  //   e.preventDefault();
+  //   console.log('clicked a style list');
 
-    if (images[e.target.dataset.value] === undefined) {
-      setImageIdx(0);
-      setStyleIdx(0);
-    } else if (styleIdx === parseInt(e.target.dataset.value)) {
-      return 0;
-    } else {
-      setImageIdx(0);
-      setStyleIdx(parseInt(e.target.dataset.value));
-    }
-  }
+  //   if (images[e.target.dataset.value] === undefined) {
+  //     props.setImageIdx(0);
+  //     props.setStyleIdx(0);
+  //   } else if (props.styleIdx === parseInt(e.target.dataset.value)) {
+  //     return 0;
+  //   } else {
+  //     props.setImageIdx(0);
+  //     props.setStyleIdx(parseInt(e.target.dataset.value));
+  //   }
+  // }
 
   var cycleImage = function (e, str) { // str is a type of cycleImage thats either back arrow or next arrow
     e.preventDefault();
 
     if (str === 'next') {
-      imageIdx === images[styleIdx].length - 1 ? setImageIdx(0) : setImageIdx(imageIdx + 1);
+      props.imageIdx === images[props.styleIdx].length - 1 ? props.setImageIdx(0) : props.setImageIdx(props.imageIdx + 1);
     } else if (str === 'back') {
-      imageIdx === 0 ? setImageIdx(images[styleIdx].length - 1) : setImageIdx(imageIdx - 1);
+      props.imageIdx === 0 ? props.setImageIdx(images[props.styleIdx].length - 1) : props.setImageIdx(props.imageIdx - 1);
     }
   }
 
@@ -56,7 +57,7 @@ function ImageGallery(props) {
       imageFullscreen = {
         width: '100%',
         height: 560,
-        objectFit: 'center',
+        objectFit: 'cover',
         textAlign: 'center',
         padding: '10px',
       };
@@ -74,18 +75,18 @@ function ImageGallery(props) {
   return (
     <section id='ImageGallery' style={{ width: 'fit-content' }}>
 
-      <img id='image' style={imageFullscreen} alt="current image" src={images[styleIdx][imageIdx]} />
+      <img id='image' style={imageFullscreen} alt="current image" src={images[props.styleIdx][props.imageIdx]} />
 
-      <section style={{ width: 'fit-content' }} id='ImageGalleryButtions'>
+      <section style={ImageGalleryButtonsFullscreen} id='ImageGalleryButtons'>
         <button style={arrowButton} onClick={(e) => { cycleImage(e, 'back'); }}><span>&#8592;</span></button>
         <button style={arrowButton} onClick={(e) => { cycleImage(e, 'next'); }}><span>&#8594;</span></button>
         <button style={fullscreenButton} onClick={(e) => { clickedFullScreen(e); }}><span>&#9744;</span></button>
       </section>
 
-      <section style = {{ width: 'fit-content' }} id='StyleListScroll'>
+      <section style={StyleListScrollFullscreen} id='StyleListScroll'>
         <span style={arrowButton}>&#8593;</span>
         <StyleListScroll >{props.product.style.map((st, idx) =>
-          <StyleListButton id={`S${idx + 1}`} data-value={idx} onClick={(e) => { chosenStyle(e); }}>S{idx + 1}</StyleListButton>)}
+          <StyleListButton id={`S${idx + 1}`} data-value={idx} onClick={(e) => { props.chosenStyle(e); }}>S{idx + 1}</StyleListButton>)}
         </StyleListScroll>
         <span style={arrowButton}>&#8595;</span>
       </section>
@@ -95,6 +96,7 @@ function ImageGallery(props) {
 };
 
 export default ImageGallery;
+// module.exports.ImageGallery = ImageGallery;
 
 
 // var Gallery = styled.img`
@@ -115,6 +117,14 @@ var imageFullscreen = { // initial #image css but then changes depending if clic
   objectFit: 'none',
   textAlign: 'center',
   padding: '10px',
+};
+
+var ImageGalleryButtonsFullscreen = {
+  width: 'fit-content'
+};
+
+var StyleListScrollFullscreen = {
+  width: 'fit-content'
 };
 
 var StyleListScroll = styled.div`
@@ -192,6 +202,11 @@ var images = [ // images sample, but incase of the actual product this would be 
   ['./public/food1.jpg', './public/food2.jpg', './public/food3.jpg'],
   ['./public/sport1.jpg', './public/sport2.jpg', './public/sport3.jpg']
 ];
+
+// <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+// </div>
+
+
 
 
   // useEffect(() => {
