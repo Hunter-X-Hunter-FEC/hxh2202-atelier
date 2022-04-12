@@ -14,7 +14,7 @@ import styled from "styled-components";
 
 function AverageReview(props) {
 
-  var index = props.starsIndex || 0;
+  var index = props.avgRating || 0;
 
   var clickedViewAll = function (e) {
     e.preventDefault();
