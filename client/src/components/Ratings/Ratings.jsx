@@ -4,8 +4,6 @@ import HeaderRating from './HeaderRating.jsx';
 import styled from 'styled-components';
 import Distribution from './Distribution.jsx';
 const request = require('../Request.js');
-// import a from '../common/oneReview.js';
-// import averageRating from '../common/oneMeta.js'  // = module.exports = averageRating
 
 const StyledHeaderRating = styled.div`
   padding: 0.5em;
@@ -37,20 +35,19 @@ const StyledProductBreakdown = styled.div`
 
 
 const Ratings = (props) => {
-  const [meta, setRatings] = useState({});
+  const [meta, setRatings] = useState();
 
   useEffect(() => {
     const fetchMetaData = async() => {
       console.log('inside of Ratings.jsx, props.product.id: ', props.product.id)
       const meta = await request.getMetaReviews(props.product.id);
-      const metasRatings = await Promise.all([meta.data.ratings]);
+      const metasRatings = meta.data.ratings;
       console.log('meta: ', meta);
       console.log('metasRatings: ', metasRatings);
       setRatings(metasRatings);
     }
 
     fetchMetaData();
-
 
   }, [])
 
@@ -63,13 +60,13 @@ const Ratings = (props) => {
   return (
     <>
       <StyledHeaderRating>
-        <HeaderRating distribution={meta[0]}/>
+        <HeaderRating distribution={meta}/>
       </StyledHeaderRating>
       <StyledDistrubution>
-        <Distribution distribution={meta[0]}/>
+        <Distribution distribution={meta}/>
       </StyledDistrubution>
       <StyledProductBreakdown>
-        <ProductBreakdown />
+        <ProductBreakdown breakdown={meta}/>
       </StyledProductBreakdown>
     </>
   )

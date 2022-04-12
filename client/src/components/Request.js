@@ -26,10 +26,12 @@ const getRelatedProducts = (id)=>{
   }});
 };
 
-const getReviews = (id)=>{
+const getReviews = (id, reviewPageNumber = 1)=>{
   var obj = {
     params: {
-      product_id: id
+      product_id: id,
+      count: 10,
+      page: reviewPageNumber
     }
   }
   console.log('obj.params.product_id inside of getReviews: ', obj.params.product_id);

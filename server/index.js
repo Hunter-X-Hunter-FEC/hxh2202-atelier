@@ -123,9 +123,9 @@ app.get('/reviews', (req, res) => {
   // console.log('req.params: ', req.params);
   axios(options)
   .then((result) => {
-    console.log(result.data);
+    // console.log(result.data);
     res.send(result.data);
-  });
+  }).catch(err => console.error(err));
 
 })
 
@@ -145,7 +145,7 @@ app.get('/reviews/meta', (req, res) => {
   .then((result) => {
     console.log(result.data);
     res.send(result.data);
-  });
+  }).catch(err => console.error(err));
 
 })
 

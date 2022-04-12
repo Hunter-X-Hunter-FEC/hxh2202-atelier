@@ -16,6 +16,7 @@ import 'regenerator-runtime/runtime'
 const request = require('./components/Request.js');
 import Overview from './components/Overview/Overview.jsx';
 import RatingsAndReviews from './components/RatingsAndReviews/RatingsAndReviews.jsx';
+import Modal from './components/RatingsAndReviews/Modal.jsx';
 
 function App(){
 
@@ -23,6 +24,7 @@ function App(){
   const [view, setView] = useState('catalog');
   const [allProducts, setAllProduct] = useState([]);
   const [selected, setSelected] = useState({});
+  const [showModal, setShowModal] = useState(false);
 
   // useEffect(()=>{
   //   // console.log('localStorage Effect is working')
@@ -91,9 +93,9 @@ function App(){
       <>
         <GlobalStyles />
         <Header showAll={setAllProducts} themeToggler={themeToggler} />
+        {showModal && <Modal setShowModal={setShowModal} product={selected}/>}
         {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
-        {(view === 'details') && <RatingsAndReviews product={selected}/> }
-
+        {(view === 'details') && <RatingsAndReviews product={selected} setShowModal={setShowModal} showModal={showModal}/> }
       </>
     </ThemeProvider>
   );

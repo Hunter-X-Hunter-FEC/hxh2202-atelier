@@ -2,18 +2,11 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Stars from './Stars.jsx';
 import Ratings from './Ratings.jsx';
+
 // import { averageRating, ones } from './oneMeta.js';
 
-const HeaderRating = ({ distribution }) => {
-
-  console.log('props inside of header rating: ', distribution);
-
-  const [avgRatingData, setAvgRatingData] = useState({ data:[], avgRating: 0 })
-
-  useEffect(() => {
-
-
-    const data = {};
+var ratingAverage = (distribution) => {
+  const data = {};
     let total = 0;
     let weightedSum = 0;
 
@@ -25,17 +18,26 @@ const HeaderRating = ({ distribution }) => {
     }
     let avgRating = weightedSum / total;
     console.log('avgRating: ', avgRating);
-    let avgRatingRounded = parseInt((Math.round(avgRating * 4)/4).toFixed(2));
-    console.log('avgRatingRounded: ', avgRatingRounded);
+    // let avgRatingRounded = (Math.round(avgRating * 4)/4);
+    // console.log('avgRatingRounded: ', avgRatingRounded);
 
-    setAvgRatingData({ data, avgRating });
-  }, [distribution])
+    return avgRating;
+}
 
+const HeaderRating = ({ distribution, setStarsIndex }) => {
+
+  console.log('props inside of header rating: ', distribution);
+  const average = ratingAverage(distribution);
+  const averageRounded = Math.round(average * 100) / 100
+  console.log('averageRounded: ', averageRounded);
+  // useEffect(() => {
+  //   setStarsIndex(average);
+  // })
   return (
     <>
       <div className="HeaderRating"> Header Rating Component Here </div>
-      <div>Overall Rating: 4</div>
-      <Stars rating={avgRatingData.avgRating} isReadOnly onClick={(rating) => console.log('The rating', rating)}/>
+      <div>Overall Rating: {averageRounded}</div>
+      <Stars rating={averageRounded} isReadOnly onClick={(rating) => console.log('The rating', rating)}/>
     </>
   )
 }
