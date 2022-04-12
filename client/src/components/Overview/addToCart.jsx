@@ -30,7 +30,7 @@ class addtoCart extends React.Component {
             <input type="text" value={this.state.value} onChange={this.handleChange} />
           <input type="submit" value="Add to Cart" />
         </form>
-        <button onClick={}> Favorite </button>    //need to add handler here
+        <button> Favorite </button>    //need to add handler here
       </div>
     );
   }

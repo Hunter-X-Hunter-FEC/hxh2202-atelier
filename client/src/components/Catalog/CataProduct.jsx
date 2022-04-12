@@ -3,6 +3,8 @@ import Star from './Star.jsx';
 import {AiOutlineArrowRight} from 'react-icons/ai';
 import styled from 'styled-components';
 import Logo from '../../assets/Logo.png';
+import {useParams, useNavigate} from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 
 const ProductContainer = styled.div`
@@ -48,9 +50,10 @@ padding-top:5px;
 
 
 function CataProduct ({selector, card}) {
+	let navigate = useNavigate();
 	console.log('Catalog' , card.style[0].photos[0].url);
 	return (
-		<ProductContainer onClick = {()=>selector(card)}>
+		<ProductContainer onClick = {()=>{selector(card), navigate(`/product/${card.id}`)}}>
 			<productWrapper>
 				<ProductImage src={card.style[0] ? card.style[0].photos[0].url : Logo}/>
 				<ProductCategory>

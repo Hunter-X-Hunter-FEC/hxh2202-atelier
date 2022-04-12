@@ -40,6 +40,9 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    historyApiFallback: true
+  },
   stats: {
     // Configure the console output
     errorDetails: true, //this does show errors
