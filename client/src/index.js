@@ -18,6 +18,7 @@ import {AiOutlineShoppingCart} from 'react-icons/ai';
 // import Overview from './components/Overview/Overview.jsx';
 import 'regenerator-runtime/runtime'
 const request = require('./components/Request.js');
+import Overview from './components/Overview/Overview.jsx';
 import {BrowserRouter, Routes, Link, Route} from "react-router-dom";
 
 function App(){
@@ -27,6 +28,13 @@ function App(){
   const [allProducts, setAllProduct] = useState([]);
   const [selected, setSelected] = useState({});
 
+  /*
+  the communication between RatingsAndReviews and Overview so that the stars
+  in Overview will be the same as in RatingsAndReviews, Overview reads the
+  avgRating through props and RatingsAndReviews invokes setAvgRating also
+  through props
+  */
+  var [avgRating, setAvgRating] = useState(0);
 
   // useEffect(()=>{
   //   // console.log('localStorage Effect is working')
@@ -101,7 +109,7 @@ function App(){
             </nav>
             <Routes>
               <Route path='/' element={<Catalog Catalog selector={selectProduct} allProducts={allProducts}/>}/>
-              <Route path='/product/:productId' element ={<><RelatedItems selected={selected}/> <RatingsAndReviews selected={selected} /></>}/>
+              <Route path='/product/:productId' element ={<> <Overview product={selected}/> <RelatedItems selected={selected}/> <RatingsAndReviews selected={selected} /></>}/>
               {/* <Route path='/checkout' element={<Checkout/>} /> */}
 
               {/* {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
