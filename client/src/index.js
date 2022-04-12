@@ -114,8 +114,7 @@ function App(){
             </nav>
             <Routes>
               <Route path='/' element={<Catalog Catalog selector={selectProduct} allProducts={allProducts}/>}/>
-              {/* <Route path='/product/:productId' element ={<> <Overview product={selected}/> <RelatedItems selected={selected}/> <RatingsAndReviews selected={selected} setShowModal={setShowModal} showModal={showModal}/> {showModal && <Modal setShowModal={setShowModal} product={selected}/>}</>}/> */}
-              <Route path='/product/:productId' element ={<> <Overview product={selected}/> </>}/>
+              <Route path='/product/:productId' element ={<> <Overview product={selected}/> <RelatedItems selected={selected}/> <RatingsAndReviews selected={selected} setShowModal={setShowModal} showModal={showModal}/> {showModal && <Modal setShowModal={setShowModal} product={selected}/>}</>}/>
               {/* <Route path='/checkout' element={<Checkout/>} /> */}
 
               {/* {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
