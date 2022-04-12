@@ -54,7 +54,7 @@ function Overview(props) {
 
 
   return (
-    <section id='Overview' style={{ backgroundColor: 'AliceBlue' }}>
+    <section id='Overview' style={{ backgroundColor: 'AliceBlue', width: '1440px', margin: '0 auto' }}>
       <ImageGallery product={props.product} styleIdx={styleIdx} setStyleIdx={setStyleIdx} imageIdx={imageIdx} setImageIdx={setImageIdx} chosenStyle={chosenStyle}/>
       <AverageReview starsIndex={props.starsIndex}/>
       <ProductInfo product={props.product} />

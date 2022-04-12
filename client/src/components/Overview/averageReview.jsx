@@ -39,7 +39,7 @@ export default AverageReview;
 
 var Button = styled.button`
 width: 123;
-display: flex;
+// display: flex;
 text-align: center;
 background-color: transparent;
 border: transparent;
@@ -51,13 +51,14 @@ border: transparent;
 
 var AverageReviewStyle = {
   width: 400,
-  // display: 'inline-block',
-  display: 'flex',
-  // textAlign: 'center',
+  // display: 'flex',
+  float: 'left',
+  display: 'inline',
   borderRadius: '10px',
   backgroundColor: 'white',
   border: 'solid black',
-  padding: '10px'
+  padding: '10px',
+  marginLeft: '110px',
 };
 
 var starsArr = [

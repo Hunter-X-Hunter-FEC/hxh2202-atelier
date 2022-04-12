@@ -40,9 +40,12 @@ export default StyleSelector;
 var StyleSelectorStyle = {
   width: 400,
   borderRadius: '10px',
+  float: 'left',
+  display: 'inline',
   backgroundColor: 'white',
   border: 'solid black',
   padding: '10px',
+  marginLeft: '110px',
 };
 
 var StyleCont = styled.div`
@@ -52,8 +55,9 @@ var StyleCont = styled.div`
   background-color: white;
   border: solid black;
   padding: 5px;
+  margin: 10px;
   width: 35;
-  height: 35
+  height: 35;
 `;
 
 

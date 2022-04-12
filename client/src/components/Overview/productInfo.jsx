@@ -45,9 +45,13 @@ export default ProductInfo;
 var ProductInfoStyle = {
   width: 400,
   borderRadius: '10px',
+  float: 'left',
+  display: 'inline',
+  position: 'relative',
   backgroundColor: 'white',
   border: 'solid black',
   padding: '10px',
+  marginLeft: '110px',
 };
 
 // var [myProps, setMyProps] = useState({});

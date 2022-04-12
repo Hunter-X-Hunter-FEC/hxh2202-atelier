@@ -100,8 +100,8 @@ function App(){
         <GlobalStyles />
         <Header showAll={setAllProducts} themeToggler={themeToggler} />
         {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
-        {(view ==="details") && <RelatedItems selProduct={selected}/>}
-        {/* {(view ==="details") && <Overview product={selected} avgRating={avgRating}/>} */}
+        {/* {(view ==="details") && <RelatedItems selProduct={selected}/>} */}
+        {(view ==="details") && <Overview product={selected} avgRating={avgRating}/>}
       </>
     </ThemeProvider>
   );

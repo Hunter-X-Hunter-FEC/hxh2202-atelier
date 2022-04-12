@@ -34,18 +34,23 @@ export default Share;
 
 
 var ShareStyle = {
-  display: 'flex',
+  // display: 'flex',
   width: 400,
+  float: 'left',
+  display: 'inline',
   textAlign: 'center',
   borderRadius: '10px',
   backgroundColor: 'white',
   border: 'solid black',
   padding: '10px',
+  marginLeft: '110px',
 };
 
 var FacebookLink = styled.span`
   display: in-line-block;
   width: 85;
+  padding: 10px;
+  margin: 10px;
   &:hover {
     color: Blue;
     font-weight: bold;
@@ -55,6 +60,8 @@ var FacebookLink = styled.span`
 var TwitterLink = styled.span`
   display: in-line-block;
   width: 62;
+  padding: 10px;
+  margin: 10px;
   &:hover {
     color: Blue;
     font-weight: bold;
@@ -64,6 +71,8 @@ var TwitterLink = styled.span`
 var PinterestLink = styled.span`
   display: in-line-block;
   width: 73;
+  padding: 10px;
+  margin: 10px;
   &:hover {
     color: Blue;
     font-weight: bold;

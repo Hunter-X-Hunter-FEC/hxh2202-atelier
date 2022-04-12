@@ -54,6 +54,7 @@ function ImageGallery(props) {
     fullscreen === false ? setFullscreen(true) : setFullscreen(false);
 
     if (fullscreen) {
+
       imageFullscreen = {
         width: '100%',
         height: 560,
@@ -61,7 +62,15 @@ function ImageGallery(props) {
         textAlign: 'center',
         padding: '10px',
       };
+      document.getElementById('AverageReview').style.display = 'none';
+      document.getElementById('ProductInfo').style.display = 'none';
+      document.getElementById('Share').style.display = 'none';
+      document.getElementById('StyleSelector').style.display = 'none';
+      document.getElementById('AddToCart').style.display = 'none';
+
+
     } else {
+
       imageFullscreen = {
         width: 715,
         height: 560,
@@ -69,11 +78,16 @@ function ImageGallery(props) {
         textAlign: 'center',
         padding: '10px',
       };
+      document.getElementById('AverageReview').style.display = 'inline';
+      document.getElementById('ProductInfo').style.display = 'inline';
+      document.getElementById('Share').style.display = 'inline';
+      document.getElementById('StyleSelector').style.display = 'inline';
+      document.getElementById('AddToCart').style.display = 'inline';
     }
   }
 
   return (
-    <section id='ImageGallery' style={{ width: 'fit-content' }}>
+    <section id='ImageGallery' style={{ width: 'fit-content', float: 'left', display: 'inline', position: 'relative'}}>
 
       <img id='image' style={imageFullscreen} alt="current image" src={images[props.styleIdx][props.imageIdx]} />
 
@@ -120,11 +134,20 @@ var imageFullscreen = { // initial #image css but then changes depending if clic
 };
 
 var ImageGalleryButtonsFullscreen = {
-  width: 'fit-content'
+  width: 'fit-content',
+  width: 'fit-content',
+  position: 'absolute',
+  top: '15px',
+  right: '20px',
+  // left: '20px',
 };
 
 var StyleListScrollFullscreen = {
-  width: 'fit-content'
+  width: 'fit-content',
+  position: 'absolute',
+  top: '15px',
+  // right: '0px',
+  left: '20px',
 };
 
 var StyleListScroll = styled.div`

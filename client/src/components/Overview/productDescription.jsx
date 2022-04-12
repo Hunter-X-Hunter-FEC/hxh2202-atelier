@@ -30,12 +30,14 @@ export default ProductDescription;
 
 
 var ProductDescriptionStyle = {
-  width: 'auto',
-  display: 'flex',
+  width: '1440px',
+  // display: 'flex',
   borderRadius: '10px',
   backgroundColor: 'white',
   border: 'solid black',
   padding: '10px',
+  position: 'absolute',
+  top: 700,
 };
 
 var FtList = styled.li`

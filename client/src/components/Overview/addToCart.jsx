@@ -88,8 +88,11 @@ var AddToCartStyle = {
   width: 400,
   borderRadius: '10px',
   backgroundColor: 'white',
+  float: 'left',
+  display: 'inline',
   border: 'solid black',
   padding: '10px',
+  marginLeft: '110px',
 };
 
 var AddToBag = styled.button`
