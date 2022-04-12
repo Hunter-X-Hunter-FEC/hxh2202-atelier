@@ -4,11 +4,12 @@ import styled from 'styled-components';
 import Stars from '../Ratings/Stars.jsx'
 
 const ReviewContainer = styled.div`
-heights: 100vh;
-weights: auto;
+height: 100vh;
+weight: auto;
 flex: 1;
 border: solid black;
 font-family:sans-serif;
+// background-color: black;
 `
 const ReviewerName = styled.div`
 background-color: green;
