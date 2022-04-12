@@ -12,9 +12,13 @@ import styled, {ThemeProvider} from 'styled-components';
 import {lightTheme, darkTheme, GlobalStyles} from './assets/themes.js';
 import {getProducts, getProductDetails, getProductStyles} from './components/Request.js';
 import Catalog from './components/Catalog/Catalog.jsx';
-import RelatedItems from './components/RelatedItems/RelatedItems.jsx'
+import RelatedItems from './components/RelatedItems/RelatedItems.jsx';
+import RatingsAndReviews from './components/Ratings/RatingsAndReviews.jsx';
+import {AiOutlineShoppingCart} from 'react-icons/ai';
+// import Overview from './components/Overview/Overview.jsx';
 import 'regenerator-runtime/runtime'
 const request = require('./components/Request.js');
+import {BrowserRouter, Routes, Link, Route} from "react-router-dom";
 
 function App(){
 
@@ -22,6 +26,7 @@ function App(){
   const [view, setView] = useState('catalog');
   const [allProducts, setAllProduct] = useState([]);
   const [selected, setSelected] = useState({});
+
 
   // useEffect(()=>{
   //   // console.log('localStorage Effect is working')
@@ -74,13 +79,14 @@ function App(){
   const setAllProducts = ()=>{
     // console.log('all is triggering');
     setAllProduct(localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : allProducts)
-    setView('catalog')
+    // setView('catalog')
   }
 
   const selectProduct = (product)=> {
-    // console.log('select is triggering', product);
+    console.log('select is triggering', product);
     setSelected(product);
-    setView('details');
+    // setView('details')
+    // navigate(`/product/${product.id}`);
   }
 
   // console.log('allProduct', allProducts);
@@ -89,13 +95,26 @@ function App(){
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
-        <Header showAll={setAllProducts} themeToggler={themeToggler} />
-        {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
-        {(view ==="details") && <RelatedItems selProduct={selected}/>}
+          <BrowserRouter>
+            <nav>
+              <Header showAll={setAllProducts} themeToggler={themeToggler} />
+            </nav>
+            <Routes>
+              <Route path='/' element={<Catalog Catalog selector={selectProduct} allProducts={allProducts}/>}/>
+              <Route path='/product/:productId' element ={<><RelatedItems selected={selected}/> <RatingsAndReviews selected={selected} /></>}/>
+              {/* <Route path='/checkout' element={<Checkout/>} /> */}
+
+              {/* {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
+              {(view ==="details") && <RelatedItems selProduct={selected}/>} */}
+            </Routes>
+        </BrowserRouter>
       </>
     </ThemeProvider>
   );
 
 }
 
+
+
 ReactDOM.render(<App />, document.getElementById('atelier'));
+

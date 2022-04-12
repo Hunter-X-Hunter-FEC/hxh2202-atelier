@@ -7,18 +7,27 @@ height: 640px;
 position: relaive;
 `
 export const AddButton = styled.button`
-background-color: #FFFFFF;
-width: 25%;
-height:100%;
+// background-color: #FFFFFF;
+// width: 25%;
+// height:100%;
 // position:absolute;
 // top: 10px;
 // right: 10px
 // border: solid black;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-size: 16px;
-border-radius:15px;
+// text-align: center;
+// text-decoration: none;
+// display: inline-block;
+// font-size: 16px;
+// border-radius:15px;
+flex: 1;
+margin: 28px;
+padding-top:20px;
+// background-color:red;
+// border: solid black
+padding: 10px;
+// display:flex;
+// flex-direction:column;
+postition:relative;
 
 `
 

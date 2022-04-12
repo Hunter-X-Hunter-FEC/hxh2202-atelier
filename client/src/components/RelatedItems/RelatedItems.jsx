@@ -4,14 +4,20 @@ import ProductCard from './ProductCard.jsx';
 import request from '../Request.js';
 import OutfitList from './OutfitList.jsx';
 import 'regenerator-runtime/runtime';
+import {useParams, useNavigate} from "react-router-dom";
 import {Container, Seperator, ProductSection, FavoriteSection} from './styles/container.styled.js';
 
 
 import {useState, useEffect} from 'react';
 
-function RelatedItems({selProduct}) {
-  const[curProduct, setCurProduct] = useState(selProduct)
+function RelatedItems({selected}) {
+  console.log('relateed items selected', selected);
+  const {productId} = useParams();
+  console.log('productId', productId);
+  const[curProductID, setCurProductID] = useState(productId)
+  const[curProduct, setCurProduct] = useState(selected)
   const[relatedProducts, setProduct] = useState([])
+  let navigate = useNavigate();
 
   useEffect(()=>{
       setProduct(relatedProducts)
@@ -21,7 +27,7 @@ function RelatedItems({selProduct}) {
     console.log('useEffect is working')
     console.log('id', curProduct.id);
     const fectchData = async() =>{
-    const related = await request.getRelatedProducts(curProduct.id);
+    const related = await request.getRelatedProducts(productId);
     console.log('related', related);
     const detailsRes = await Promise.all(related.data.map(each=>request.getProductDetails(each)));
     const stylesRes = await Promise.all(related.data.map(each=>request.getProductStyles(each)));
@@ -48,7 +54,10 @@ function RelatedItems({selProduct}) {
   }, [curProduct])
 
   const handleProductClick = (newProduct)=>{
+    console.log('productClicking is working', newProduct);
     setCurProduct(newProduct);
+    setCurProductID(newProduct.id);
+    navigate(`/product/${newProduct.id}`);
   }
   console.log('after fetch', relatedProducts);
   return (
