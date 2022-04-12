@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-// import addToCart from './addToCart.jsx';
-// import imageGallery from './imageGallery.jsx';
-// import productInformation from './productInformation.jsx';
-=======
 /*
 Hunter-X-Hunter FEC
 Daniel Esquivel-Reynoso, Dora Xia, Bogdan Gordin
@@ -24,7 +18,6 @@ import AddToCart from './addToCart.jsx';
 import ProductDescription from './productDescription.jsx';
 // import { changeOverviewStars } from '../Overview/averageReview.jsx';
 import Request from '../Request.js';
->>>>>>> main
 
 
 
