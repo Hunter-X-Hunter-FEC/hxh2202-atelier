@@ -18,13 +18,10 @@ function AverageReview(props) {
 
   var clickedViewAll = function (e) {
     e.preventDefault();
-    console.log('scroll to reviews')
   }
 
-
-
   return (
-    <section style={AverageReviewStyle} id='AverageReview'>
+    <section id='AverageReview' style={AverageReviewStyle} >
 
       <img style={{ width: '100px',  height: '19px'}} alt="stars/stars" src={starsArr[index]} />
       <Button onClick={(e) => {clickedViewAll(e);} } >Read all reviews</Button>
@@ -38,11 +35,13 @@ export default AverageReview;
 
 
 var Button = styled.button`
-width: 123;
+// width: 123;
 // display: flex;
 text-align: center;
 background-color: transparent;
 border: transparent;
+margin-left: 10px;
+font-size: 16px;
 &:hover {
   color: blue;
   font-weight: bold;
@@ -54,11 +53,11 @@ var AverageReviewStyle = {
   // display: 'flex',
   float: 'left',
   display: 'inline',
-  borderRadius: '10px',
-  backgroundColor: 'white',
-  border: 'solid black',
+  // borderRadius: '10px',
+  // backgroundColor: 'white',
+  // border: 'solid black',
   padding: '10px',
-  marginLeft: '110px',
+  marginLeft: '90px',
 };
 
 var starsArr = [ // used to be ./public/star1.png before router, ./ meant inside of /dist
@@ -74,16 +73,3 @@ var starsArr = [ // used to be ./public/star1.png before router, ./ meant inside
   './../public/star9.png',
   './../public/star10.png',
 ]
-
-{/* <img style={imageFullscreen} alt="current image" src={images[styleIdx][imageIdx]}/> */}
-
-
-// var chosenStyle = function (e) {
-//   if (styleIdx === parseInt(e.target.dataset.value)) return 0;
-//   e.preventDefault();
-//   setImageIdx(0);
-//   setStyleIdx(parseInt(e.target.dataset.value)); // doesn't re-render whyyyyyyyy
-//   // forceUpdate(); // to reset the CSS for the style list
-//   // document.getElementById(e.target.id).style.borderBottom = "5px solid red";
-// }
-
