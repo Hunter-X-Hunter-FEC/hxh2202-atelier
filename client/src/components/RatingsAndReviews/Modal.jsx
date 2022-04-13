@@ -4,10 +4,11 @@ import { MdClose } from 'react-icons/md';
 import ReviewForm from './ReviewForm.jsx';
 
 const Background = styled.div`
+  top: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
-  position: fixed;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,11 +18,12 @@ const ModalWrapper = styled.div`
   width: 90%;
   height: 90%;
   background: #fff;
+  overflow: hidden;
   color: black;
   display: grid;
   grid-template-columns: 1fr;
-  position: fixed;
-  z-index: 9999;
+  position: absolute;
+  z-index: 10;
   border-radius: 10px
 `;
 
@@ -32,7 +34,7 @@ const ModalContent = styled.div`
   align-items: center;
   line-height: 1.8;
   color: #141414;
-
+  overflow: hidden
   p {
     margin-bottom: 1rem;
   }

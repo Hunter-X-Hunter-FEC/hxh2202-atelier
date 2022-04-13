@@ -5,24 +5,26 @@ import WriteReview from './WriteReview.jsx';
 import styled from 'styled-components';
 import App from '../../index.js';
 
-// const ReviewContainer = styled.div`
-//   heights: 100vh;
-//   weights: auto;
-//   flex: 1;
-//   border: solid black;
-//   font-family:sans-serif;
-//   `
+const RatingsAndReviewsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  font-family:sans-serif;
+  `
 
 // render each individual review "card"
 const RatingsAndReviews = (props) => {
 
   return (
     <>
-      <div><Ratings product={props.product}/></div>
-      <div>
-        <ReviewsList product={props.product}/>
-        <WriteReview product={props.product} showModal={props.showModal} setShowModal={props.setShowModal}/>
-      </div>
+      <RatingsAndReviewsContainer>
+        <div>
+          <Ratings product={props.product}/>
+        </div>
+        <div>
+          <ReviewsList product={props.product}/>
+          <WriteReview product={props.product} showModal={props.showModal} setShowModal={props.setShowModal}/>
+        </div>
+      </RatingsAndReviewsContainer>
     </>
   )
 };

@@ -3,12 +3,7 @@ import StarsRating from '../Ratings/StarsRating.jsx';
 import styled from 'styled-components';
 const request = require('../Request.js');
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`
+
 
 const ReviewForm = (props) => {
   const [formValues, setFormValues] = useState({
@@ -25,6 +20,10 @@ const ReviewForm = (props) => {
 
   const [characteristics, setCharacteristics] = useState({})
 
+  const changeHandler = (e) => {
+    setFormValues({...formValues, [e.target.name]: e.target.value})
+    console.log('changeHandler clicked!', e.target.name)
+  }
   // const buildCharacteristicForm = () => {
   //   for (let key in characteristics) {
   //     formValues.characteristics[key] = {}
@@ -52,11 +51,11 @@ const ReviewForm = (props) => {
       <div id="heading">
         <div>Write Your Review</div>
       </div>
-      <StarsRating rating={formValues.rating} isReadOnly={false} onClick={(rating) => { setFormValues({rating: rating})}}/>
+      <StarsRating rating={formValues.rating} isReadOnly={false} onClick={changeHandler}/>
       <span id="recommend-form">
         <div>Recommend: </div>
         <label htmlFor='radio-yes'>Yes: </label>
-        <input type="radio" id="radio-yes" name="recommend" className="rec radio" onClick={()=> setFormValues({recommended: true})}/>
+        <input type="radio" id="radio-yes" name="recommend" className="rec radio" onClick={changeHandler}/>
         <label htmlFor='radio-no'>No: </label>
         <input type="radio" id="radio-no" name="recommend" className="rec radio" onClick={()=> setFormValues({recommended: false})}/>
       </span>
@@ -68,7 +67,7 @@ const ReviewForm = (props) => {
       <div>
         <textarea id="body" type="text" name="body" placeholder="your review..." maxLength='1000' rows="4" onChange={e => setFormValues({body: e.target.value})}/>
       </div>
-      <Characteristic metaChars={characteristics}/>
+      <Characteristic metaChars={characteristics} changeHandler={changeHandler}/>
       <input id="submit" type="submit"/>
     </form>
   </div>
@@ -77,7 +76,7 @@ const ReviewForm = (props) => {
 
 export default ReviewForm;
 
-const Characteristic = ({ metaChars }) => {
+const Characteristic = ({ metaChars, changeHandler }) => {
   const chars = metaChars;
   const labels = {
     Size: [
@@ -124,9 +123,22 @@ const Characteristic = ({ metaChars }) => {
     ]
   };
 
-  return Object.keys(metaChars).map(char => (
-    <div className='characteristic' key={char}>
-      <p>{char}</p>
+  return Object.keys(metaChars).map(characteristic => (
+    <div className='characteristics' key={characteristic}>
+      <p>{characteristic}</p>
+      {
+        labels[characteristic].map((label, i) => (
+          <div className='labels' key={`${label}${i}`}>
+            <input id={`${label}${characteristic}`}
+              key={`${label}${characteristic}`}
+              type='radio' name={characteristic}
+              data-value={i + 1}
+              className='char-radio'
+              onChange={changeHandler}/>
+            <label htmlFor={label} key={`${characteristic}${label}`}>{label}</label>
+          </div>
+        ))
+      }
     </div>
   ));
 }

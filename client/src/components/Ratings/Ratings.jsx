@@ -6,30 +6,30 @@ import Distribution from './Distribution.jsx';
 const request = require('../Request.js');
 
 const StyledHeaderRating = styled.div`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: palevioletred;
-  background: papayawhip;
-  border: 1px solid black;
-  border-radius: 5px;
+  // padding: 0.5em;
+  // margin: 0.5em;
+  // color: palevioletred;
+  // background: papayawhip;
+  // border: 1px solid black;
+  // border-radius: 5px;
 `;
 
 const StyledDistrubution = styled.div`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: orange;
-  background: papayawhip;
-  border: 1px solid black;
-  border-radius: 5px;
+  // padding: 0.5em;
+  // margin: 0.5em;
+  // color: orange;
+  // background: papayawhip;
+  // border: 1px solid black;
+  // border-radius: 5px;
 `;
 
 const StyledProductBreakdown = styled.div`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: LightBlue;
-  background: papayawhip;
-  border: 1px solid black;
-  border-radius: 5px;
+  // padding: 0.5em;
+  // margin: 0.5em;
+  // color: LightBlue;
+  // background: papayawhip;
+  // border: 1px solid black;
+  // border-radius: 5px;
 `;
 
 
