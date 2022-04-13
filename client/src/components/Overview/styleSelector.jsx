@@ -16,10 +16,12 @@ import styled from "styled-components";
 
 function StyleSelector(props) {
 
+  // console.log(props.product);
+
 
   var chosenStyleCont = function (e) {
     e.preventDefault();
-    console.log('from the style container: ');
+    // console.log('from the style container: ');
     props.chosenStyle(e);
   }
 
@@ -27,7 +29,7 @@ function StyleSelector(props) {
 
   return (
     <section id='StyleSelector' style={StyleSelectorStyle}>{props.product.style.map((st, idx) =>
-      <StyleCont id={`S${idx + 1}`} data-value={idx} onClick={(e) => { chosenStyleCont(e); }}>S{idx + 1}</StyleCont>)}
+      <StyleCont backgroundImage={st.photos[0].thumbnail_url} id={`S${idx + 1}`} data-value={idx} onClick={(e) => { chosenStyleCont(e); }}>S{idx + 1}</StyleCont>)}
     </section>
   )
 };
@@ -39,26 +41,31 @@ export default StyleSelector;
 
 var StyleSelectorStyle = {
   width: 400,
-  borderRadius: '10px',
+  // borderRadius: '10px',
   float: 'left',
   display: 'inline',
-  backgroundColor: 'white',
-  border: 'solid black',
-  padding: '10px',
-  marginLeft: '110px',
+  // backgroundColor: 'white',
+  // border: 'solid black',
+  padding: '15px',
+  marginLeft: '90px',
 };
 
 var StyleCont = styled.div`
+  color: white;
   display: inline-block;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 45%;
   background-color: white;
   border: solid black;
-  padding: 5px;
-  margin: 10px;
-  width: 35;
-  height: 35;
+  padding: 7px;
+  margin: 7px;
+  width: 55;
+  height: 55;
+  background-image: url(${(props) => props.backgroundImage});
+  background-size: cover;
 `;
+
+// background-image: ${props => props.thumb}
 
 
 var images = [

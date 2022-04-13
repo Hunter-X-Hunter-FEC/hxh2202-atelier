@@ -35,7 +35,7 @@ function Overview(props) {
 
   var chosenStyle = function (e) {
     e.preventDefault();
-    console.log('clicked a style list');
+    // console.log('clicked a style list');
 
     if (images[e.target.dataset.value] === undefined) {
       setImageIdx(0);
@@ -54,7 +54,7 @@ function Overview(props) {
 
 
   return (
-    <section id='Overview' style={{ backgroundColor: 'AliceBlue', width: '1440px', margin: '0 auto' }}>
+    <section id='Overview' style={{ width: '1440px', margin: '0 auto', fontSize: '18px' }}>
       <ImageGallery product={props.product} styleIdx={styleIdx} setStyleIdx={setStyleIdx} imageIdx={imageIdx} setImageIdx={setImageIdx} chosenStyle={chosenStyle}/>
       <AverageReview starsIndex={props.starsIndex}/>
       <ProductInfo product={props.product} />

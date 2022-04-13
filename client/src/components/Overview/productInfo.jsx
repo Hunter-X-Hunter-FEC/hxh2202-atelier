@@ -19,9 +19,9 @@ function ProductInfo(props) {
 
   return (
     <section id='ProductInfo' style={ProductInfoStyle}>
-      <div>{props.product.category}</div>
-      <div>{props.product.name}</div>
-      <div>${props.product.default_price}</div>
+      <Category>{props.product.category}</Category>
+      <Name>{props.product.name}</Name>
+      <Price>${props.product.default_price}</Price>
     </section>
   )
 };
@@ -30,28 +30,33 @@ export default ProductInfo;
 
 
 
-// var Button = styled.button`
-// display: flex;
-// text-align: center;
-// background-color: transparent;
-// border: transparent;
-// &:hover {
-//   color: blue;
-//   font-weight: bold;
-// }
-// `;
+var Category = styled.div`
+text-transform: uppercase;
+padding: 3px;
+`;
+
+var Name = styled.div`
+font-size: 28px;
+padding: 3px;
+`;
+
+var Price = styled.div`
+text-transform: uppercase;
+font-size: 16px;
+padding: 9px;
+`;
 
 
 var ProductInfoStyle = {
   width: 400,
-  borderRadius: '10px',
+  // borderRadius: '10px',
   float: 'left',
   display: 'inline',
   position: 'relative',
-  backgroundColor: 'white',
-  border: 'solid black',
+  // backgroundColor: 'white',
+  // border: 'solid black',
   padding: '10px',
-  marginLeft: '110px',
+  marginLeft: '90px',
 };
 
 // var [myProps, setMyProps] = useState({});

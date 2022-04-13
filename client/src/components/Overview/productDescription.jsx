@@ -18,9 +18,9 @@ function ProductDescription(props) {
     <section id='ProductDescription' style={ProductDescriptionStyle}>
       <p>{props.product.slogan}</p>
       <p>{props.product.description}</p>
-        <ul>{props.product.features.map((ft) =>
-          <FtList ><span>{ft.feature}</span>{(ft.value !== null) && <span> {ft.value}</span>}</FtList>)}
-        </ul>
+      <ul>{props.product.features.map((ft) =>
+        <FtList ><span>{ft.feature}</span>{(ft.value !== null) && <span> {ft.value}</span>}</FtList>)}
+      </ul>
     </section>
   )
 };
@@ -32,9 +32,9 @@ export default ProductDescription;
 var ProductDescriptionStyle = {
   width: '1440px',
   // display: 'flex',
-  borderRadius: '10px',
-  backgroundColor: 'white',
-  border: 'solid black',
+  // borderRadius: '10px',
+  // backgroundColor: 'white',
+  // border: 'solid black',
   padding: '10px',
   position: 'absolute',
   top: 700,
@@ -45,10 +45,13 @@ list-style-type: "√ ";
 `;
 
 var Slogan = styled.p`
+font-size: 18px;
 `;
 
 var Description = styled.p`
 `;
+
+// style={{ float: 'left', display: 'inline' }}
 
 
 // <button style={arrowButton}><span>&#8593;</span></button>{[...Array(images.length).keys()].map((num) =>

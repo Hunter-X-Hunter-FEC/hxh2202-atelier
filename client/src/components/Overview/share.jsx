@@ -39,11 +39,11 @@ var ShareStyle = {
   float: 'left',
   display: 'inline',
   textAlign: 'center',
-  borderRadius: '10px',
-  backgroundColor: 'white',
-  border: 'solid black',
-  padding: '10px',
-  marginLeft: '110px',
+  // borderRadius: '10px',
+  // backgroundColor: 'white',
+  // border: 'solid black',
+  // padding: '10px',
+  marginLeft: '90px',
 };
 
 var FacebookLink = styled.span`

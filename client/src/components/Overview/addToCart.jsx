@@ -85,46 +85,54 @@ export default AddToCart;
 
 
 var AddToCartStyle = {
-  width: 400,
-  borderRadius: '10px',
-  backgroundColor: 'white',
+  width: 350,
+  // borderRadius: '10px',
+  // backgroundColor: 'white',
   float: 'left',
   display: 'inline',
-  border: 'solid black',
-  padding: '10px',
-  marginLeft: '110px',
+  // border: 'solid black',
+  padding: '15px',
+  marginLeft: '90px',
 };
 
 var AddToBag = styled.button`
   border-radius: 10px;
   background-color: white;
   border: solid black;
-  padding: 5px;
+  margin: 15px;
+  padding: 15px;
   width: fit-content;
+  font-size: 13px;
 `;
 
 var AddToFavorite = styled.button`
   border-radius: 10px;
   background-color: white;
   border: solid black;
-  padding: 5px;
+  margin: 15px;
+  padding: 15px;
   width: fit-content;
+  font-size: 18px;
 `;
 
 var SelectSize = styled.select`
   border-radius: 10px;
   background-color: white;
   border: solid black;
-  padding: 5px;
+  margin: 15px;
+  padding: 15px;
   width: fit-content;
+  font-size: 13px;
 `;
 
 var SelectQuantity = styled.select`
   border-radius: 10px;
   background-color: white;
   border: solid black;
-  padding: 5px;
+  margin: 15px;
+  padding: 15px;
   width: fit-content;
+  font-size: 13px;
 `;
 
 //  useEffect(() => {
