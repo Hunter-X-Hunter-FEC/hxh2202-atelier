@@ -24,7 +24,7 @@ function FavoriteEntry ({remove, favorite}) {
             <span>${favorite.style[0].original_price}</span>
           </ProductPrice>
           <div className="rating">
-              <Star />
+              <Star card={favorite}/>
           </div>
       </FavWrapper>
     </FavContainer>

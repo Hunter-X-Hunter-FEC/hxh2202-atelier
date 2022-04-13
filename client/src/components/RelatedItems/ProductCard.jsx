@@ -43,7 +43,7 @@ const ProductCard = ({curProduct, switchProduct, card})=>{
 					<span>${card.style[0].original_price}</span>
 				</ProductPrice>
 				<div className="rating">
-						<Star />
+						<Star card={card}/>
 				</div>
 				{showModal && <Comparison compare={compare} current={curProduct}/>}
 			</Card>
