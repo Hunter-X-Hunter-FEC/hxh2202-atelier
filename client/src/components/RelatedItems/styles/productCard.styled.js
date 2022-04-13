@@ -45,20 +45,26 @@ export const ProductCategory = styled.div`
 margin-top:5px;
 height:24px;
 margin-bottom:6px;
+text-align:center;
 // flex-basis:10%;
 `
 export const ProductName = styled.h4`
 margin-top:5px;
 height:24px;
 margin-bottom:6px;
+text-align:center;
 // flex-basis:10%
 `
 export const ProductPrice = styled.p`
 margin-top:5px;
 margin-bottom:10px;
+text-align:center;
 // flex-basis:10%;
 `
 export const ProductRating = styled.div`
+align-content: center;
+align-items:Center;
+text-align:center;
 margin-bottom: 2px;
 padding-top:5px;
 // flex-basis:10%;
