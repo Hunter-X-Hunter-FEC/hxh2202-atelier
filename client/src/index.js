@@ -21,7 +21,7 @@ const request = require('./components/Request.js');
 import Overview from './components/Overview/Overview.jsx';
 import RatingsAndReviews from './components/RatingsAndReviews/RatingsAndReviews.jsx';
 import Modal from './components/RatingsAndReviews/Modal.jsx';
-import {BrowserRouter, Routes, Link, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Link, Route, useParams} from "react-router-dom";
 
 function App(){
 
@@ -39,44 +39,27 @@ function App(){
   */
   var [avgRating, setAvgRating] = useState(0);
 
-  // useEffect(()=>{
-  //   // console.log('localStorage Effect is working')
-  //   setAllProduct(localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : allProducts)
-  // }, [])
 
   useEffect(()=>{
-    // console.log('Catalog useEffect is working')
     const fectchData = async() =>{
       const allProducts = await request.getProducts();
-      console.log('allProducts', allProducts);
+
       const detailsRes = await Promise.all(allProducts.data.map(each=>request.getProductDetails(each.id)));
       const stylesRes = await Promise.all(allProducts.data.map(each=>request.getProductStyles(each.id)));
       const details = detailsRes.map(each=>each.data);
       const styles = stylesRes.map(each=>each.data);
-      // console.log('details', details);
-      // console.log('styles', styles);
+
       for (let detail of details) {
-        // console.log('product', typeof(product.id));
         for (let style of styles) {
-          // console.log('--------style------', typeof(style.product_id));
           if (detail.id.toString() === style.product_id) {
-            // console.log('--------2------');
             detail['style'] = style.results;
           }
         }
       }
-      // console.log('consolidated', details);
-      // const Product = Object.assign(details, styles);
       setAllProduct(details);
     }
-    // if (!isCancelled){
-    //   fectchData();
-    // }
       fectchData();
 
-    // return ()=>{
-    //   isCancelled = true;
-    // }
   }, [])
 
   useEffect(()=>{
@@ -88,19 +71,18 @@ function App(){
   }
 
   const setAllProducts = ()=>{
-    // console.log('all is triggering');
+
     setAllProduct(localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : allProducts)
-    // setView('catalog')
+
   }
 
   const selectProduct = (product)=> {
-    console.log('select is triggering', product);
     setSelected(product);
-    // setView('details')
-    // navigate(`/product/${product.id}`);
+
   }
 
-  console.log('allProduct', allProducts);
+  let productId = useParams();
+
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -112,12 +94,8 @@ function App(){
               <Header showAll={setAllProducts} themeToggler={themeToggler} />
             </nav>
             <Routes>
-              <Route path='/' element={<Catalog Catalog selector={selectProduct} allProducts={allProducts}/>}/>
+              <Route path='/' exact element={<Catalog Catalog selector={selectProduct} allProducts={allProducts}/>}/>
               <Route path='/product/:productId' element ={<Details selected={selected}/>}/>
-              {/* <Route path='/checkout' element={<Checkout/>} /> */}
-
-              {/* {(view === "catalog") && <Catalog selector={selectProduct} allProducts={allProducts}/>}
-              {(view ==="details") && <RelatedItems selProduct={selected}/>} */}
             </Routes>
         </BrowserRouter>
       </>

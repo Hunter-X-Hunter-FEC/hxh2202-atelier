@@ -26,7 +26,7 @@ function ImageGallery(props) {
 
   // var chosenStyle = function (e) {
   //   e.preventDefault();
-  //   console.log('clicked a style list');
+
 
   //   if (images[e.target.dataset.value] === undefined) {
   //     props.setImageIdx(0);
@@ -260,7 +260,7 @@ var images = [ // images sample, but incase of the actual product this would be 
 // border-style: solid
 // border-bottom: 5px solid red;
 
-// console.log(e.target.dataset.value);
+
 
 
 // onClick={(event) => { props.clickedWatch(event, props.movie.title); }}

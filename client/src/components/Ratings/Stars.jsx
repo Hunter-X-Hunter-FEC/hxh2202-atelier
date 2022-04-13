@@ -3,9 +3,9 @@ import styled from 'styled-components'
 
 // component for static, partially unfilled stars.
 const Stars = (props) => {
-  console.log(props)
+
   const [rating, setRating] = useState(props.rating)
-  console.log('rating: ', rating)
+
   const empty = <span>&#9734;</span>
   const stars = [];
   const decimal = props.rating % 1;

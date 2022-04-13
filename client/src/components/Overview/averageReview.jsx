@@ -18,7 +18,6 @@ function AverageReview(props) {
 
   var clickedViewAll = function (e) {
     e.preventDefault();
-    console.log('scroll to reviews')
   }
 
 

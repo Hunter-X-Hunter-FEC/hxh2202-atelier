@@ -10,8 +10,8 @@ import Comparison from './Comparison.jsx';
 
 
 const ProductCard = ({curProduct, switchProduct, card})=>{
-	// console.log('props.card', card)
-	console.log('curProduct', curProduct)
+
+
 	const [showModal, setShowModal] = useState(false);
 	const [compare, setCompare] = useState({});
 

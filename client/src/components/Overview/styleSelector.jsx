@@ -19,7 +19,6 @@ function StyleSelector(props) {
 
   var chosenStyleCont = function (e) {
     e.preventDefault();
-    console.log('from the style container: ');
     props.chosenStyle(e);
   }
 

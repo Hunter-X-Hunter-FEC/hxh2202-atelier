@@ -26,16 +26,16 @@ function Overview(props) {
   var [styleIdx, setStyleIdx] = useState(0);
   var [imageIdx, setImageIdx] = useState(0);
 
-  // console.log(props.product);
+
 
   var [stock, setStock] = useState(props.product.style[0]);
-  // console.log(props.product.style[stockIdx].skus);
+
 
 
 
   var chosenStyle = function (e) {
     e.preventDefault();
-    console.log('clicked a style list');
+
 
     if (images[e.target.dataset.value] === undefined) {
       setImageIdx(0);

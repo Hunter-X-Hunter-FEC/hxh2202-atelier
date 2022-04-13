@@ -43,13 +43,12 @@ font-weight: none;
 // render each individual review "card"
 const Review = (props) => {
 
-  console.log('props inside of Review: ', props);
+
 
   const [hasClicked, setHasClicked] = useState(!!localStorage.getItem(`helpful-${props.review.review_id}`))
 
   const clickedHelpful = () => {
     if (!hasClicked) {
-      console.log('helpful was just clicked inside Review.jsx');
       localStorage.setItem(`helpful-${props.review.review_id}`, true.toString())
       setHasClicked(true)
     }

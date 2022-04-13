@@ -19,25 +19,15 @@ import styled from "styled-components";
 
 function AddToCart(props) {
 
-  // console.log(Object.keys(props.product.style[props.stockIdx].skus));
-  // console.log(props.stock.skus[Object.keys(props.stock.skus)[0]]);
 
   var [selectedId, setSelectedId] = useState(Object.keys(props.stock.skus)[0]);
   var [selectedSize, setSelectedSize] = useState('');
   var [selectedQuantity, setSelectedQuantity] = useState('');
 
-  // console.log(props.stock.skus);
-  // console.log(selectedId);
-  // console.log(selectedSize);
-  // console.log(selectedQuantity);
 
-  // useEffect(() => {
-  //   setSelectedId()
-  // }, [])
 
   var choseSize = function (e) {
-    // console.log(e.target.value);
-    // console.log(e.target.childNodes[e.target.selectedIndex].id);
+
     setSelectedId(e.target.childNodes[e.target.selectedIndex].id);
     setSelectedSize(e.target.value);
   }
@@ -48,12 +38,11 @@ function AddToCart(props) {
 
   var clickedAddToBag = function (e) {
     e.preventDefault();
-    console.log('save selected dropdowns to localstorage'); // read selectedSize and selectedQuantity
   }
 
   var clickedAddToFavorites = function (e) {
     e.preventDefault();
-    console.log('save selected dropdowns to localstorage that deals with favorites, Related component'); // read selectedSize and selectedQuantity
+
   }
 
 

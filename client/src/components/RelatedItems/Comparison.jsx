@@ -3,12 +3,10 @@ import {ImCheckmark} from 'react-icons/im';
 import {Container, Table, Header, HeaderData, DataWrapper, Data2, Data1, Data3} from './styles/Comparison.styled.js';
 
 function Comparison({current, compare}) {
-  // console.log('current', current);
-  // console.log('compare', compare);
   const featureArray = current.features.map(obj=>{return {...obj, 'isLeft' :true}}).concat(compare.features.map(obj=>{return {...obj, 'isRight' :true}}));
 
 
-  // console.log('deatureArray', featureArray)
+
   return (
   <Container>
       <Table>

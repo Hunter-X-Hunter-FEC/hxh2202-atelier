@@ -6,7 +6,7 @@ import {ProductCategory,ProductName, ProductRating, ProductPrice} from './styles
 import Logo from '../../assets/Logo.png';
 
 function FavoriteEntry ({remove, favorite}) {
-  console.log('favorite entry', favorite);
+
   return (
     <FavContainer>
       <FavWrapper>
