@@ -173,5 +173,5 @@ var images = [ // images sample, but incase of the actual product this would be 
   ['./../public/desg1.jpg', './../public/desg2.jpg', './../public/desg3.jpg'],
   ['./../public/flower1.jpg', './../public/flower2.jpg', './../public/flower3.jpg'],
   ['./../public/food1.jpg', './../public/food2.jpg', './../public/food3.jpg'],
-  ['./../public/sport1.jpg', './../public/sport2.jpg', './../public/sport3.jpg']
+  ['./../public/sport1.jpg', './../public/sport2.jpg', './../public/sport3.jpg']]
 
