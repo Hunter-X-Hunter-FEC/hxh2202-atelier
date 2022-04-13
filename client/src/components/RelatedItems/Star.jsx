@@ -23,7 +23,7 @@ const Star = ({card})=>{
     }
     getAvgRatings()
 
-  }, [card]);
+  }, []);
 
   useEffect(()=>{
     setRelatedRating(relatedRating)
