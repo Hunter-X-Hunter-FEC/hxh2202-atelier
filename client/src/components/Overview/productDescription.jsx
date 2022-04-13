@@ -50,36 +50,3 @@ font-size: 18px;
 
 var Description = styled.p`
 `;
-
-// style={{ float: 'left', display: 'inline' }}
-
-
-// <button style={arrowButton}><span>&#8593;</span></button>{[...Array(images.length).keys()].map((num) =>
-//   <div style={notSelectedStyleList} id={`S${num + 1}`} data-value={num} onClick={(e) => { chosenStyle(e); }}>S{num + 1}</div>)}
-// <button style={arrowButton}><span>&#8595;</span></button>
-
-// {
-//   "id": 65632,
-//   "campus": "rfp",
-//   "name": "Bright Future Sunglasses",
-//   "slogan": "You've got to wear shades",
-//   "description": "Where you're going you might not need roads, but you definitely need some shades. Give those baby blues a rest and let the future shine bright on these timeless lenses.",
-//   "category": "Accessories",
-//   "default_price": "69.00",
-//   "created_at": "2022-03-29T15:08:08.445Z",
-//   "updated_at": "2022-03-29T15:08:08.445Z",
-//   "features": [
-//       {
-//           "feature": "Lenses",
-//           "value": "Ultrasheen"
-//       },
-//       {
-//           "feature": "UV Protection",
-//           "value": null
-//       },
-//       {
-//           "feature": "Frames",
-//           "value": "LightCompose"
-//       }
-//   ]
-// }

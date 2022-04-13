@@ -16,7 +16,6 @@ import Share from './share.jsx';
 import StyleSelector from './styleSelector.jsx';
 import AddToCart from './addToCart.jsx';
 import ProductDescription from './productDescription.jsx';
-// import { changeOverviewStars } from '../Overview/averageReview.jsx';
 import Request from '../Request.js';
 
 
@@ -25,43 +24,42 @@ function Overview(props) {
 
   var [styleIdx, setStyleIdx] = useState(0);
   var [imageIdx, setImageIdx] = useState(0);
-
-  // console.log(props.product);
-
   var [stock, setStock] = useState(props.product.style[0]);
-  // console.log(props.product.style[stockIdx].skus);
 
-
-
-  var chosenStyle = function (e) {
+  var chosenStyle = function (e) { // changes the image galley picture AND sets'n'resets indicator for the curr selected style with id
     e.preventDefault();
-    // console.log('clicked a style list');
 
-    if (images[e.target.dataset.value] === undefined) {
+    for (var n = 0; n <= props.product.style.length; n++) {
+      if (document.getElementById(`S${n}`)) {
+        document.getElementById(`S${n}`).style.border = 'solid black';
+      }
+    }
+
+    document.getElementById(e.target.id).style.borderBottom = '8px solid LightSkyBlue';
+
+    if (images[e.target.dataset.idx] === undefined) {
       setImageIdx(0);
       setStyleIdx(0);
       setStock(props.product.style[0]);
-    } else if (styleIdx === parseInt(e.target.dataset.value)) {
+    } else if (styleIdx === parseInt(e.target.dataset.idx)) {
       return 0;
     } else {
       setImageIdx(0);
-      setStyleIdx(parseInt(e.target.dataset.value));
-      setStock(props.product.style[parseInt(e.target.dataset.value)]);
+      setStyleIdx(parseInt(e.target.dataset.idx));
+      setStock(props.product.style[parseInt(e.target.dataset.idx)]);
     }
+
   }
-
-  // console.log(stock);
-
 
   return (
     <section id='Overview' style={{ width: '1440px', margin: '0 auto', fontSize: '18px' }}>
-      <ImageGallery product={props.product} styleIdx={styleIdx} setStyleIdx={setStyleIdx} imageIdx={imageIdx} setImageIdx={setImageIdx} chosenStyle={chosenStyle}/>
-      <AverageReview starsIndex={props.starsIndex}/>
+      <ImageGallery product={props.product} styleIdx={styleIdx} setStyleIdx={setStyleIdx} imageIdx={imageIdx} setImageIdx={setImageIdx} chosenStyle={chosenStyle} />
+      <AverageReview starsIndex={props.starsIndex} />
       <ProductInfo product={props.product} />
       <Share />
-      <StyleSelector product={props.product} styleIdx={styleIdx} setStyleIdx={setStyleIdx} chosenStyle={chosenStyle}/>
-      <AddToCart product={props.product} stock={stock}/>
-      <ProductDescription product={props.product}/>
+      <StyleSelector product={props.product} styleIdx={styleIdx} setStyleIdx={setStyleIdx} chosenStyle={chosenStyle} />
+      <AddToCart product={props.product} stock={stock} />
+      <ProductDescription product={props.product} />
     </section>
   );
 }
@@ -75,34 +73,3 @@ var images = [
   ['./public/food1.jpg', './public/food2.jpg', './public/food3.jpg'],
   ['./public/sport1.jpg', './public/sport2.jpg', './public/sport3.jpg']
 ];
-
-// SOOO UNNESSERY becuase Dora's index already HANDLED IT ALL AAAAAHHHHHHHHHHHHH SO MUCH TIME WASTED
-  // var [fullProduct, setFullProduct] = useState({});
-
-  // var funcFetch = function () {
-  //   Request.getProductDetails(props.product.id).then((d) => {
-  //     // console.log(d)
-  //     setFullProduct(d.data);
-  //   }).catch((err) => {
-  //     console.log(err);
-  //   })
-  // };
-
-
-
-  // useEffect(() => {
-  //   funcFetch();
-  // }, []);
-
-  // useEffect(() => {
-  //   setFullProduct(fullProduct);
-  // }, [fullProduct]);
-
-
-/*
-  the communication between RatingsAndReviews and Overview so that the stars
-  in Overview will be the same as in RatingsAndReviews, Overview reads the
-  starsIndex through props and RatingsAndReviews invokes setStarsIndex also
-  through props
-  */
-  // var [starsIndex, setStarsIndex] = useState(0);

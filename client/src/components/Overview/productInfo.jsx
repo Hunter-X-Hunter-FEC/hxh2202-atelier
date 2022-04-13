@@ -46,7 +46,6 @@ font-size: 16px;
 padding: 9px;
 `;
 
-
 var ProductInfoStyle = {
   width: 400,
   // borderRadius: '10px',
@@ -58,15 +57,3 @@ var ProductInfoStyle = {
   padding: '10px',
   marginLeft: '90px',
 };
-
-// var [myProps, setMyProps] = useState({});
-  // var [category, setCategory] = useState('n/a');
-  // var [name, setName] = useState('n/a');
-  // var [price, setPrice] = useState(0.00);
-
-  // useEffect(() => {
-  //   setMyProps(props.product);
-  //   setCategory(myProps.product.category);
-  //   setName(myProps.product.name);
-  //   setPrice(myProps.product.default_price);
-  // }, []);
