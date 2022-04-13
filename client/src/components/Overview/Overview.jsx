@@ -26,6 +26,7 @@ function Overview(props) {
   var [imageIdx, setImageIdx] = useState(0);
   var [stock, setStock] = useState(props.product.style[0]);
 
+
   var chosenStyle = function (e) { // changes the image galley picture AND sets'n'resets indicator for the curr selected style with id
     e.preventDefault();
 

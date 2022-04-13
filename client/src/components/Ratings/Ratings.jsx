@@ -39,11 +39,9 @@ const Ratings = (props) => {
 
   useEffect(() => {
     const fetchMetaData = async() => {
-      console.log('inside of Ratings.jsx, props.product.id: ', props.product.id)
+
       const meta = await request.getMetaReviews(props.product.id);
       const metasRatings = meta.data.ratings;
-      console.log('meta: ', meta);
-      console.log('metasRatings: ', metasRatings);
       setRatings(metasRatings);
     }
 

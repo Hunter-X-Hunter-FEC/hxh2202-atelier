@@ -12,7 +12,6 @@ const Star = ({card})=>{
     var getAvgRatings = async()=>{
       const response= await Request.getMetaReviews(card.id);
       let ratings = response.data.ratings;
-      console.log('relatedItem rating', ratings);
       let ratingTotal = 0;
       let ratingCount = 0
       for (let key in ratings) {

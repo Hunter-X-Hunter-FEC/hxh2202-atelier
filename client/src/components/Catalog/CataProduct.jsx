@@ -51,7 +51,7 @@ padding-top:5px;
 
 function CataProduct ({selector, card}) {
 	let navigate = useNavigate();
-	console.log('Catalog' , card.style[0].photos[0].url);
+
 	return (
 		<ProductContainer onClick = {()=>{selector(card), navigate(`/product/${card.id}`)}}>
 			<productWrapper>

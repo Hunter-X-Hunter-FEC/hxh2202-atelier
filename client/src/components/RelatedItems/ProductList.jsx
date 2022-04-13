@@ -6,8 +6,6 @@ import {ProdList, Title, btnWrapper, PrevBtn, NextBtn, Inner} from './styles/Pro
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 
 function ProductList ({curProduct, switchProduct, product}) {
-  console.log('product Len', product.length);
-  console.log('curIndex,', curIndex);
   const length = product.length;
   const [curIndex, setIndex] = useState(0);
 
@@ -18,14 +16,13 @@ function ProductList ({curProduct, switchProduct, product}) {
   // }, [product])
 
   const clickPrev = ()=>{
-    console.log('left click is working. curIndex', curIndex);
     setIndex(curIndex === 0 ? length-1: curIndex-1)
   }
 
   const clickNext = ()=> {
-    console.log('right click is working', curIndex);
+
     setIndex(curIndex === length-1 ? 0: curIndex+1);
-    console.log('nextIndex', curIndex);
+
   }
 
 
@@ -41,7 +38,6 @@ function ProductList ({curProduct, switchProduct, product}) {
         <Inner>
           {product.map((card, index)=> {
             if (index >= curIndex && index<= curIndex+3) {
-              // console.log('curProductPassed', curProduct);
               return (<ProductCard curProduct={curProduct} key={index} switchProduct={switchProduct} card={card}/>)}})}
         </Inner>
         <btnWrapper>

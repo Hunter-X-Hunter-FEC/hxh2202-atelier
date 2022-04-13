@@ -34,7 +34,6 @@ heigth: 40vh;
 
 
 function Details({selected}) {
-  console.log('selected in details', selected);
   return (
     <Container>
       <OverviewStyle>

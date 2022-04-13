@@ -23,11 +23,11 @@ function AddToCart(props) {
   var [selectedSize, setSelectedSize] = useState('');
   var [selectedQuantity, setSelectedQuantity] = useState('');
 
-  // useEffect(() => {
-  //   setSelectedId()
-  // }, [])
+
+ 
 
   var choseSize = function (e) {
+
     setSelectedId(e.target.childNodes[e.target.selectedIndex].id);
     setSelectedSize(e.target.value);
   }
@@ -38,12 +38,11 @@ function AddToCart(props) {
 
   var clickedAddToBag = function (e) {
     e.preventDefault();
-    console.log('save selected dropdowns to localstorage'); // read selectedSize and selectedQuantity
   }
 
   var clickedAddToFavorites = function (e) {
     e.preventDefault();
-    console.log('save selected dropdowns to localstorage that deals with favorites, Related component'); // read selectedSize and selectedQuantity
+
   }
 
   return (
