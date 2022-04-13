@@ -19,12 +19,12 @@ import styled from "styled-components";
 
 function AddToCart(props) {
 
-
   var [selectedId, setSelectedId] = useState(Object.keys(props.stock.skus)[0]);
   var [selectedSize, setSelectedSize] = useState('');
   var [selectedQuantity, setSelectedQuantity] = useState('');
 
 
+ 
 
   var choseSize = function (e) {
 
@@ -44,7 +44,6 @@ function AddToCart(props) {
     e.preventDefault();
 
   }
-
 
   return (
     <section id='AddToCart' style={AddToCartStyle}>
@@ -74,87 +73,52 @@ export default AddToCart;
 
 
 var AddToCartStyle = {
-  width: 400,
-  borderRadius: '10px',
-  backgroundColor: 'white',
+  width: 350,
+  // borderRadius: '10px',
+  // backgroundColor: 'white',
   float: 'left',
   display: 'inline',
-  border: 'solid black',
-  padding: '10px',
-  marginLeft: '110px',
+  // border: 'solid black',
+  padding: '15px',
+  marginLeft: '90px',
 };
 
 var AddToBag = styled.button`
   border-radius: 10px;
   background-color: white;
   border: solid black;
-  padding: 5px;
+  margin: 15px;
+  padding: 15px;
   width: fit-content;
+  font-size: 13px;
 `;
 
 var AddToFavorite = styled.button`
   border-radius: 10px;
   background-color: white;
   border: solid black;
-  padding: 5px;
+  margin: 15px;
+  padding: 15px;
   width: fit-content;
+  font-size: 18px;
 `;
 
 var SelectSize = styled.select`
   border-radius: 10px;
   background-color: white;
   border: solid black;
-  padding: 5px;
+  margin: 15px;
+  padding: 15px;
   width: fit-content;
+  font-size: 13px;
 `;
 
 var SelectQuantity = styled.select`
   border-radius: 10px;
   background-color: white;
   border: solid black;
-  padding: 5px;
+  margin: 15px;
+  padding: 15px;
   width: fit-content;
+  font-size: 13px;
 `;
-
-//  useEffect(() => {
-  //   for (var n = 0; n <= images.length; n++) {
-  //     if (document.getElementById(`S${n}`)) {
-  //       document.getElementById(`S${n}`).style.border = "transparent";
-  //     }
-  //   }
-  // }, [styleIdx])
-
-// onClick={(e) => { chosenStyleCont(e); }}
-
-// <StyleListScroll >{props.product.style.map((st, idx) =>
-//           <StyleListButton id={`S${idx + 1}`} data-value={idx} onClick={(e) => { props.chosenStyle(e); }}>S{idx + 1}</StyleListButton>)}
-//         </StyleListScroll>
-
-// <option value="" disabled selected>OUT OF STOCK</option>
-
-// {
-//   "2352328": {
-//       "quantity": 8,
-//       "size": "XS"
-//   },
-//   "2352329": {
-//       "quantity": 16,
-//       "size": "S"
-//   },
-//   "2352330": {
-//       "quantity": 17,
-//       "size": "M"
-//   },
-//   "2352331": {
-//       "quantity": 10,
-//       "size": "L"
-//   },
-//   "2352332": {
-//       "quantity": 15,
-//       "size": "XL"
-//   },
-//   "2352333": {
-//       "quantity": 6,
-//       "size": "XXL"
-//   }
-// }
