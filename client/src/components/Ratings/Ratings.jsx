@@ -36,14 +36,18 @@ const StyledProductBreakdown = styled.div`
 
 const Ratings = (props) => {
   const [meta, setRatings] = useState();
+  const [metaChar, setMetaChar] = useState()
 
   useEffect(() => {
     const fetchMetaData = async() => {
       console.log('inside of Ratings.jsx, props.product.id: ', props.product.id)
       const meta = await request.getMetaReviews(props.product.id);
       const metasRatings = meta.data.ratings;
+      const metaChars = meta.data.characteristics;
+      console.log('metaChars: ', meta.data.characteristics)
       console.log('meta: ', meta);
       console.log('metasRatings: ', metasRatings);
+      setMetaChar(metaChars)
       setRatings(metasRatings);
     }
 
@@ -56,6 +60,10 @@ const Ratings = (props) => {
     localStorage.setItem('ratings', JSON.stringify(meta))
   }, [meta])
 
+  useEffect(()=>{
+    localStorage.setItem('characteristics', JSON.stringify(metaChar))
+  }, [metaChar])
+
 
   return (
     <>
@@ -66,7 +74,7 @@ const Ratings = (props) => {
         <Distribution distribution={meta}/>
       </StyledDistrubution>
       <StyledProductBreakdown>
-        <ProductBreakdown breakdown={meta}/>
+        <ProductBreakdown metaChar={metaChar}/>
       </StyledProductBreakdown>
     </>
   )

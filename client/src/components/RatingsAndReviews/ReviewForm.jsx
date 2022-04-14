@@ -17,19 +17,12 @@ const ReviewForm = (props) => {
     photos: []
   })
 
-
   const [characteristics, setCharacteristics] = useState({})
 
   const changeHandler = (e) => {
     setFormValues({...formValues, [e.target.name]: e.target.value})
     console.log('changeHandler clicked!', e.target.name)
   }
-  // const buildCharacteristicForm = () => {
-  //   for (let key in characteristics) {
-  //     formValues.characteristics[key] = {}
-  //   }
-  //   console.log('characteristic form: ',formValues.characteristics);
-  // }
 
   useEffect(()=> {
     const fetchMetaData = async () => {
@@ -43,7 +36,31 @@ const ReviewForm = (props) => {
     fetchMetaData();
   }, [])
 
-  // buildCharacteristicForm();
+  const handleCharacteristicChange = (name, value) => {
+    setFormValues({
+      ...formValues,
+      characteristics: {
+        ...formValues.characteristics,
+        [name]: value
+      }
+    })
+  }
+
+  const handleSubmit = () => {
+    const characteristicsData = {};
+    Object.values(formValues.characteristics).forEach((item) => {
+      characteristicsData[item.id] = item.value;
+    });
+    const {charactersistics, ...prunedFormValues} = formValues;
+    const data = {
+      ...prunedFormValues,
+      characteristics: characteristicsData,
+      product_id: props.product.id
+    }
+    request.postReview(data);
+  }
+
+
 
   return (
   <div className="form-container">
@@ -51,24 +68,26 @@ const ReviewForm = (props) => {
       <div id="heading">
         <div>Write Your Review</div>
       </div>
-      <StarsRating rating={formValues.rating} isReadOnly={false} onClick={changeHandler}/>
+      <div name="rating">
+      <StarsRating rating={formValues.rating} isReadOnly={false} handleRatingChange={(rating)=>setFormValues({...formValues, rating: rating})}/>
+      </div>
       <span id="recommend-form">
         <div>Recommend: </div>
         <label htmlFor='radio-yes'>Yes: </label>
-        <input type="radio" id="radio-yes" name="recommend" className="rec radio" onClick={changeHandler}/>
+        <input type="radio" id="radio-yes" value="yes" name="recommended" className="rec radio" onClick={()=> setFormValues({...formValues, recommended: true})}/>
         <label htmlFor='radio-no'>No: </label>
-        <input type="radio" id="radio-no" name="recommend" className="rec radio" onClick={()=> setFormValues({recommended: false})}/>
+        <input type="radio" id="radio-no" value="no" name="recommended" className="rec radio" onClick={()=> setFormValues({...formValues, recommended: false})}/>
       </span>
       <div>
-        <input type="text" name="name" placeholder="name" onChange={e => setFormValues({name: e.target.value})}/>
-        <input type="text" name="email" placeholder="email" onChange={e => setFormValues({email: e.target.value})}/>
-        <input type="text" name="summary" placeholder="summary" maxLength='60' onChange={e => setFormValues({summary: e.target.value})}/>
+        <input type="text" name="name" placeholder="name" onChange={changeHandler}/>
+        <input type="text" name="email" placeholder="email" onChange={changeHandler}/>
+        <input type="text" name="summary" placeholder="summary" maxLength='60' onChange={changeHandler}/>
       </div>
       <div>
-        <textarea id="body" type="text" name="body" placeholder="your review..." maxLength='1000' rows="4" onChange={e => setFormValues({body: e.target.value})}/>
+        <textarea id="body" type="text" name="body" placeholder="your review..." maxLength='1000' rows="4" onChange={changeHandler}/>
       </div>
-      <Characteristic metaChars={characteristics} changeHandler={changeHandler}/>
-      <input id="submit" type="submit"/>
+      <Characteristic metaChars={characteristics} handleCharacteristicChange={handleCharacteristicChange}/>
+      <input type="button" id="submit" onClick={handleSubmit}/>
     </form>
   </div>
   )
@@ -76,7 +95,8 @@ const ReviewForm = (props) => {
 
 export default ReviewForm;
 
-const Characteristic = ({ metaChars, changeHandler }) => {
+const Characteristic = ({ metaChars, handleCharacteristicChange }) => {
+
   const chars = metaChars;
   const labels = {
     Size: [
@@ -123,7 +143,7 @@ const Characteristic = ({ metaChars, changeHandler }) => {
     ]
   };
 
-  return Object.keys(metaChars).map(characteristic => (
+  return Object.entries(metaChars).map(([characteristic, characteristicValue]) => (
     <div className='characteristics' key={characteristic}>
       <p>{characteristic}</p>
       {
@@ -132,9 +152,9 @@ const Characteristic = ({ metaChars, changeHandler }) => {
             <input id={`${label}${characteristic}`}
               key={`${label}${characteristic}`}
               type='radio' name={characteristic}
-              data-value={i + 1}
+              data-value={i+1}
               className='char-radio'
-              onChange={changeHandler}/>
+              onChange={({ target: { name } }) => handleCharacteristicChange(name, { id: characteristicValue.id, value: i+1 })}/>
             <label htmlFor={label} key={`${characteristic}${label}`}>{label}</label>
           </div>
         ))
