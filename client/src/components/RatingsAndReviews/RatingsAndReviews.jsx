@@ -5,13 +5,10 @@ import WriteReview from './WriteReview.jsx';
 import styled from 'styled-components';
 import App from '../../index.js';
 
-const ReviewContainer = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  border: solid black;
+const RatingsAndReviewsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   font-family:sans-serif;
-  flex-direction: column;
   `
 
   const ReviewsStyle = styled.div`
@@ -36,17 +33,17 @@ const ReviewContainer = styled.div`
 const RatingsAndReviews = (props) => {
 
   return (
-    <ReviewContainer>
-      <RatingStyle>
-        <Ratings product={props.product}/>
-      </RatingStyle>
-      <ReviewsStyle>
-        <ReviewsList product={props.product}/>
-      </ReviewsStyle>
-      <WriteReviewStyle>
-        <WriteReview product={props.product} showModal={props.showModal} setShowModal={props.setShowModal}/>
-      </WriteReviewStyle>
-    </ReviewContainer>
+    <>
+      <RatingsAndReviewsContainer>
+        <div>
+          <Ratings product={props.product}/>
+        </div>
+        <div>
+          <ReviewsList product={props.product}/>
+          <WriteReview product={props.product} showModal={props.showModal} setShowModal={props.setShowModal}/>
+        </div>
+      </RatingsAndReviewsContainer>
+    </>
   )
 };
 

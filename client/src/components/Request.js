@@ -37,11 +37,16 @@ const getMetaReviews = (id) => {
   return axios.get(`/reviews/meta`, obj)
 }
 
+const postReview = (data) => {
+  return axios.post('/reviews', data).then((result) => console.log('result in postReview: ', result));
+}
+
 module.exports = {
   getProducts: getProducts,
   getProductDetails: getProductDetails,
   getProductStyles: getProductStyles,
   getRelatedProducts: getRelatedProducts,
   getReviews: getReviews,
-  getMetaReviews: getMetaReviews
+  getMetaReviews: getMetaReviews,
+  postReview: postReview
 };

@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-// import './Stars.styles.css';
+import React, { useState, Fragment } from 'react';
 import styled from 'styled-components'
 
 const StyledStars = styled.div`
@@ -17,38 +16,39 @@ const StyledButton = styled.button`
 `
 
 // component for interactive stars.
-const StarsRating = (props) => {
-  const [rating, setRating] = useState(props.rating);
-  const [hover, setHover] = useState(0);
+const StarsRating = ({ rating, isReadOnly, handleRatingChange }) => {
+  const [hover, setHover] = useState(rating);
+
+  const handleChange = (index) => {
+    handleRatingChange(index);
+    setHover(index)
+  }
 
   return (
     <StyledStars>
       {[...Array(5)].map((star, index) => {
         index += 1;
-        const handlers = props.isReadOnly ?
+        const handlers = isReadOnly ?
           {} :
           {
             onClick: () => {
-              setRating(index)
-              props?.onClick(index)
+              handleChange(index)
             },
-            onMouseEnter: () => setHover(index),
-            onMouseLeave: () => setHover(rating),
-            // onRate()
+            onMouseEnter: () => handleRatingChange(index),
+            onMouseLeave: () => handleRatingChange(hover),
           };
 
         return (
-          <>
+          <Fragment key={`start-rating-${index}`} >
             <StyledButton
               className="Stars"
               type="button"
-              key={index}
               isOn={index <= rating}
               { ...handlers }
             >
               <span className="star">&#9733;</span>
             </StyledButton>
-          </>
+          </Fragment>
         );
       })}
     </StyledStars>

@@ -1,8 +1,21 @@
 import React from 'react'
+import Ratings from './Ratings.jsx';
+import Characteristic from './Characteristic.jsx';
 
-const ProductBreakdown = () => {
+
+const ProductBreakdown = ({metaChar}) => {
+  console.log('props.metaChar: ', metaChar);
+  const characteristics = metaChar || {};
   return (
-    <div className="ProductBreakdown"> Product Breakdown Component Here </div>
+    <div>
+      <div>
+        {
+          Object.keys(characteristics).map((char, i) => {
+            return <Characteristic key={`${char}-${i}`} characteristic={char} charsRated={characteristics[char].value} />
+          })
+        }
+      </div>
+    </div>
   )
 }
 

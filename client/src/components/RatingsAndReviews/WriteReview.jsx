@@ -31,14 +31,11 @@ const WriteReview = (props) => {
   const openModal = () => {
     props.setShowModal(prev => !prev);
   }
-  
+
   return (
     <>
       <Container>
-        <Button onClick={openModal}>AddReviewButton</Button>
-        {/* {
-          showModal ? <Modal showModal={props.showModal} setShowModal={props.setShowModal} /> : null
-        } */}
+        <Button onClick={openModal}>Write Review</Button>
       </Container>
 
     </>

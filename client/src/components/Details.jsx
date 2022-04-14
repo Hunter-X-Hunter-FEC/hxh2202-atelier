@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from '../assets/Logo.png';
 import styled from 'styled-components';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
@@ -34,6 +34,7 @@ heigth: 40vh;
 
 
 function Details({selected}) {
+  const [showModal, setShowModal] = useState(false);
   return (
     <Container>
       <OverviewStyle>
@@ -43,9 +44,9 @@ function Details({selected}) {
         <RelatedItems selected={selected}/>
       </RelatedStyle>
       <ReviewsStyle>
-        <RatingsAndReviews product={selected}/>
+      <RatingsAndReviews product={selected} setShowModal={setShowModal} showModal={showModal}/>
       </ReviewsStyle>
-      {/* {showModal && <Modal setShowModal={setShowModal} product={selected}/>} */}
+      {showModal && <Modal setShowModal={setShowModal} product={selected}/>}
     </Container>
   )
 }

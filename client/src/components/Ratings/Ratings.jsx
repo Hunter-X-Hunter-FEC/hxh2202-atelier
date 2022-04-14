@@ -6,42 +6,48 @@ import Distribution from './Distribution.jsx';
 const request = require('../Request.js');
 
 const StyledHeaderRating = styled.div`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: palevioletred;
-  background: papayawhip;
-  border: 1px solid black;
-  border-radius: 5px;
+  // padding: 0.5em;
+  // margin: 0.5em;
+  // color: palevioletred;
+  // background: papayawhip;
+  // border: 1px solid black;
+  // border-radius: 5px;
 `;
 
 const StyledDistrubution = styled.div`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: orange;
-  background: papayawhip;
-  border: 1px solid black;
-  border-radius: 5px;
+  // padding: 0.5em;
+  // margin: 0.5em;
+  // color: orange;
+  // background: papayawhip;
+  // border: 1px solid black;
+  // border-radius: 5px;
 `;
 
 const StyledProductBreakdown = styled.div`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: LightBlue;
-  background: papayawhip;
-  border: 1px solid black;
-  border-radius: 5px;
+  // padding: 0.5em;
+  // margin: 0.5em;
+  // color: LightBlue;
+  // background: papayawhip;
+  // border: 1px solid black;
+  // border-radius: 5px;
 `;
 
 
 
 const Ratings = (props) => {
   const [meta, setRatings] = useState();
+  const [metaChar, setMetaChar] = useState()
 
   useEffect(() => {
     const fetchMetaData = async() => {
 
       const meta = await request.getMetaReviews(props.product.id);
       const metasRatings = meta.data.ratings;
+      const metaChars = meta.data.characteristics;
+      console.log('metaChars: ', meta.data.characteristics)
+      console.log('meta: ', meta);
+      console.log('metasRatings: ', metasRatings);
+      setMetaChar(metaChars)
       setRatings(metasRatings);
     }
 
@@ -54,6 +60,10 @@ const Ratings = (props) => {
     localStorage.setItem('ratings', JSON.stringify(meta))
   }, [meta])
 
+  useEffect(()=>{
+    localStorage.setItem('characteristics', JSON.stringify(metaChar))
+  }, [metaChar])
+
 
   return (
     <>
@@ -64,7 +74,7 @@ const Ratings = (props) => {
         <Distribution distribution={meta}/>
       </StyledDistrubution>
       <StyledProductBreakdown>
-        <ProductBreakdown breakdown={meta}/>
+        <ProductBreakdown metaChar={metaChar}/>
       </StyledProductBreakdown>
     </>
   )

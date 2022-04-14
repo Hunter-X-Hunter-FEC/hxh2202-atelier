@@ -1,11 +1,9 @@
-// const config = require('../config.js');
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 let PORT = process.env.PORT;
 const axios = require('axios');
-
 let app = express();
 
 // serves all static files and generated assets in ../../client/dist
@@ -148,10 +146,11 @@ app.get('/reviews/meta', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
+
   let postObj = req.body;
   let options = {
     method: 'POST',
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews',
+    url: apiURL + req.url,
     headers: {
       'Authorization': `${process.env.REACT_APP_API_KEY}`
     },
@@ -160,18 +159,23 @@ app.post('/reviews', (req, res) => {
       rating: postObj.rating,
       summary: postObj.summary,
       body: postObj.body,
-      recommend: postObj.recommend,
+      recommend: postObj.recommended,
       name: postObj.name,
       email: postObj.email,
-      phtos: postObj.photos,
+      photos: postObj.photos,
       characteristics: postObj.characteristics
     }
   };
 
+
+
   axios(options)
-    .then((result) => {
-      res.send(result.data);
-    });
+  .then((result) => {
+    res.send(result.data);
+  })
+  .catch((err) => {
+    console.error('error inside of app.post requests .catch method: ', err);
+  });
 
 });
 
