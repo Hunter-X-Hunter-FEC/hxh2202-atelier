@@ -11,6 +11,24 @@ const RatingsAndReviewsContainer = styled.div`
   font-family:sans-serif;
   `
 
+  const ReviewsStyle = styled.div`
+  height: 33vh;
+  width: 100vw;
+  flex:1
+  `
+
+  const RatingStyle = styled.div`
+  height: 33vh;
+  width: 100vw;
+  flex:1
+  `
+
+
+  const WriteReviewStyle = styled.div`
+  height: 33vh;
+  width: 100vw;
+  flex:1
+  `
 // render each individual review "card"
 const RatingsAndReviews = (props) => {
 

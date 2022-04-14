@@ -4,14 +4,14 @@ import Star from './Star.jsx';
 import {AiOutlineArrowRight} from 'react-icons/ai';
 import {BsSearch} from 'react-icons/bs';
 // import styled from 'styled-components';
-import {ProductContainer, Card, ProductImage, CompareWrapper, ProductCategory,ProductName, ProductPrice} from './styles/productCard.styled.js';
+import {ProductContainer, Card, ProductImage, CompareWrapper, ProductCategory,ProductName, ProductRating, ProductPrice} from './styles/productCard.styled.js';
 import Logo from '../../assets/Logo.png';
 import Comparison from './Comparison.jsx';
 
 
 const ProductCard = ({curProduct, switchProduct, card})=>{
-	// console.log('props.card', card)
-	console.log('curProduct', curProduct)
+
+
 	const [showModal, setShowModal] = useState(false);
 	const [compare, setCompare] = useState({});
 
@@ -42,9 +42,9 @@ const ProductCard = ({curProduct, switchProduct, card})=>{
 				<ProductPrice>
 					<span>${card.style[0].original_price}</span>
 				</ProductPrice>
-				<div className="rating">
-						<Star />
-				</div>
+				<ProductRating>
+						<Star card={card}/>
+				</ProductRating>
 				{showModal && <Comparison compare={compare} current={curProduct}/>}
 			</Card>
 		</ProductContainer>

@@ -13,17 +13,13 @@ const ReviewsList = (prop) => {
   useEffect(() => {
     // console.log('ReviewsList useEffect is working');
     const fetchReviews = async() => {
-      console.log('prop.product: ', prop.product);
-      console.log('inside of ReviewsList.jsx, prop.product.id: ', prop.product.id)
       // const reviews = {}
       const { data } = await request.getReviews(prop.product.id)
-      console.log('data from API: ', data)
       const reviews = {
         page: 1,
         reviews: data.results,
         count: data.count
       }
-      console.log('reviews.reviews inside fetchReviews: ', reviews.reviews)
       setReviewPages(reviews);
 
     }
@@ -31,24 +27,13 @@ const ReviewsList = (prop) => {
     fetchReviews()
 
   }, [])
-// console.log(request.getReviews(65631))
 
-  // useEffect(()=>{
-  //   localStorage.setItem('reviews', JSON.stringify(allReviewsOfProduct))
-  // }, [allReviewsOfProduct])
-
-  // const setReviews = ()=>{
-  //   // console.log('all is triggering');
-  //   setReviewsOfProduct(localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : allReviewsOfProduct)
-  // }
   const reviewsToShow = async () => {
     const newEnd = sliceEnd + 2
     setSliceEnd(newEnd);
     if (newEnd >= reviewPages.count - 2) {
-      console.log('reviewPages.page inside ReviewsList: ', reviewPages.page);
       const { data } = await request.getReviews(prop.product.id, reviewPages.page + 1)
-      console.log('data: ', data)
-      console.log(data.page + 1)
+
       const newReviews = reviewPages.reviews.concat(data.results)
       const newCount = reviewPages.count + data.count
       const nextPageReviews = {
@@ -67,7 +52,7 @@ const ReviewsList = (prop) => {
       <div>
         {
           reviewPages.reviews.slice(0, sliceEnd).map((review) => {
-            console.log('review_id inside ReviewsList: ', review.review_id);
+
             return <Review key={review.review_id} review={review} />;
           })
         }

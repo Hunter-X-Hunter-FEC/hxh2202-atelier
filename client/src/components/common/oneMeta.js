@@ -40,10 +40,9 @@ var fives = parseInt(meta.ratings['5']) * 5;
 
 
 var averageRating = (ones + twos + threes + fours + fives)/numberOfReviews;
-console.log('number of reviews: ', numberOfReviews)
-console.log('average rating: ', averageRating)
+
 averageRating = (Math.round(averageRating * 4) / 4).toFixed(2);
-console.log('average rating rounded to nearest quarter: ', averageRating)
+
 
 // export default meta;
 export default averageRating;

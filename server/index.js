@@ -26,7 +26,7 @@ if (!process.env.REACT_APP_API_KEY) {
 // This is the '/product' call, for all products, likely to be used in the catalog page.
 
 app.get('/products', (req, res) => {
-  // console.log('server is working', process.env.REACT_APP_API_KEY);
+
   let options = {
     method: 'GET',
     url: apiURL + req.url,
@@ -40,7 +40,6 @@ app.get('/products', (req, res) => {
 
   axios(options)
     .then((result) => {
-      // console.log(result);
       res.send(result.data);
     })
     .catch((err)=>console.log(err));
@@ -107,7 +106,6 @@ app.get('/products/:product_id/related', (req, res) => {
 
 // This is the call for the reviews of a specific item, to be used in the reviews section
 app.get('/reviews', (req, res) => {
-  // console.log('req.params', req.params);
 
   let options = {
     method: 'GET',
@@ -118,11 +116,10 @@ app.get('/reviews', (req, res) => {
     }
     // params: req.params
   };
-  console.log('options.url: ', options.url);
-  // console.log('req.params: ', req.params);
+
   axios(options)
   .then((result) => {
-    // console.log(result.data);
+
     res.send(result.data);
   }).catch(err => console.error(err));
 
@@ -139,7 +136,7 @@ app.get('/reviews/meta', (req, res) => {
     // params: req.params
   };
 
-  console.log('options.url: ', options.url);
+
   axios(options)
   .then((result) => {
     console.log(result.data);
@@ -184,7 +181,6 @@ app.post('/reviews', (req, res) => {
 
 app.put('/reviews/helpful', (req, res) => {
   const productId = req.query.id;
-  console.log('productId', productId);
   let options = {
     method: 'PUT',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/${productId}/helpful`,

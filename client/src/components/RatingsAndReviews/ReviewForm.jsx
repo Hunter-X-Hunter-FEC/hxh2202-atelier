@@ -26,11 +26,10 @@ const ReviewForm = (props) => {
 
   useEffect(()=> {
     const fetchMetaData = async () => {
-      console.log('inside of ReviewForm.jsx props.product.id: ', props.product.id)
+
       const characteristics = await request.getMetaReviews(props.product.id)
       const metaChars = characteristics.data.characteristics;
-      console.log('characteristics: ', characteristics);
-      console.log('metaChars: ', metaChars);
+
       setCharacteristics(metaChars)
     }
     fetchMetaData();

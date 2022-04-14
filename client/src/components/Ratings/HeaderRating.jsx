@@ -17,22 +17,18 @@ var ratingAverage = (distribution) => {
       weightedSum = weightedSum + (parseInt(distributionValue) * (i+1))
     }
     let avgRating = weightedSum / total;
-    console.log('avgRating: ', avgRating);
-    // let avgRatingRounded = (Math.round(avgRating * 4)/4);
-    // console.log('avgRatingRounded: ', avgRatingRounded);
+
 
     return avgRating;
 }
 
 const HeaderRating = ({ distribution, setStarsIndex }) => {
 
-  console.log('props inside of header rating: ', distribution);
+
   const average = ratingAverage(distribution);
   const averageRounded = Math.round(average * 100) / 100
-  console.log('averageRounded: ', averageRounded);
-  // useEffect(() => {
-  //   setStarsIndex(average);
-  // })
+
+
   return (
     <>
       <div className="HeaderRating"> Header Rating Component Here </div>
