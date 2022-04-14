@@ -4,11 +4,12 @@ import styled from 'styled-components';
 import Stars from '../Ratings/Stars.jsx'
 
 const ReviewContainer = styled.div`
-heights: 100vh;
-weights: auto;
+height: 100vh;
+weight: auto;
 flex: 1;
 border: solid black;
 font-family:sans-serif;
+// background-color: black;
 `
 const ReviewerName = styled.div`
 background-color: green;
@@ -42,13 +43,12 @@ font-weight: none;
 // render each individual review "card"
 const Review = (props) => {
 
-  console.log('props inside of Review: ', props);
+
 
   const [hasClicked, setHasClicked] = useState(!!localStorage.getItem(`helpful-${props.review.review_id}`))
 
   const clickedHelpful = () => {
     if (!hasClicked) {
-      console.log('helpful was just clicked inside Review.jsx');
       localStorage.setItem(`helpful-${props.review.review_id}`, true.toString())
       setHasClicked(true)
     }

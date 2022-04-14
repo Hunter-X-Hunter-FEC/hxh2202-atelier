@@ -31,7 +31,7 @@ flex-basis: 50%
 function Header({themeToggler, showAll}) {
   return (
     <Container>
-      <Image src={Logo} alt=""/>
+      <Image src={Logo} alt=''/>
       <Product>
         <Link to='/'>Products</Link>
       </Product>

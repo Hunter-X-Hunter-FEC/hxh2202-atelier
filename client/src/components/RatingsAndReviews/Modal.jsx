@@ -7,7 +7,7 @@ const Background = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
-  position: fixed;
+  // position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +20,7 @@ const ModalWrapper = styled.div`
   color: black;
   display: grid;
   grid-template-columns: 1fr;
-  position: fixed;
+  // position: fixed;
   z-index: 9999;
   border-radius: 10px
 `;
@@ -47,7 +47,7 @@ const ModalContent = styled.div`
 
 const CloseModalButton = styled(MdClose)`
   cursor: pointer;
-  position: absolute;
+  // position: absolute;
   top: 20px;
   right: 20px;
   width: 32px;

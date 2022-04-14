@@ -4,7 +4,6 @@ Daniel Esquivel-Reynoso, Dora Xia, Bogdan Gordin
 3/4/22
 share to social media
 just three buttons that opens a link to either Facebook, Twitter and Pinterest
-
 */
 
 import React, { useState, useReducer, useEffect } from "react";
@@ -39,11 +38,11 @@ var ShareStyle = {
   float: 'left',
   display: 'inline',
   textAlign: 'center',
-  borderRadius: '10px',
-  backgroundColor: 'white',
-  border: 'solid black',
-  padding: '10px',
-  marginLeft: '110px',
+  // borderRadius: '10px',
+  // backgroundColor: 'white',
+  // border: 'solid black',
+  // padding: '10px',
+  marginLeft: '90px',
 };
 
 var FacebookLink = styled.span`
