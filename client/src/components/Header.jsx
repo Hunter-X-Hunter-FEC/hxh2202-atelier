@@ -14,24 +14,27 @@ justify-content: space-around;
 positon: absolute;
 background-color: rgba(50, 115, 220, 0.3);
 `
-const Image = styled.img`
+const Title = styled.h2`
 opacity: 0.5;
+font-size: 35px;
 max-width:100%;
-height:auto;
 flex-basis: 30%;
+top: 0px;
+margin:10px;
 `
 
 const Product = styled.span`
 margin-bottom: 30px;
-font-size: 50px;
+font-size: 35px;
 flex-basis: 50%
+color: black;
 `
 
 
 function Header({themeToggler, showAll}) {
   return (
     <Container>
-      <Image src={Logo} alt=''/>
+      <Title size={50} >Hunter Shop</Title>
       <Product>
         <Link to='/'>Products</Link>
       </Product>
