@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from '../assets/Logo.png';
 import styled from 'styled-components';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
@@ -32,9 +32,9 @@ heigth: 40vh;
 // background-color:green;
 `
 
-const [showModal, setShowModal] = useState(false);
 
 function Details({selected}) {
+  const [showModal, setShowModal] = useState(false);
   return (
     <Container>
       <OverviewStyle>
