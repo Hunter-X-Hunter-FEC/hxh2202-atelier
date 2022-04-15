@@ -126,14 +126,13 @@ app.get('/reviews', (req, res) => {
 });
 
 app.get('/reviews/meta', (req, res) => {
-
+  console.log('req.url: ', req.url);
   let options = {
     method: 'GET',
     url: apiURL + req.url,
     headers: {
       'Authorization': `${process.env.REACT_APP_API_KEY}`
-    },
-    // params: req.params
+    }
   };
 
 
@@ -179,8 +178,9 @@ app.post('/reviews', (req, res) => {
 
 });
 
-app.put('/reviews/helpful', (req, res) => {
-  const productId = req.query.id;
+app.put('/reviews/:review_id/helpful', (req, res) => {
+  const productId = req.params.review_id;
+  console.log('productId: ', productId);
   let options = {
     method: 'PUT',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/${productId}/helpful`,
@@ -192,6 +192,9 @@ app.put('/reviews/helpful', (req, res) => {
   axios(options)
     .then((result) => {
       res.send(result.data);
+    })
+    .catch((err)=> {
+      console.error(err);
     });
 
 });

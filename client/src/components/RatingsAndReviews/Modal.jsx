@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import ReviewForm from './ReviewForm.jsx';
@@ -8,10 +9,12 @@ const Background = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+  left: 0;
+  z-index: 3000;
 `;
 
 const ModalWrapper = styled.div`
@@ -22,8 +25,7 @@ const ModalWrapper = styled.div`
   color: black;
   display: grid;
   grid-template-columns: 1fr;
-  position: absolute;
-  z-index: 10;
+  position: relative;
   border-radius: 10px
 `;
 
@@ -49,32 +51,26 @@ const ModalContent = styled.div`
 
 const CloseModalButton = styled(MdClose)`
   cursor: pointer;
-  // position: absolute;
+  position: absolute;
   top: 20px;
   right: 20px;
   width: 32px;
   height: 32px;
   padding: 0;
-  z-index: 10;
 `;
 
 const Modal = ({ setShowModal, product }) => {
-
-
-  return (
-    <div>
-      {
-        <Background>
-          <ModalWrapper >
-            <ModalContent>
-              <ReviewForm product={product}/>
-            </ModalContent>
-            <CloseModalButton onClick={() => setShowModal(prev => !prev)}/>
-          </ModalWrapper>
-        </Background>
-      }
-    </div>
-  )
+  return ReactDOM.createPortal(
+    <Background>
+      <ModalWrapper >
+        <CloseModalButton onClick={() => setShowModal(prev => !prev)}/>
+        <ModalContent>
+          <ReviewForm product={product}/>
+        </ModalContent>
+      </ModalWrapper>
+    </Background>,
+    document.body
+  );
 }
 
 export default Modal;

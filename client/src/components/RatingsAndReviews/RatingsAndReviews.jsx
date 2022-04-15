@@ -40,7 +40,7 @@ const RatingsAndReviews = (props) => {
         </div>
         <div>
           <ReviewsList product={props.product}/>
-          <WriteReview product={props.product} showModal={props.showModal} setShowModal={props.setShowModal}/>
+          <WriteReview product={props.product} />
         </div>
       </RatingsAndReviewsContainer>
     </>

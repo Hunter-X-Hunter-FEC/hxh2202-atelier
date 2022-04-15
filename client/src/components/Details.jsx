@@ -34,7 +34,6 @@ heigth: 40vh;
 
 
 function Details({selected}) {
-  const [showModal, setShowModal] = useState(false);
   return (
     <Container>
       <OverviewStyle>
@@ -44,9 +43,8 @@ function Details({selected}) {
         <RelatedItems selected={selected}/>
       </RelatedStyle>
       <ReviewsStyle>
-      <RatingsAndReviews product={selected} setShowModal={setShowModal} showModal={showModal}/>
+        <RatingsAndReviews product={selected} />
       </ReviewsStyle>
-      {showModal && <Modal setShowModal={setShowModal} product={selected}/>}
     </Container>
   )
 }
