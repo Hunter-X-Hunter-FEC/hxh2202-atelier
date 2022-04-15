@@ -86,7 +86,7 @@ const ReviewForm = (props) => {
         <textarea id="body" type="text" name="body" placeholder="your review..." maxLength='1000' rows="4" onChange={changeHandler}/>
       </div>
       <Characteristic metaChars={characteristics} handleCharacteristicChange={handleCharacteristicChange}/>
-      <button id="submit" onClick={handleSubmit}>Submit Review</button>
+      <input label="Submit Review" type="button" id="submit" onClick={handleSubmit}/>
     </form>
   </div>
   )
