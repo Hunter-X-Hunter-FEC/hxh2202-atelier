@@ -4,3 +4,4 @@ bundle.js
 config.js
 .env
 .DS_Store
+hunter.pem

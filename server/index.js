@@ -34,7 +34,7 @@ app.get('/products', (req, res) => {
       'Authorization': `${process.env.REACT_APP_API_KEY}`,
     },
     params: {
-      count: 10
+      count: 5
     }
   };
 
@@ -126,7 +126,7 @@ app.get('/reviews', (req, res) => {
 });
 
 app.get('/reviews/meta', (req, res) => {
-  console.log('req.url: ', req.url);
+  // console.log('req.url: ', req.url);
   let options = {
     method: 'GET',
     url: apiURL + req.url,
@@ -138,7 +138,7 @@ app.get('/reviews/meta', (req, res) => {
 
   axios(options)
   .then((result) => {
-    console.log(result.data);
+    // console.log(result.data);
     res.send(result.data);
   }).catch(err => console.error(err));
 
@@ -180,7 +180,7 @@ app.post('/reviews', (req, res) => {
 
 app.put('/reviews/:review_id/helpful', (req, res) => {
   const productId = req.params.review_id;
-  console.log('productId: ', productId);
+  // console.log('productId: ', productId);
   let options = {
     method: 'PUT',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/${productId}/helpful`,
@@ -201,7 +201,7 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
 
 app.put('/reviews/report', (req, res) => {
   const productId = req.query.id;
-  console.log('productId', productId);
+  // console.log('productId', productId);
   let options = {
     method: 'PUT',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/${productId}/report`,
@@ -327,6 +327,10 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
       res.send(result.data);
     });
 
+});
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'))
 });
 
 app.listen(PORT, () => {

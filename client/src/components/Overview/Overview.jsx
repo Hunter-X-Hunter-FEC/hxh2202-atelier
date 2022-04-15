@@ -21,6 +21,7 @@ import Request from '../Request.js';
 
 
 function Overview(props) {
+  console.log('props in overview', props.product);
 
   var [styleIdx, setStyleIdx] = useState(0);
   var [imageIdx, setImageIdx] = useState(0);

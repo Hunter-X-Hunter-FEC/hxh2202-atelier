@@ -4,7 +4,7 @@ Daniel Esquivel-Reynoso, Dora Xia, David Liang, Bogdan Gordin
 3/29/22
 our Atelier App, will contain all of the componant modules
 */
-import React from 'react';
+import React, {Suspense} from 'react';
 import {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Header.jsx';
@@ -16,7 +16,7 @@ import RelatedItems from './components/RelatedItems/RelatedItems.jsx';
 import {AiOutlineShoppingCart} from 'react-icons/ai';
 // import Overview from './components/Overview/Overview.jsx';
 import 'regenerator-runtime/runtime';
-import Details from './components/Details.jsx';
+const Details = React.lazy(()=>import ('./components/Details.jsx'));
 const request = require('./components/Request.js');
 import Overview from './components/Overview/Overview.jsx';
 import RatingsAndReviews from './components/RatingsAndReviews/RatingsAndReviews.jsx';
@@ -41,6 +41,7 @@ function App(){
 
 
   useEffect(()=>{
+    console.log('useEffect1 is working in App')
     const fectchData = async() =>{
       const allProducts = await request.getProducts();
 
@@ -63,6 +64,7 @@ function App(){
   }, [])
 
   useEffect(()=>{
+    console.log('useEffect2 is working in App')
     localStorage.setItem('products', JSON.stringify(allProducts))
   }, [allProducts])
 
@@ -85,21 +87,25 @@ function App(){
 
 
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <>
-        <GlobalStyles />
-        {/* {(view === 'details') && <RatingsAndReviews product={selected} setShowModal={setShowModal} showModal={showModal}/> } */}
-          <BrowserRouter>
-            <nav>
-              <Header showAll={setAllProducts} themeToggler={themeToggler} />
-            </nav>
-            <Routes>
-              <Route path='/' exact element={<Catalog Catalog selector={selectProduct} allProducts={allProducts}/>}/>
-              <Route path='/product/:productId' element ={<Details selected={selected}/>}/>
-            </Routes>
-        </BrowserRouter>
-      </>
-    </ThemeProvider>
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+          <>
+            <GlobalStyles />
+            {/* {(view === 'details') && <RatingsAndReviews product={selected} setShowModal={setShowModal} showModal={showModal}/> } */}
+              <BrowserRouter>
+                <nav>
+                  <Header showAll={setAllProducts} themeToggler={themeToggler} />
+                </nav>
+                <Routes>
+                  <Route path='/' exact element={<Catalog Catalog selector={selectProduct} allProducts={allProducts}/>}/>
+                  <Route path='/product/:productId' element ={<Details selected={selected}/>}/>
+                </Routes>
+            </BrowserRouter>
+          </>
+        </ThemeProvider>
+      </Suspense>
+    </div>
   );
 
 }
