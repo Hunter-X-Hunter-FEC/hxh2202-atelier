@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
 
+const StarsStyled = styled.div`
+font-size: 16px;
+`;
+
 // component for static, partially unfilled stars.
 const Stars = (props) => {
 
@@ -45,7 +49,9 @@ const Stars = (props) => {
   }
 
   return (
-    <div id='staticStars'>{stars}</div>
+    <StarsStyled>
+      <div id='staticStars'>{stars}</div>
+    </StarsStyled>
   );
 }
 

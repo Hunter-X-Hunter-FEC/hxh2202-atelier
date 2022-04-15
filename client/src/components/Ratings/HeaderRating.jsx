@@ -5,6 +5,15 @@ import Ratings from './Ratings.jsx';
 
 // import { averageRating, ones } from './oneMeta.js';
 
+const HeaderRatingContainer = styled.div`
+  display: inline-grid;
+  grid-template-columns: 2fr 1fr 1fr
+`;
+
+const NumberStyle = styled.div`
+  font-size: 100px;
+`;
+
 var ratingAverage = (distribution) => {
   const data = {};
     let total = 0;
@@ -30,11 +39,13 @@ const HeaderRating = ({ distribution, setStarsIndex }) => {
 
 
   return (
-    <>
-      <div className="HeaderRating"> Header Rating Component Here </div>
-      <div>Overall Rating: {averageRounded}</div>
-      <Stars rating={averageRounded} isReadOnly onClick={(rating) => console.log('The rating', rating)}/>
-    </>
+    <div>
+      <div style={{align: 'center'}}>RATINGS AND REVIEWS</div>
+      <HeaderRatingContainer>
+        <NumberStyle>{averageRounded}</NumberStyle>
+        <Stars rating={averageRounded} isReadOnly onClick={(rating) => console.log('The rating', rating)}/>
+      </HeaderRatingContainer>
+    </div>
   )
 }
 

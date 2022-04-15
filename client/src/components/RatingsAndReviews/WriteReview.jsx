@@ -26,20 +26,19 @@ const Button = styled.button`
 const WriteReview = (props) => {
 
   const [isWritingReview, setIsWritingReview] = useState(false)
-  // const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
-    props.setShowModal(prev => !prev);
+    setShowModal(prev => !prev);
   }
 
   return (
     <>
       <Container>
         <Button onClick={openModal}>Write Review</Button>
+        {showModal && <Modal setShowModal={setShowModal} product={props.product}/>}
       </Container>
-
     </>
-
   );
 }
 

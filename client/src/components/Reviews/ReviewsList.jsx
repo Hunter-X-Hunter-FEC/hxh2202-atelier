@@ -1,9 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-// import oneReview from '../common/oneReview.js'
+import styles from 'styled-components';
 import Review from './Review.jsx';
 import Ratings from '../Ratings/Ratings.jsx'
 const request = require('../Request.js')
+
+
 
 // render each individual review "card"
 const ReviewsList = (prop) => {
@@ -48,11 +50,9 @@ const ReviewsList = (prop) => {
 
   return (
     <>
-
       <div>
         {
           reviewPages.reviews.slice(0, sliceEnd).map((review) => {
-
             return <Review key={review.review_id} review={review} />;
           })
         }
@@ -60,7 +60,6 @@ const ReviewsList = (prop) => {
       </div>
     </>
   )
-  // return allReviewsOfProduct;
   }
 
 export default ReviewsList;

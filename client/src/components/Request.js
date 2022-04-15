@@ -41,6 +41,11 @@ const postReview = (data) => {
   return axios.post('/reviews', data).then((result) => console.log('result in postReview: ', result));
 }
 
+const updateHelpfulness = (id) => {
+  console.log('helpfulness updated on id: ', id);
+  return axios.put(`/reviews/${id}/helpful`)
+}
+
 module.exports = {
   getProducts: getProducts,
   getProductDetails: getProductDetails,
@@ -48,5 +53,6 @@ module.exports = {
   getRelatedProducts: getRelatedProducts,
   getReviews: getReviews,
   getMetaReviews: getMetaReviews,
-  postReview: postReview
+  postReview: postReview,
+  updateHelpfulness: updateHelpfulness
 };
