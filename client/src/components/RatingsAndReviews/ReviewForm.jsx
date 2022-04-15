@@ -21,7 +21,7 @@ const ReviewForm = (props) => {
 
   const changeHandler = (e) => {
     setFormValues({...formValues, [e.target.name]: e.target.value})
-    console.log('changeHandler clicked!', e.target.name)
+    // console.log('changeHandler clicked!', e.target.name)
   }
 
   useEffect(()=> {

@@ -4,7 +4,7 @@ import Characteristic from './Characteristic.jsx';
 
 
 const ProductBreakdown = ({metaChar}) => {
-  console.log('props.metaChar: ', metaChar);
+  // console.log('props.metaChar: ', metaChar);
   const characteristics = metaChar || {};
   return (
     <div>
