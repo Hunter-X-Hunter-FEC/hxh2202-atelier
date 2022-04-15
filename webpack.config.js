@@ -9,9 +9,9 @@ module.exports = {
     publicPath: '/'
   },
   devServer: {
-    port:3000,
-    historyApiFallback; true,
-  }
+    port:3005,
+    historyApiFallback: true,
+  },
 
   module: {
     rules: [

@@ -51,7 +51,7 @@ const ReviewHelpfulness = styled.div`
 
 // render each individual review "card"
 const Review = (props) => {
-  console.log('props inside Review.jsx: ', props)
+  // console.log('props inside Review.jsx: ', props)
   const [hasClicked, setHasClicked] = useState(!!localStorage.getItem(`helpful-${props.review.review_id}`))
 
   const clickedHelpful = () => {

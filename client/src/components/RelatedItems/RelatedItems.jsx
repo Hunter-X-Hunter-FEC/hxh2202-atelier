@@ -11,7 +11,6 @@ import {Container, Seperator, ProductSection, FavoriteSection} from './styles/co
 import {useState, useEffect} from 'react';
 
 function RelatedItems({selected}) {
-  console.log('selected in relatedItems', selected);
   const {productId} = useParams();
   const[curProductID, setCurProductID] = useState(productId)
   const[curProduct, setCurProduct] = useState(selected)

@@ -41,7 +41,6 @@ function App(){
 
 
   useEffect(()=>{
-    console.log('useEffect1 is working in App')
     const fectchData = async() =>{
       const allProducts = await request.getProducts();
 
@@ -64,7 +63,6 @@ function App(){
   }, [])
 
   useEffect(()=>{
-    console.log('useEffect2 is working in App')
     localStorage.setItem('products', JSON.stringify(allProducts))
   }, [allProducts])
 

@@ -34,7 +34,7 @@ app.get('/products', (req, res) => {
       'Authorization': `${process.env.REACT_APP_API_KEY}`,
     },
     params: {
-      count: 5
+      count: 8
     }
   };
 

@@ -38,12 +38,10 @@ heigth: 40vh;
 function Details({selected}) {
   const [proDetail, setProDetail] = useState(localStorage.getItem('selected') ? JSON.parse(localStorage.getItem('selected')) : selected)
   const {productId} = useParams()
-  console.log('details userId', productId);
+
 
   useEffect(()=>{
-    console.log('useEffect1 is working in Details')
     const productInfo = async () => {
-      console.log('productInfo is being called');
       let details = await request.getProductDetails(productId)
       let styles = await request.getProductStyles(productId)
       let curProductDetails = details.data;
@@ -55,7 +53,7 @@ function Details({selected}) {
   }, [productId])
 
   useEffect(()=>{
-    console.log('useEffect2 is working in Details')
+
     setProDetail(proDetail)
     localStorage.setItem('selected', JSON.stringify(proDetail))
   }, [proDetail])
