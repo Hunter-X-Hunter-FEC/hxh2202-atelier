@@ -4,3 +4,5 @@ bundle.js
 config.js
 .env
 .DS_Store
+aws-demo.cer
+aws-demo.pem
