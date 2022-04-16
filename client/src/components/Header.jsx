@@ -6,7 +6,7 @@ import {CgDarkMode} from 'react-icons/cg';
 import {Link} from "react-router-dom";
 
 const Container = styled.div`
-width: 100%;
+width: 100wm;
 height: 100px;
 display:flex;
 flex-direction: row;
@@ -15,19 +15,33 @@ positon: absolute;
 background-color: rgba(50, 115, 220, 0.3);
 `
 const Title = styled.h2`
+margin-top: 30px;
+margin-left: 20px;
 opacity: 0.5;
-font-size: 35px;
+font-size: 50px;
 max-width:100%;
-flex-basis: 30%;
-top: 0px;
-margin:10px;
+flex-basis: 85%;
+`
+
+const Icons = styled.div`
+margin-top: 30px;
+opacity: 0.5;
+font-size: 30px;
+max-width:100%;
+flex-basis: 15%;
+display: flex;
 `
 
 const Product = styled.span`
-margin-bottom: 30px;
+margin-top:20px;
 font-size: 35px;
-flex-basis: 50%
 color: black;
+// background-color:black;
+flex-basis:50%;
+`
+const DarkButton = styled.div`
+margin-top: 25px;
+margin-left: 20px;
 `
 
 
@@ -35,11 +49,15 @@ function Header({themeToggler, showAll}) {
   return (
     <Container>
       <Title size={50} >Hunter Shop</Title>
-      <Product>
-        <Link to='/'>Products</Link>
-      </Product>
-      <Link to='products/checkout'><AiOutlineShoppingCart  size={50}/></Link>
-      <CgDarkMode onClick={themeToggler} size={50}/>
+      <Icons>
+        <Product>
+          <Link style={{color:'black'}} to='/'>Products</Link>
+        </Product>
+        {/* <Link to='products/checkout'><AiOutlineShoppingCart  size={30}/></Link> */}
+        <DarkButton>
+          <CgDarkMode onClick={themeToggler} size={30}/>
+        </DarkButton>
+      </Icons>
     </Container>
   )
 }
