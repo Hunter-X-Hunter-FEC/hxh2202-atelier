@@ -11,7 +11,6 @@ const ProductContainer = styled.div`
 heights: 650px;
 width: 420px;
 display: flex;
-border: solid black;
 font-family:sans-serif;
 `
 const productWrapper = styled.div`
