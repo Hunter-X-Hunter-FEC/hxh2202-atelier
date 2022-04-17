@@ -60,8 +60,8 @@ var StyleCont = styled.div`
   border: solid black;
   padding: 7px;
   margin: 7px;
-  width: 55;
-  height: 55;
+  width: 55px;
+  height: 55px;
   background-image: url(${(props) => props.backgroundImage});
   background-size: cover;
 `;
