@@ -15,21 +15,13 @@ const StyledHeaderRating = styled.div`
 `;
 
 const StyledDistrubution = styled.div`
-  // padding: 0.5em;
-  // margin: 0.5em;
-  // color: orange;
-  // background: papayawhip;
-  // border: 1px solid black;
-  // border-radius: 5px;
+  width: 100%;
+  margin-bottom: 10px;
 `;
 
 const StyledProductBreakdown = styled.div`
-  // padding: 0.5em;
-  // margin: 0.5em;
-  // color: LightBlue;
-  // background: papayawhip;
-  // border: 1px solid black;
-  // border-radius: 5px;
+  width: 100%;
+  margin-right: 10px;
 `;
 
 

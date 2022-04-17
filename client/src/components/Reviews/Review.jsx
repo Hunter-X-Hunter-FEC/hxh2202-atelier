@@ -6,11 +6,12 @@ const request = require('../Request.js');
 
 const ReviewContainer = styled.div`
   margin-top: 10px;
+  margin-bottom: 10px;
   height: auto;
   padding: 10px;
+  padding-left: 0px;
   width: 80%;
-  border: solid 	#D3D3D3;
-  border-radius: 10px;
+  border-bottom: solid 	#D3D3D3;
   font-family: sans-serif;
 `
 const StarNameDateLine = styled.div`
@@ -46,12 +47,20 @@ const ReviewResponse = styled.div`
 `
 
 const ReviewHelpfulness = styled.div`
-  padding-right: 5px;
+  margin-top: 5px;
+  display: flex;
+
+`
+
+const HelpfulnessButton = styled.button`
+  background-color: transparent;
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
 `
 
 // render each individual review "card"
 const Review = (props) => {
-  console.log('props inside Review.jsx: ', props)
   const [hasClicked, setHasClicked] = useState(!!localStorage.getItem(`helpful-${props.review.review_id}`))
 
   const clickedHelpful = () => {
@@ -78,8 +87,9 @@ const Review = (props) => {
         {props.review.response ? props.review.response : null}
       </ReviewResponse>
       <ReviewHelpfulness>
-        Helpful?
-        <button onClick={clickedHelpful}>Yes</button> ({props.review.helpfulness + (hasClicked ? 1 : 0)})
+        <div>Helpful?</div>
+        <HelpfulnessButton onClick={clickedHelpful}>Yes</HelpfulnessButton>
+        <div>({props.review.helpfulness + (hasClicked ? 1 : 0)})</div>
       </ReviewHelpfulness>
     </ReviewContainer>
   )

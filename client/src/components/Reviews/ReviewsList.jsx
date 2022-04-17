@@ -53,7 +53,9 @@ const ReviewsList = (prop) => {
       <div>
         {
           reviewPages.reviews.slice(0, sliceEnd).map((review) => {
-            return <Review key={review.review_id} review={review} />;
+            return (
+              <Review key={review.review_id} review={review} />
+            );
           })
         }
         {reviewPages.reviews.length === 0 || reviewPages.isLastPage ? null : <button onClick={reviewsToShow}>More Reviews</button>}

@@ -4,6 +4,7 @@ import Ratings from "./Ratings.jsx";
 import styled from "styled-components";
 // import averageRating, {oneCount, twoCount, threeCount, fourCount, fiveCount, numberOfReviews} from '../common/oneMeta.js';
 
+
 const Distribution = ({ distribution }) => {
   // console.log('props.distribution inside of Distribution.jsx: ', props.);
 
@@ -25,9 +26,10 @@ const Distribution = ({ distribution }) => {
 
   return (
     <>
-      {Object.entries(distributionData.data)?.map(([key, value]) => {
-        return <DistributionItem key={key} stars={key} value={value} max={distributionData.total} />
-      })
+      {
+        Object.entries(distributionData.data)?.slice(0).reverse().map(([key, value]) => {
+          return <DistributionItem key={key} stars={key} value={value} max={distributionData.total} />
+        })
       }
     </>
   );

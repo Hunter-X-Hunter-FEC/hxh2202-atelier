@@ -10,8 +10,17 @@ const HeaderRatingContainer = styled.div`
   grid-template-columns: 2fr 1fr 1fr
 `;
 
+const HeaderLabel = styled.div`
+  font-size: 18px;
+  margin: 10px;
+  border-bottom: solid #f1f1f1;
+`
+
 const NumberStyle = styled.div`
   font-size: 100px;
+  text-align: center;
+  padding: 5px;
+  margin-right: 5px;
 `;
 
 var ratingAverage = (distribution) => {
@@ -40,8 +49,8 @@ const HeaderRating = ({ distribution, setStarsIndex }) => {
 
   return (
     <div>
-      <div style={{align: 'center'}}>RATINGS AND REVIEWS</div>
-      <HeaderRatingContainer>
+      <div>  RATINGS AND REVIEWS</div>
+      <HeaderRatingContainer className="header-rating-container">
         <NumberStyle>{averageRounded}</NumberStyle>
         <Stars rating={averageRounded} isReadOnly onClick={(rating) => console.log('The rating', rating)}/>
       </HeaderRatingContainer>
