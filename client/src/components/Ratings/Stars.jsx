@@ -49,7 +49,7 @@ const Stars = (props) => {
   }
 
   return (
-    <StarsStyled>
+    <StarsStyled id="StarsStyled">
       <div id='staticStars'>{stars}</div>
     </StarsStyled>
   );
